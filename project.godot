@@ -12,9 +12,9 @@ config_version=4
 
 config/name="seeweed"
 run/main_scene="res://World/World.tscn"
-boot_splash/image="res://icon.png"
+boot_splash/image="res://logo.png"
 boot_splash/fullsize=false
-boot_splash/bg_color=Color( 0.0470588, 0.0470588, 0.0470588, 1 )
+boot_splash/bg_color=Color( 0.25098, 0.756863, 0.0862745, 1 )
 config/icon="res://icon.png"
 
 [physics]
