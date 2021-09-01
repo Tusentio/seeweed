@@ -1,6 +1,6 @@
 extends Spatial
 
-export (float) var speed: float = 15;
+export (float) var speed: float = 25;
 
 func _input(_event):
 	var ray_length = 1000;

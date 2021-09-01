@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Player/Player.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/Default/Default.tres" type="Material" id=2]
+[ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.35, 0.5, 0.35 )
+
+[node name="Player" type="KinematicBody"]
+collision_layer = 2
+script = ExtResource( 3 )
+
+[node name="Origin" type="Spatial" parent="."]
+
+[node name="Player" type="MeshInstance" parent="Origin"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.05 )
+shape = SubResource( 1 )
