@@ -1,7 +1,7 @@
 extends Spatial
 
-export (int) var map_width: int = 32;
-export (int) var map_length: int = 32;
+export (int) var map_width: int = 16;
+export (int) var map_length: int = 16;
 export (int) var map_height: int = 1;
 
 export (float) var cell_size: float = 1;

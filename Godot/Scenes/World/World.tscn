@@ -7,10 +7,10 @@
 [node name="WorldGeneration" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.654992, 0.755636, 0, -0.755636, 0.654992, 0, 9.84389, 15.2271 )
-fov = 110.534
+transform = Transform( 1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 10, 5.5 )
+fov = 80.0
 
 [node name="Sun" type="DirectionalLight" parent="."]
-transform = Transform( 0.83208, -0.285669, -0.475433, 0.554656, 0.428553, 0.713232, 0, -0.857167, 0.515038, 0, 0, 0 )
+transform = Transform( 0.853553, -0.146447, -0.5, 0.5, 0.5, 0.707107, 0.146447, -0.853553, 0.5, 0, 0, 0 )
 light_energy = 2.0
 shadow_enabled = true
