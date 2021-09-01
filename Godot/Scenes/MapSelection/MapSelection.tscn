@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/MapSelection/Selection.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Scenes/MapSelection/MapSelection.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Selection"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Origin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector3( 1.05, 1.05, 1.05 ), Vector3( 1.15, 1.15, 1.15 ), Vector3( 1.05, 1.05, 1.05 ) ]
+}
+
+[node name="MapSelection" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Origin" type="Spatial" parent="."]
+transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.5, 0.5, 0.5 )
+
+[node name="Mesh" type="MeshInstance" parent="Origin"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+autoplay = "Selection"
+anims/Selection = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
