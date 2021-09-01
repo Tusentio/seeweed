@@ -9,7 +9,8 @@
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 10, 5.5 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 35, 0 )
+current = true
 fov = 80.0
 
 [node name="Sun" type="DirectionalLight" parent="."]
