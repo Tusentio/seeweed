@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/LeftLeg.obj-3e422202c61847146f30a3b2dd03c9ac.mesh"
+
+[deps]
+
+files=[ "res://.import/LeftLeg.obj-3e422202c61847146f30a3b2dd03c9ac.mesh" ]
+
+source_file="res://Scenes/Player/Meshes/LeftLeg.obj"
+dest_files=[ "res://.import/LeftLeg.obj-3e422202c61847146f30a3b2dd03c9ac.mesh", "res://.import/LeftLeg.obj-3e422202c61847146f30a3b2dd03c9ac.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

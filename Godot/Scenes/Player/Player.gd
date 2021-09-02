@@ -1,6 +1,6 @@
 extends KinematicBody
 
-export (int) var speed = 5;
+export (int) var speed = 4;
 export (int) var gravity = 20;
 
 var velocity = Vector3.ZERO;
@@ -11,7 +11,7 @@ func _physics_process(delta):
 	velocity.z = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward");
 	
 	if velocity != Vector3.ZERO:
-		$Origin.look_at(translation + velocity, Vector3.UP);
+		$Body.look_at(translation + velocity, Vector3.UP);
 	
 	velocity.y -= gravity * delta;
 	

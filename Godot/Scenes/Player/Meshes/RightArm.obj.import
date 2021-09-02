@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/RightArm.obj-f4bd576c18a4a95ba6d29a7cefc4f88c.mesh"
+
+[deps]
+
+files=[ "res://.import/RightArm.obj-f4bd576c18a4a95ba6d29a7cefc4f88c.mesh" ]
+
+source_file="res://Scenes/Player/Meshes/RightArm.obj"
+dest_files=[ "res://.import/RightArm.obj-f4bd576c18a4a95ba6d29a7cefc4f88c.mesh", "res://.import/RightArm.obj-f4bd576c18a4a95ba6d29a7cefc4f88c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
