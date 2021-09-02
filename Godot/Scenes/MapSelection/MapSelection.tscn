@@ -29,6 +29,7 @@ transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.5, 0.5, 0.5 )
 
 [node name="Mesh" type="MeshInstance" parent="Origin"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0 )
+cast_shadow = 0
 mesh = ExtResource( 1 )
 material/0 = null
 
