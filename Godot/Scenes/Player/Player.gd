@@ -13,7 +13,7 @@ func _physics_process(delta):
 	velocity.z = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward");
 	
 	if velocity:
-		_looking_at = global_transform.origin + velocity * Vector3(1, 0, 1);
+		_looking_at = velocity.normalized();
 		
 		# Reset animation
 		if ($Animator.current_animation == "idle"):
@@ -35,5 +35,6 @@ func _process(delta):
 		return;
 
 	var weight = pow(1 - 1 / turn_speed, 1 / delta);
-	var rotated_transform = global_transform.looking_at(_looking_at, Vector3.UP);
+	var look_target = global_transform.origin + _looking_at * Vector3(1, 0, 1);
+	var rotated_transform = global_transform.looking_at(look_target, Vector3.UP);
 	$Body.transform.basis = $Body.transform.basis.slerp(rotated_transform.basis, weight);
