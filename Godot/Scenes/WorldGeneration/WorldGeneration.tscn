@@ -9,6 +9,6 @@ script = ExtResource( 2 )
 [node name="NodeMap" parent="." instance=ExtResource( 1 )]
 map_width = 3
 map_length = 3
-cell_size = 16.25
+cell_size = 16.15
 center_x = true
 center_z = true

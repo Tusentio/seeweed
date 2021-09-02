@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/MapSelection/Selection.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Scenes/MapSelection/Mesh.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Scenes/MapSelection/MapSelection.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]

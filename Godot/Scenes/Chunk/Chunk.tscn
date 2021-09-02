@@ -10,6 +10,7 @@ extents = Vector3( 8, 8, 8 )
 script = ExtResource( 2 )
 
 [node name="NodeMap" parent="." instance=ExtResource( 1 )]
+map_height = 2
 
 [node name="Area" type="Area" parent="."]
 
