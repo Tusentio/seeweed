@@ -5,7 +5,6 @@ export (int) var gravity = 20;
 export (float) var turn_speed = 40.0;
 
 var velocity = Vector3.ZERO;
-var look_target : Spatial = null;
 
 var _looking_at = Vector3.ZERO;
 
@@ -31,12 +30,9 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity.normalized() * speed, Vector3.UP);
 	
-func _process(delta):
+func _process(delta):	
 	if not _looking_at or not delta:
 		return;
-
-	if look_target:
-		_looking_at = look_target.global_transform.origin;
 
 	var weight = pow(1 - 1 / turn_speed, 1 / delta);
 	var rotated_transform = global_transform.looking_at(_looking_at, Vector3.UP);

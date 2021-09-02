@@ -17,16 +17,16 @@ length = 6.0
 loop = true
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Head/RightArm:translation")
+tracks/0/path = NodePath("Body/Head:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
-"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2, -2 ),
+"times": PoolRealArray( 2, 2.5, 3, 3.5, 4, 4.5 ),
+"transitions": PoolRealArray( -10, -10, -10, -10, -10, -10 ),
 "update": 0,
-"values": [ Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.175, 0 ), Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.175, 0 ), Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.175, 0 ), Vector3( 0.3, 0.2, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 15, 0 ), Vector3( 0, 15, 0 ), Vector3( 0, -15, 0 ), Vector3( 0, -15, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Head/LeftArm:translation")
@@ -41,16 +41,16 @@ tracks/1/keys = {
 "values": [ Vector3( -0.3, 0.2, 0 ), Vector3( -0.3, 0.175, 0 ), Vector3( -0.3, 0.2, 0 ), Vector3( -0.3, 0.175, 0 ), Vector3( -0.3, 0.2, 0 ), Vector3( -0.3, 0.175, 0 ), Vector3( -0.3, 0.2, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Head:rotation_degrees")
+tracks/2/path = NodePath("Body/Head/RightArm:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 2, 2.5, 3, 3.5, 4, 4.5 ),
-"transitions": PoolRealArray( -10, -10, -10, -10, -10, -10 ),
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2, -2 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 15, 0 ), Vector3( 0, 15, 0 ), Vector3( 0, -15, 0 ), Vector3( 0, -15, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.175, 0 ), Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.175, 0 ), Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.175, 0 ), Vector3( 0.3, 0.2, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -59,19 +59,19 @@ length = 0.4
 loop = true
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body/RightLeg:rotation_degrees")
+tracks/0/path = NodePath("Body/Head:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( -25, 0, 0 ), Vector3( 25, 0, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0.3, 0 ), Vector3( 0, 0.25, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0.25, 0 ), Vector3( 0, 0.3, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Body/LeftLeg:rotation_degrees")
+tracks/1/path = NodePath("Body/Head/LeftArm:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -80,10 +80,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 25, 0, 0 ), Vector3( -25, 0, 0 ), Vector3( -4.76837e-06, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( -30, 0, 0 ), Vector3( 30, 0, 0 ), Vector3( 9.53674e-06, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Body/RightLeg:translation")
+tracks/2/path = NodePath("Body/Head/RightArm:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -92,7 +92,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0.2, 0.3, 0 ), Vector3( 0.2, 0.3, 0.1 ), Vector3( 0.2, 0.3, -0.1 ), Vector3( 0.2, 0.3, -1.49012e-08 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 30, 0, 0 ), Vector3( -30, 0, 0 ), Vector3( -4.76837e-06, 0, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/LeftLeg:translation")
@@ -107,7 +107,7 @@ tracks/3/keys = {
 "values": [ Vector3( -0.2, 0.3, 0 ), Vector3( -0.2, 0.3, -0.1 ), Vector3( -0.2, 0.3, 0.1 ), Vector3( -0.2, 0.3, -2.98023e-08 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Body/Head/RightArm:rotation_degrees")
+tracks/4/path = NodePath("Body/RightLeg:translation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -116,10 +116,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 30, 0, 0 ), Vector3( -30, 0, 0 ), Vector3( -4.76837e-06, 0, 0 ) ]
+"values": [ Vector3( 0.2, 0.3, 0 ), Vector3( 0.2, 0.3, 0.1 ), Vector3( 0.2, 0.3, -0.1 ), Vector3( 0.2, 0.3, -1.49012e-08 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Body/Head/LeftArm:rotation_degrees")
+tracks/5/path = NodePath("Body/LeftLeg:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -128,19 +128,19 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( -30, 0, 0 ), Vector3( 30, 0, 0 ), Vector3( 9.53674e-06, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 25, 0, 0 ), Vector3( -25, 0, 0 ), Vector3( -4.76837e-06, 0, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Body/Head:translation")
+tracks/6/path = NodePath("Body/RightLeg:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.3, 0 ), Vector3( 0, 0.25, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0.25, 0 ), Vector3( 0, 0.3, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( -25, 0, 0 ), Vector3( 25, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [node name="Player" type="KinematicBody"]
