@@ -5,7 +5,6 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Selection"
-length = 0.5
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -15,17 +14,17 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5 ),
-"transitions": PoolRealArray( -2, -2, -2 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( -4, -4, -4 ),
 "update": 0,
-"values": [ Vector3( 1.05, 1.05, 1.05 ), Vector3( 1.15, 1.15, 1.15 ), Vector3( 1.05, 1.05, 1.05 ) ]
+"values": [ Vector3( 1.2, 1.2, 1.2 ), Vector3( 1.3, 1.3, 1.3 ), Vector3( 1.2, 1.2, 1.2 ) ]
 }
 
 [node name="MapSelection" type="Spatial"]
 script = ExtResource( 2 )
 
 [node name="Origin" type="Spatial" parent="."]
-transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.5, 0.5, 0.5 )
+transform = Transform( 1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0.5, 0.5, 0.5 )
 
 [node name="Mesh" type="MeshInstance" parent="Origin"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0 )

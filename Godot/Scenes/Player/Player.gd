@@ -5,14 +5,13 @@ export (int) var gravity = 20;
 export (float) var turn_speed = 40.0;
 
 var velocity = Vector3.ZERO;
-
 var _looking_at = Vector3.ZERO;
 
 func _physics_process(delta):
 	velocity.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
 	velocity.z = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward");
 	
-	if velocity:
+	if velocity.x or velocity.z:
 		_looking_at = velocity.normalized();
 		
 		# Reset animation
