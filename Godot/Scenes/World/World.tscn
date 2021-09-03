@@ -11,8 +11,8 @@
 
 [node name="Sun" type="DirectionalLight" parent="."]
 transform = Transform( 0.707107, 0.612372, -0.353553, 0, 0.5, 0.866025, 0.707107, -0.612372, 0.353553, 0, 0, 0 )
-light_color = Color( 0.968627, 0.988235, 0.788235, 1 )
-light_energy = 4.0
+light_color = Color( 1, 1, 0.694118, 1 )
+light_energy = 2.0
 shadow_enabled = true
 shadow_contact = 0.1
 directional_shadow_mode = 0
