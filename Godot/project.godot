@@ -9,7 +9,12 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "StaticBody",
+"base": "Node",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://Scripts/Inventory.gd"
+}, {
+"base": "Storable",
 "class": "MapObject",
 "language": "GDScript",
 "path": "res://Scenes/MapObjects/MapObject.gd"
@@ -19,12 +24,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Player/Player.gd"
 }, {
-"base": "Node",
+"base": "Spatial",
 "class": "Storable",
 "language": "GDScript",
 "path": "res://Scripts/Storable.gd"
 } ]
 _global_script_class_icons={
+"Inventory": "",
 "MapObject": "",
 "Player": "",
 "Storable": ""

@@ -14,12 +14,19 @@ var _looking_at: Vector3 = Vector3.ZERO;
 var inventory = preload("res://Scripts/Inventory.gd").new();
 var selected_slot: int = 0;
 
+# TESTING CODE
+var log_pile = preload("res://Scenes/MapObjects/LogPile/LogPile.tscn");
+var grass = preload("res://Scenes/MapObjects/Grass/Grass.tscn");
+func _ready():
+	inventory.add(log_pile.instance());
+	inventory.add(grass.instance());
+
 func select_slot(slot):
 	selected_slot = abs(inventory.slots + slot) % inventory.slots;
 	emit_signal("slot_change", selected_slot);
 
 func _input(event):
-	# Change selected slot
+	# Change selected slot when scrolling
 	if event is InputEventMouseButton and event.is_pressed():
 		match(event.button_index):
 			BUTTON_WHEEL_UP:

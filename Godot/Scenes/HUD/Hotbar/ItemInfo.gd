@@ -9,14 +9,15 @@ var empty_slot_desc = "Used to store items."
 
 # Connect signals from inventory and player
 func _ready():
-	player.inventory.connect("inventory_update", self, "update_text");
-	player.connect("slot_change", self, "update_text");
-	
-func update_text(updated_slot):
+	player.inventory.connect("inventory_update", self, "_inv_and_slot_update");
+	player.connect("slot_change", self, "_inv_and_slot_update");
+
+# Updating title and description text when inventory gets updated
+func _inv_and_slot_update(updated_slot):
 	if updated_slot == player.selected_slot:
 		# Get selected item
 		var item = player.inventory.get_at(updated_slot);
 		
-		# Update name and description
-		$ItemName.text = item.item_name if item else empty_slot_name;
-		$ItemDesc.text = item.item_description if item else empty_slot_desc;
+		# Update title and description UI text
+		$ItemTitle.text = item.title if item else empty_slot_name;
+		$ItemDesc.text = item.description if item else empty_slot_desc;

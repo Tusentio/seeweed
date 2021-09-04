@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/MapObjects/MapObject.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/MapObjects/Grass/Mesh.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Materials/Default/Default.tres" type="Material" id=3]
+[ext_resource path="res://Scenes/MapObjects/Grass/Icon.png" type="Texture" id=4]
 
 [node name="Grass" instance=ExtResource( 1 )]
+icon = ExtResource( 4 )
+title = "Grass"
+description = "A very interesting grass block."
 random_rotation_step = 180.0
 
 [node name="Mesh" parent="Origin" index="0"]

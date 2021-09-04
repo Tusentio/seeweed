@@ -2,8 +2,9 @@ extends Node
 
 # When items gets added or removed
 signal inventory_update
+class_name Inventory
 
-export (int) var slots: int = 0;
+export (int) var slots: int;
 
 var store: Array = [];
 
@@ -11,21 +12,25 @@ var store: Array = [];
 func _init(size = 5):
 	slots = size;
 	store.resize(slots);
-	
+
 func has(item: Storable) -> bool:
 	return store.has(item);
 
 func add(item: Storable) -> void:
-	if has(null) and item:
+	# Make sure inventory isn't full
+	if has(null) and is_instance_valid(item):
 		var slot = store.find(null);
 		store[slot] = item;
 		emit_signal("inventory_update", slot);
 
-func remove(item: Storable) -> void:
+# Remove item from inventory and return it
+func remove(item: Storable) -> Storable:
 	var slot: int = store.find(item);
 	if slot:
 		store[slot] = null;
 		emit_signal("inventory_update", slot);
-		
+	return item;
+
+# Get item from slot index
 func get_at(slot: int) -> Storable:
 	return store[slot];
