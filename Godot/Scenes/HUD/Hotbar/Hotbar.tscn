@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/Font-Big.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/Font-Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/HUD/Hotbar/SlotGrid.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/HUD/Hotbar/ItemInfo.gd" type="Script" id=5]
+
+[node name="Hotbar" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -824.0
+margin_bottom = -359.0
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlotGrid" type="GridContainer" parent="."]
+margin_right = 200.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 5
+script = ExtResource( 4 )
+
+[node name="ItemInfo" type="VBoxContainer" parent="."]
+margin_top = 25.0
+margin_right = 200.0
+margin_bottom = 79.0
+custom_constants/separation = 0
+script = ExtResource( 5 )
+
+[node name="ItemName" type="Label" parent="ItemInfo"]
+margin_right = 200.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Empty Slot"
+
+[node name="ItemDesc" type="Label" parent="ItemInfo"]
+margin_top = 30.0
+margin_right = 200.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Used to store items."

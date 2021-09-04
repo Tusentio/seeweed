@@ -5,8 +5,9 @@
 [ext_resource path="res://Materials/Default/Default.tres" type="Material" id=3]
 
 [node name="Grass" instance=ExtResource( 1 )]
-random_rotation_step = 90.0
+random_rotation_step = 180.0
 
 [node name="Mesh" parent="Origin" index="0"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = ExtResource( 3 )

@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "StaticBody",
+"class": "MapObject",
+"language": "GDScript",
+"path": "res://Scenes/MapObjects/MapObject.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scenes/Player/Player.gd"
+}, {
+"base": "Node",
+"class": "Storable",
+"language": "GDScript",
+"path": "res://Scripts/Storable.gd"
+} ]
+_global_script_class_icons={
+"MapObject": "",
+"Player": "",
+"Storable": ""
+}
+
 [application]
 
 config/name="seeweed"
@@ -16,6 +38,11 @@ boot_splash/image="res://logo.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.25098, 0.756863, 0.0862745, 1 )
 config/icon="res://icon.png"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [input]
 
