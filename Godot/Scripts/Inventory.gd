@@ -13,10 +13,10 @@ func _init(size = 5):
 	slots = size;
 	store.resize(slots);
 
-func has(item: Storable) -> bool:
+func has(item: Item) -> bool:
 	return store.has(item);
 
-func add(item: Storable) -> void:
+func add(item: Item) -> void:
 	# Make sure inventory isn't full
 	if has(null) and is_instance_valid(item):
 		var slot = store.find(null);
@@ -24,7 +24,7 @@ func add(item: Storable) -> void:
 		emit_signal("inventory_update", slot);
 
 # Remove item from inventory and return it
-func remove(item: Storable) -> Storable:
+func remove(item: Item) -> Item:
 	var slot: int = store.find(item);
 	if slot:
 		store[slot] = null;
@@ -32,5 +32,5 @@ func remove(item: Storable) -> Storable:
 	return item;
 
 # Get item from slot index
-func get_at(slot: int) -> Storable:
+func get_at(slot: int) -> Item:
 	return store[slot];

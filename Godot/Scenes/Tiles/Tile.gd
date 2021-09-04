@@ -1,4 +1,4 @@
-extends Storable
+extends StaticBody
 class_name Tile
 
 export (float) var random_rotation_step: float = 0;

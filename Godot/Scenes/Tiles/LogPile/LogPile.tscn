@@ -1,17 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Materials/Default/Default.tres" type="Material" id=1]
 [ext_resource path="res://Scenes/Tiles/Tile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Tiles/LogPile/Icon.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Tiles/LogPile/Mesh.obj" type="ArrayMesh" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.4, 0.3, 0.4 )
 
 [node name="LogPile" instance=ExtResource( 2 )]
-icon = ExtResource( 3 )
-title = "Log Pile"
-description = "A decorative pile of logs."
 random_rotation_step = 1.0
 min_random_scale = 0.75
 

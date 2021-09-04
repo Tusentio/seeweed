@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Icon.png-d56dabf9b86273430628e93d962d2af7.stex"
+path="res://.import/Icon.png-6869a98249185ace525b87c1f0693e18.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Tiles/LogPile/Icon.png"
-dest_files=[ "res://.import/Icon.png-d56dabf9b86273430628e93d962d2af7.stex" ]
+source_file="res://Scenes/Items/LogPile/Icon.png"
+dest_files=[ "res://.import/Icon.png-6869a98249185ace525b87c1f0693e18.stex" ]
 
 [params]
 
