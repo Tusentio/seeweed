@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/WorldGeneration/WorldGeneration.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/MapSelection/MapSelection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/HUD/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Items/LogPile/LogPile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Items/Grass/Grass.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Spatial"]
 
@@ -38,3 +39,6 @@ fov = 60.0
 
 [node name="LogPile" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15048, 3.05629, 2.72841 )
+
+[node name="Grass" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.78681, 3.01724, -0.0363617 )

@@ -16,3 +16,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5 )
 [node name="Collider" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5 )
 shape = SubResource( 1 )
+
+[node name="Destroy" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Place" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Walk" type="AudioStreamPlayer3D" parent="."]

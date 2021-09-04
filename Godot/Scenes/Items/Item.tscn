@@ -65,7 +65,7 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Origin"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.25, 0 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.25, 0 )
 
 [node name="Collider" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
@@ -85,6 +85,8 @@ collision_mask = 2
 [node name="Shape" type="CollisionShape" parent="CollectionArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
 shape = SubResource( 4 )
+
+[node name="Collect" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="body_entered" from="CollectionArea" to="." method="_on_CollectionArea_body_entered"]
