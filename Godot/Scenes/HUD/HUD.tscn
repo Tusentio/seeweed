@@ -1,22 +1,38 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/HUD/FPS.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Font-Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/HUD/Hotbar/Hotbar.tscn" type="PackedScene" id=3]
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="FPS" type="Label" parent="."]
-margin_left = 15.0
-margin_top = 10.0
-margin_right = 47.0
-margin_bottom = 43.0
+[node name="Margin" type="Control" parent="."]
+margin_left = 35.0
+margin_top = 35.0
+margin_right = 989.0
+margin_bottom = 565.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FPS" type="Label" parent="Margin"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+margin_right = 1024.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.490196 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "FPS"
+text = "0 FPS"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Hotbar" parent="Margin" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 141.0
+margin_bottom = 171.0

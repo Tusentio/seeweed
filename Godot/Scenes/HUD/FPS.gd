@@ -1,4 +1,4 @@
 extends Label
 
 func _process(delta):
-	text = "FPS: " +  String(Engine.get_frames_per_second());
+	text = String(Engine.get_frames_per_second()) + " FPS";
