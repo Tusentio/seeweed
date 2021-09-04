@@ -4,17 +4,24 @@ A sandbox exploration game made with Godot Engine.
 
 ## TODO
 
--   [ ] Simple terrain generation
--   [ ] Player (Movement, animation, holding items, energy, death)
--   [ ] Chunks
--   [ ] World/terrain manipulation
--   [ ] Map objects (Trees, structures, seeds, decorations)
--   [ ] Forest and temple/dungeon generation
+-   [x] Terrain
+-   [x] Player
+-   [ ] HP
+-   [ ] Death
 -   [ ] Enemies
--   [ ] Inventory system
--   [ ] Tools, weapons and items
--   [ ] HUD (Inventory, energy, compass)
--   [ ] Music (Menu, forest, home)
+-   [ ] Chunk loading
+-   [ ] Destroy and place tiles
+-   [ ] Tree generation
+-   [x] Inventory system
+-   [ ] Stackable items
+-   [ ] Drops
+-   [ ] Slot drag and drop
+-   [ ] Items
+-   [ ] Tools
+-   [x] HUD Hotbar
+-   [ ] HUD HP bar
 -   [ ] Day / night cycle
+-   [ ] Music (Menu, day, night)
 -   [ ] Save / load
+-   [ ] Pause menu
 -   [ ] Main menu
