@@ -1,7 +1,7 @@
 extends Spatial
 
-onready var grass = preload("res://Scenes/MapObjects/Grass/Grass.tscn");
-onready var log_pile = preload("res://Scenes/MapObjects/LogPile/LogPile.tscn");
+onready var grass = preload("res://Scenes/Tiles/Grass/Grass.tscn");
+onready var log_pile = preload("res://Scenes/Tiles/LogPile/LogPile.tscn");
 onready var map = $NodeMap;
 
 func _ready():

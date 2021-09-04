@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Icon.png-8e9bea53f501cac80a3cd69dafca9f94.stex"
+path="res://.import/Icon.png-d56dabf9b86273430628e93d962d2af7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MapObjects/Grass/Icon.png"
-dest_files=[ "res://.import/Icon.png-8e9bea53f501cac80a3cd69dafca9f94.stex" ]
+source_file="res://Scenes/Tiles/LogPile/Icon.png"
+dest_files=[ "res://.import/Icon.png-d56dabf9b86273430628e93d962d2af7.stex" ]
 
 [params]
 

@@ -1,5 +1,5 @@
 extends Storable
-class_name MapObject
+class_name Tile
 
 export (float) var random_rotation_step: float = 0;
 export (float, 1) var min_random_scale: float = 1;

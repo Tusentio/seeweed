@@ -15,8 +15,8 @@ var inventory = preload("res://Scripts/Inventory.gd").new();
 var selected_slot: int = 0;
 
 # TESTING CODE
-var log_pile = preload("res://Scenes/MapObjects/LogPile/LogPile.tscn");
-var grass = preload("res://Scenes/MapObjects/Grass/Grass.tscn");
+var log_pile = preload("res://Scenes/Tiles/LogPile/LogPile.tscn");
+var grass = preload("res://Scenes/Tiles/Grass/Grass.tscn");
 func _ready():
 	inventory.add(log_pile.instance());
 	inventory.add(grass.instance());
