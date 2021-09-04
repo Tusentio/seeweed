@@ -16,8 +16,9 @@ A sandbox exploration game made with Godot Engine.
 -   [ ] Stackable items
 -   [ ] Drops
 -   [ ] Slot drag and drop
--   [ ] Items
+-   [x] Items
 -   [ ] Tools
+-   [ ] Durability
 -   [x] HUD Hotbar
 -   [ ] HUD HP bar
 -   [ ] Day / night cycle
