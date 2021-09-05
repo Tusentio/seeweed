@@ -6,8 +6,8 @@ const slot = preload("res://Scenes/HUD/Slot/Slot.tscn");
 
 var current_slot_node = null;
 
-var selected_bg_alpha = 0.75;
-var default_bg_alpha = slot.instance().color.a;
+var selected_bg_alpha = 0.85;
+var default_bg_alpha = slot.instance().self_modulate.a;
 
 func _ready():
 	player.connect("slot_change", self, "_on_slot_change");
@@ -23,9 +23,9 @@ func _ready():
 func _on_slot_change(slot_index):
 	# Reset bg alpha of current slot
 	if current_slot_node:
-		current_slot_node.color.a = default_bg_alpha;
+		current_slot_node.self_modulate.a = default_bg_alpha;
 	
 	# Get child with same index as slot and set bg alpha
 	current_slot_node = get_child(slot_index);
-	current_slot_node.color.a = selected_bg_alpha;
+	current_slot_node.self_modulate.a = selected_bg_alpha;
 	current_slot_node.wobble();

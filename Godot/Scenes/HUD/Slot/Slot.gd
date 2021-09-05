@@ -1,4 +1,4 @@
-extends ColorRect
+extends TextureRect
 
 var inventory: Inventory = null;
 var bound_slot: int = 0;

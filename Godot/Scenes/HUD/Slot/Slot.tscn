@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/HUD/Slot/Slot.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/HUD/Slot/Background.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -18,21 +19,19 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ) ]
 }
 
-[node name="Slot" type="ColorRect"]
+[node name="Slot" type="TextureRect"]
+self_modulate = Color( 1, 1, 1, 0.54902 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -984.0
 margin_bottom = -560.0
 rect_min_size = Vector2( 40, 40 )
 rect_pivot_offset = Vector2( 20, 20 )
-color = Color( 1, 1, 1, 0.294118 )
+texture = ExtResource( 2 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Animator" type="AnimationPlayer" parent="."]
-anims/Wobble = SubResource( 2 )
+anims/Wobble = SubResource( 1 )
 
 [node name="ItemPreview" type="TextureRect" parent="."]
 anchor_right = 1.0
