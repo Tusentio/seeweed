@@ -43,12 +43,11 @@ func add_at(slot: int, item: Item, count: int = 1) -> int:
 	if count <= 0 or not is_instance_valid(item):
 		return 0;
 	
-	var slot_item = get_item_at(slot);
+	if not get_item_at(slot):
+		_store[slot] = item;
+	
 	var old_count = get_count_at(slot);
 	var free = get_free_at(slot, item);
-	
-	if not slot_item:
-		_store[slot] = item;
 	
 	_counts[slot] = old_count + count;
 	var added_count = count + add(item, count - free); # Add remainder (if any)
