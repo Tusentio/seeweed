@@ -1,10 +1,9 @@
-extends KinematicBody
+extends "res://Scripts/Character.gd"
 class_name Player
 
 signal slot_change;
 
 # Movement vars
-export (int) var speed: int = 4;
 export (int) var gravity: int = 20;
 export (float) var turn_speed: float = 40.0;
 var velocity: Vector3 = Vector3.ZERO;
@@ -34,17 +33,9 @@ func _physics_process(delta):
 	
 	if velocity.x or velocity.z:
 		_looking_at = velocity.normalized();
-		
-		# Reset animation
-		if ($Animator.current_animation == "idle"):
-			$Animator.seek(0, true);
-			
-		$Animator.play("walk");
+		play_animation("walk");
 	else:
-		# Reset animation and play idle
-		if ($Animator.current_animation == "walk"):
-			$Animator.seek(0, true);
-			$Animator.play("idle");
+		play_animation("idle");
 	
 	velocity.y -= gravity * delta;
 	velocity = move_and_slide(velocity.normalized() * speed, Vector3.UP);
