@@ -2,7 +2,7 @@ extends Spatial
 
 export (float) var speed: float = 25;
 
-func _input(_event):
+func _physics_process(_delta):
 	var ray_length = 1000;
 	var mouse_pos = get_viewport().get_mouse_position();
 	var camera = get_viewport().get_camera();
