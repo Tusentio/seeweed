@@ -5,7 +5,7 @@ signal slot_change;
 
 # Movement vars
 export (int) var gravity: int = 20;
-export (float) var turn_speed: float = 40.0;
+export (float) var turn_speed: float = 5000.0;
 var velocity: Vector3 = Vector3.ZERO;
 var _looking_at: Vector3 = Vector3.ZERO;
 
@@ -41,11 +41,11 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity.normalized() * speed, Vector3.UP);
 
 # Smoothly rotate player
-func _process(delta):	
-	if not _looking_at or not delta:
+func _process(delta):
+	if not _looking_at or delta <= 0:
 		return;
 
-	var weight = pow(1 - 1 / turn_speed, 1 / delta);
+	var weight = 1 - pow(1 / turn_speed, delta);
 	var look_target = global_transform.origin + _looking_at * Vector3(1, 0, 1);
 	var rotated_transform = global_transform.looking_at(look_target, Vector3.UP);
 	$Body.transform.basis = $Body.transform.basis.slerp(rotated_transform.basis, weight);
