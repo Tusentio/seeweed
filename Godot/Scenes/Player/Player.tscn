@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Player/Meshes/Head.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Materials/PaletteMaterial/PaletteMaterial.tres" type="Material" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scenes/Player/Meshes/RightArm.obj" type="ArrayMesh" id=5]
 [ext_resource path="res://Scenes/Player/Meshes/LeftLeg.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://Scenes/Player/Meshes/RightLeg.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://Scenes/Player/ItemHold.gd" type="Script" id=8]
+[ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=9]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.35, 0.5, 0.35 )
@@ -190,6 +192,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.2, 0 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.3, -0.5, 0 )
 mesh = ExtResource( 5 )
 material/0 = ExtResource( 2 )
+
+[node name="ItemPivot" type="Spatial" parent="Body/Head/RightArm"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.1, -0.1, -0.1 )
+
+[node name="ItemMesh" type="MeshInstance" parent="Body/Head/RightArm/ItemPivot"]
+transform = Transform( -3.27835e-09, 0, -0.075, 0, 0.075, 0, 0.075, 0, -3.27835e-09, 0.05, -0.1, 0 )
+material_override = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="LeftArm" type="Spatial" parent="Body/Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, 0 )

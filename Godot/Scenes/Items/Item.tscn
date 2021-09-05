@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.25, 0.25, 0.25 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 resource_name = "Collect"
 length = 0.2
 tracks/0/type = "value"
@@ -53,18 +53,15 @@ tracks/1/keys = {
 [sub_resource type="SphereShape" id=4]
 radius = 0.75
 
-[node name="Item" type="RigidBody"]
+[node name="Item" type="KinematicBody"]
 collision_layer = 4
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 script = ExtResource( 1 )
 
 [node name="Origin" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Origin"]
-transform = Transform( 0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, -0.25, 0 )
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.25, 0 )
 
 [node name="Collider" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
@@ -72,7 +69,7 @@ shape = SubResource( 1 )
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 autoplay = "Float"
-anims/Collect = SubResource( 2 )
+anims/Collect = SubResource( 5 )
 anims/Float = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/bronze_axe.vox-e7f56aaa20a14c01751fae47f3561bb9.mesh"
+
+[deps]
+
+source_file="res://Vox/bronze_axe.vox"
+dest_files=[ "res://.import/bronze_axe.vox-e7f56aaa20a14c01751fae47f3561bb9.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2
