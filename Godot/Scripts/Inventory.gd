@@ -26,7 +26,7 @@ func add(item: Item, count: int = 1) -> int:
 		return 0;
 	
 	# Find an available slot for this item
-	var slot = find_slot_of(item, 0);
+	var slot: int = find_slot_of(item, 0);
 	
 	# Make sure the slot is not maxed out
 	while slot >= 0 and get_count_at(slot) >= item.max_stack_size:
@@ -46,11 +46,11 @@ func add_at(slot: int, item: Item, count: int = 1) -> int:
 	if not get_item_at(slot):
 		_store[slot] = item;
 	
-	var old_count = get_count_at(slot);
-	var free = get_free_at(slot, item);
+	var old_count: int = get_count_at(slot);
+	var free: int = get_free_at(slot, item);
 	
 	_counts[slot] = old_count + count;
-	var added_count = count + add(item, count - free); # Add remainder (if any)
+	var added_count: int = count + add(item, count - free); # Add remainder (if any)
 	
 	emit_signal("inventory_update", slot, added_count);
 	return added_count;
@@ -61,7 +61,7 @@ func remove(item: Item, count: int = 1) -> int:
 		return 0;
 	
 	# Find a slot with this item
-	var slot = find_slot_of(item, 0);
+	var slot: int = find_slot_of(item, 0);
 	if slot < 0:
 		return 0;
 	
@@ -71,8 +71,8 @@ func remove_at(slot: int, count: int = 1) -> int:
 	if count <= 0:
 		return 0;
 	
-	var item = get_item_at(slot);
-	var available = get_count_at(slot);
+	var item: Item = get_item_at(slot);
+	var available: int = get_count_at(slot);
 	if not item or not available:
 		return 0;
 	
@@ -102,17 +102,17 @@ func get_free_at(slot: int, item: Item) -> int:
 	if not is_instance_valid(item):
 		return 0;
 	
-	var slot_item = get_item_at(slot);
+	var slot_item: Item = get_item_at(slot);
 	if slot_item and slot_item.item_id != item.item_id:
 		return 0;
 	
-	var free = item.max_stack_size - get_count_at(slot);
+	var free: int = item.max_stack_size - get_count_at(slot);
 	return free if free >= 0 else 0;
 
 # Get total count of an item in the inventory
 func get_count_of(item: Item) -> int:
-	var count = 0;
-	var slot = find_slot_of(item, 0);
+	var count: int = 0;
+	var slot: int = find_slot_of(item, 0);
 	while slot >= 0:
 		count = count + _counts[slot];
 		slot = find_slot_of(item, slot + 1);
@@ -128,9 +128,9 @@ func find_slot_of(item: Item, from: int = 0):
 	return -1;
 
 func move(from: int, to: int, count: int = 1) -> int:
-	var item = get_item_at(from);
-	var available = get_count_at(from);
-	var free = get_free_at(to, item);
+	var item: Item = get_item_at(from);
+	var available: int = get_count_at(from);
+	var free: int = get_free_at(to, item);
 	
 	count = clamp(count, 0, min(free, available));
 	if count <= 0:
