@@ -42,18 +42,12 @@ fov = 60.0
 
 [node name="LogPile" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15048, 3.05629, 2.72841 )
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 
-[node name="Grass" parent="." instance=ExtResource( 6 )]
+[node name="Grass1" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.78681, 3.01724, -0.0363617 )
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+
+[node name="Grass2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19734, 3.01724, -0.0363617 )
 
 [node name="BronzeAxe" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113926, 3.89472, -2.84354 )
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true

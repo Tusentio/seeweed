@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Player/Meshes/RightArm.obj" type="ArrayMesh" id=5]
 [ext_resource path="res://Scenes/Player/Meshes/LeftLeg.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://Scenes/Player/Meshes/RightLeg.obj" type="ArrayMesh" id=7]
-[ext_resource path="res://Scenes/Player/ItemHold.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Player/HeldItem.gd" type="Script" id=8]
 [ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=9]
 
 [sub_resource type="BoxShape" id=1]
