@@ -32,7 +32,7 @@ func add(item: Item, count: int = 1) -> int:
 	while slot >= 0 and counts[slot] >= item.max_stack_size:
 		slot = find_slot_of(item, slot + 1); # Find next slot with item
 
-	if slot == -1: # No available slot with this item
+	if slot < 0: # No available slot with this item
 		slot = find_slot_of(null, 0);
 		if slot >= 0:
 			store[slot] = item;
@@ -48,17 +48,28 @@ func add(item: Item, count: int = 1) -> int:
 	emit_signal("inventory_update", slot, added_count);
 	return added_count;
 
-# Remove item from inventory and return it
+# Try removing item(s) from inventory and return how many that could be removed
 func remove(item: Item, count: int = 1) -> int:
 	if count <= 0 or not is_instance_valid(item):
 		return 0;
 
 	# Find a slot with this item
 	var slot = find_slot_of(item, 0);
-	if slot != -1:
+	if slot < 0:
 		return 0;
 
+	return remove_at(slot, count);
+
+func remove_at(slot: int, count: int) -> int:
+	if count <= 0:
+		return 0;
+
+	var item = store[slot];
 	var available = counts[slot];
+
+	if not item or not available:
+		return 0;
+
 	var removed_count: int;
 
 	# Remove as many as possible
