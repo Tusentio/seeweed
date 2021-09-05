@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/tree_foliage1.vox-80d1292941f64a70f59a344144ac5743.mesh"
+
+[deps]
+
+source_file="res://Vox/tree_foliage1.vox"
+dest_files=[ "res://.import/tree_foliage1.vox-80d1292941f64a70f59a344144ac5743.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

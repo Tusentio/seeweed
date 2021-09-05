@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player/Meshes/Head.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://Materials/Default/Default.tres" type="Material" id=2]
+[ext_resource path="res://Materials/PaletteMaterial/PaletteMaterial.tres" type="Material" id=2]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Player/Meshes/LeftArm.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://Scenes/Player/Meshes/RightArm.obj" type="ArrayMesh" id=5]

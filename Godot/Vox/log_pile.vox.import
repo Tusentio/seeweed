@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/log_pile.vox-dd8eef68f522a29b2a0295a30913ca50.mesh"
+
+[deps]
+
+source_file="res://Vox/log_pile.vox"
+dest_files=[ "res://.import/log_pile.vox-dd8eef68f522a29b2a0295a30913ca50.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

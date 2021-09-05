@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/selection.vox-8fff171874a13af46c851d5d4428a858.mesh"
+
+[deps]
+
+source_file="res://Vox/selection.vox"
+dest_files=[ "res://.import/selection.vox-8fff171874a13af46c851d5d4428a858.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

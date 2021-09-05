@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/grass.vox-1477854647dc712a57ae0f18a61c896e.mesh"
+
+[deps]
+
+source_file="res://Vox/grass.vox"
+dest_files=[ "res://.import/grass.vox-1477854647dc712a57ae0f18a61c896e.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

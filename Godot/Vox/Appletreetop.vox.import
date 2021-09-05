@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/Appletreetop.vox-d0f3963b0c5eaf5f5a81153674d0d6c3.mesh"
+
+[deps]
+
+source_file="res://Vox/Appletreetop.vox"
+dest_files=[ "res://.import/Appletreetop.vox-d0f3963b0c5eaf5f5a81153674d0d6c3.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

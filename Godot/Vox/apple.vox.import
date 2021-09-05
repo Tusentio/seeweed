@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/apple.vox-a406f610de04ded47b423cf9fc945a4d.mesh"
+
+[deps]
+
+source_file="res://Vox/apple.vox"
+dest_files=[ "res://.import/apple.vox-a406f610de04ded47b423cf9fc945a4d.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

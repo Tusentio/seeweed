@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/buske.vox-ccdcf0b1bc23fee1810c767dfbd5ec7f.mesh"
+
+[deps]
+
+source_file="res://Vox/buske.vox"
+dest_files=[ "res://.import/buske.vox-ccdcf0b1bc23fee1810c767dfbd5ec7f.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

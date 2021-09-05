@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/tree_top_dry.vox-ceb11aa5aa2ce396d75cd201973a4425.mesh"
+
+[deps]
+
+source_file="res://Vox/tree_top_dry.vox"
+dest_files=[ "res://.import/tree_top_dry.vox-ceb11aa5aa2ce396d75cd201973a4425.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

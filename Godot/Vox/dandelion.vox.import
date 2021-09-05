@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/dandelion.vox-5eb99281d6397a9365c7f4e203b64a88.mesh"
+
+[deps]
+
+source_file="res://Vox/dandelion.vox"
+dest_files=[ "res://.import/dandelion.vox-5eb99281d6397a9365c7f4e203b64a88.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

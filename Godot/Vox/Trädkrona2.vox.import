@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/Trädkrona2.vox-c06561c973624cd94dcad620028c2aae.mesh"
+
+[deps]
+
+source_file="res://Vox/Trädkrona2.vox"
+dest_files=[ "res://.import/Trädkrona2.vox-c06561c973624cd94dcad620028c2aae.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2
