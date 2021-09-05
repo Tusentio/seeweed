@@ -6,45 +6,53 @@ class_name Inventory
 
 export (int) var slots: int;
 
-var store: Array = [];
-var counts: Array = [];
+var _store: Array = [];
+var _counts: Array = [];
 
 # Constructor
 func _init(size = 5):
 	resize(size);
-	
+
 func resize(size):
 	slots = size;
-	store.resize(size);
-	counts.resize(size);
+	_store.resize(size);
+	_counts.resize(size);
 
 func has(item: Item) -> bool:
-	return store.has(item);
+	return _store.has(item);
 
 func add(item: Item, count: int = 1) -> int:
 	if count <= 0 or not is_instance_valid(item):
 		return 0;
-
+	
 	# Find an available slot for this item
 	var slot = find_slot_of(item, 0);
-
+	
 	# Make sure the slot is not maxed out
-	while slot >= 0 and counts[slot] >= item.max_stack_size:
+	while slot >= 0 and get_count_at(slot) >= item.max_stack_size:
 		slot = find_slot_of(item, slot + 1); # Find next slot with item
-
+	
 	if slot < 0: # No available slot with this item
 		slot = find_slot_of(null, 0);
-		if slot >= 0:
-			store[slot] = item;
-		else: # Inventory full
+		if slot < 0:
 			return 0;
+	
+	return add_at(slot, item, count);
 
-	var old_count: int = counts[slot] or 0;
-	var available = item.max_stack_size - old_count;
-
-	counts[slot] = old_count + count;
-	var added_count = count + add(item, count - available); # Add remainder (if any)
-
+func add_at(slot: int, item: Item, count: int = 1) -> int:
+	if count <= 0 or not is_instance_valid(item):
+		return 0;
+	
+	var slot_item = get_item_at(slot);
+	var old_count = get_count_at(slot);
+	var free = get_free_at(slot, item);
+	
+	if not slot_item:
+		_store[slot] = item;
+	
+	_counts[slot] = old_count + count;
+	var added_count = count + add(item, count - free); # Add remainder (if any)
+	
 	emit_signal("inventory_update", slot, added_count);
 	return added_count;
 
@@ -52,60 +60,82 @@ func add(item: Item, count: int = 1) -> int:
 func remove(item: Item, count: int = 1) -> int:
 	if count <= 0 or not is_instance_valid(item):
 		return 0;
-
+	
 	# Find a slot with this item
 	var slot = find_slot_of(item, 0);
 	if slot < 0:
 		return 0;
-
+	
 	return remove_at(slot, count);
 
-func remove_at(slot: int, count: int) -> int:
+func remove_at(slot: int, count: int = 1) -> int:
 	if count <= 0:
 		return 0;
-
-	var item = store[slot];
-	var available = counts[slot];
-
+	
+	var item = get_item_at(slot);
+	var available = get_count_at(slot);
 	if not item or not available:
 		return 0;
-
+	
 	var removed_count: int;
-
+	
 	# Remove as many as possible
 	if count >= available:
-		store[slot] = null;
-		counts[slot] = null;
+		_store[slot] = null;
+		_counts[slot] = null;
 		removed_count = available + remove(item, count - available); # Remove remainder (if any)
 	else:
-		counts[slot] = available - count;
+		_counts[slot] = available - count;
 		removed_count = count;
-
+	
 	emit_signal("inventory_update", slot, -removed_count);
 	return removed_count;
 
 # Get item from slot index
 func get_item_at(slot: int) -> Item:
-	return store[slot];
+	return _store[slot];
 
 # Get count from slot index
 func get_count_at(slot: int) -> int:
-	return counts[slot];
+	return _counts[slot] if _counts[slot] else 0;
+
+func get_free_at(slot: int, item: Item) -> int:
+	if not is_instance_valid(item):
+		return 0;
+	
+	var slot_item = get_item_at(slot);
+	if slot_item and slot_item.item_id != item.item_id:
+		return 0;
+	
+	var free = item.max_stack_size - get_count_at(slot);
+	return free if free >= 0 else 0;
 
 # Get total count of an item in the inventory
 func get_count_of(item: Item) -> int:
 	var count = 0;
 	var slot = find_slot_of(item, 0);
 	while slot >= 0:
-		count = count + counts[slot];
+		count = count + _counts[slot];
 		slot = find_slot_of(item, slot + 1);
 	return count;
 
 func find_slot_of(item: Item, from: int = 0):
-	for i in range(from, store.size()):
-		if store[i] == item:
+	for i in range(from, _store.size()):
+		if get_item_at(i) == item:
 			return i;
-		elif store[i] and item:
-			if store[i].item_id == item.item_id:
+		elif get_item_at(i) and item:
+			if get_item_at(i).item_id == item.item_id:
 				return i;
 	return -1;
+
+func move(from: int, to: int, count: int = 1) -> int:
+	var item = get_item_at(from);
+	var available = get_count_at(from);
+	var free = get_free_at(to, item);
+	
+	count = clamp(count, 0, min(free, available));
+	if count <= 0:
+		return 0;
+	
+	add_at(to, item, remove_at(from, count));
+	return count;
