@@ -28,6 +28,7 @@ margin_bottom = -560.0
 rect_min_size = Vector2( 40, 40 )
 rect_pivot_offset = Vector2( 20, 20 )
 texture = ExtResource( 2 )
+expand = true
 script = ExtResource( 1 )
 
 [node name="Animator" type="AnimationPlayer" parent="."]
