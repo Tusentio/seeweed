@@ -1,7 +1,7 @@
 workspace :
 {
     // use '$' for current directory, otherwise use actual full path
-    dir_model      : [[$/vox]]
+    dir_model      : [[$/../Godot/Vox]]
     dir_pattern    : [[$/vox]]
     dir_palette    : [[$/palette]]
     dir_export     : [[$/export]]
