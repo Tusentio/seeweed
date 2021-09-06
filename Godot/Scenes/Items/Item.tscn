@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Items/Item.gd" type="Script" id=1]
+[ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.25, 0.25, 0.25 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Collect"
 length = 0.2
 tracks/0/type = "value"
@@ -62,6 +63,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Origin"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.25, 0 )
+material_override = ExtResource( 2 )
 
 [node name="Collider" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
@@ -69,7 +71,7 @@ shape = SubResource( 1 )
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 autoplay = "Float"
-anims/Collect = SubResource( 5 )
+anims/Collect = SubResource( 2 )
 anims/Float = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
