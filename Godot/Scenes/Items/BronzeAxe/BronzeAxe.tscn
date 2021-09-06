@@ -1,17 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Items/Item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vox/bronze_axe.vox" type="ArrayMesh" id=2]
 [ext_resource path="res://Scenes/Items/BronzeAxe/Icon.png" type="Texture" id=3]
-[ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=4]
 
 [node name="BronzeAxe" instance=ExtResource( 1 )]
-item_id = 2
 icon = ExtResource( 3 )
 title = "Bronze Axe"
 description = "A weak axe used to destroy objects."
+item_id = 2
 
 [node name="Mesh" parent="Origin" index="0"]
-transform = Transform( 0.075, 0, 0, 0, 0.0542786, -0.0517575, 0, 0.0517575, 0.0542786, 0, -0.075, 0 )
+transform = Transform( 0.1, 0, 0, 0, 0.0707107, -0.0707107, 0, 0.0707107, 0.0707107, 0, -0.075, -0.08 )
 mesh = ExtResource( 2 )
-material/0 = ExtResource( 4 )
+material/0 = null

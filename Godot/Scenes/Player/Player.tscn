@@ -194,10 +194,10 @@ mesh = ExtResource( 5 )
 material/0 = ExtResource( 2 )
 
 [node name="ItemPivot" type="Spatial" parent="Body/Head/RightArm"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.1, -0.1, -0.1 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.1, -0.2, -0.1 )
 
 [node name="ItemMesh" type="MeshInstance" parent="Body/Head/RightArm/ItemPivot"]
-transform = Transform( -3.27835e-09, 0, -0.075, 0, 0.075, 0, 0.075, 0, -3.27835e-09, 0.05, -0.1, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.45058e-09, 0, 0 )
 material_override = ExtResource( 9 )
 script = ExtResource( 8 )
 

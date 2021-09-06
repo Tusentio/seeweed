@@ -1,23 +1,38 @@
 extends KinematicBody
 class_name Item
 
-export (int) var item_id: int = -1;
 export (Texture) var icon: Texture;
 export (String) var title: String = "Item title";
 export (String) var description: String = "Item description";
-export (int) var gravity: int = 20;
+export (int) var item_id: int = -1;
 export (int) var max_stack_size: int = 999;
 
-onready var mesh = get_node("Origin/Mesh").get_mesh();
+var mesh = null;
+var mesh_scale = 0.3;
+
+# Gravity
+var gravity: int = 20;
 var velocity: Vector3 = Vector3.ZERO;
 
 # Get player node
 onready var player = get_tree().get_nodes_in_group("Player")[0];
 
+func _ready():
+	var mesh_instance = get_node("Origin/Mesh");
+	mesh = mesh_instance.get_mesh();
+	mesh_instance.set_scale(mesh_fixed_scale());
+
 # Gravity
 func _process(delta):
 	velocity.y -= gravity * delta;
 	velocity = move_and_slide(velocity, Vector3.UP);
+
+func mesh_fixed_scale() -> Vector3:
+	# Get new items mesh bounding box size
+	var bb: Vector3 = mesh.get_aabb().size;
+	# New scale from largest value in bb vector
+	var ns = mesh_scale / max(bb.x, max(bb.y, bb.z));
+	return Vector3(ns, ns, ns);
 
 # When player enters collection area
 func _on_CollectionArea_body_entered(body):

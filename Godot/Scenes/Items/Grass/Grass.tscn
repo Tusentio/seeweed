@@ -6,10 +6,10 @@
 [ext_resource path="res://Scenes/Items/Grass/Icon.png" type="Texture" id=4]
 
 [node name="Grass" instance=ExtResource( 1 )]
-item_id = 0
 icon = ExtResource( 4 )
 title = "Grass"
 description = "A very interesting grass block."
+item_id = 0
 
 [node name="Mesh" parent="Origin" index="0"]
 mesh = ExtResource( 2 )
