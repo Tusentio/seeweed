@@ -10,6 +10,7 @@ var selected_bg_alpha = 0.85;
 var default_bg_alpha = slot.instance().self_modulate.a;
 
 func _ready():
+	#warning-ignore:return_value_discarded
 	player.connect("slot_change", self, "_on_slot_change");
 	
 	# Generate slots and bind them to player inventory

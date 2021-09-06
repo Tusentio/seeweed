@@ -17,7 +17,7 @@ func select_slot(slot):
 	selected_slot = abs(inventory.slots + slot) % inventory.slots;
 	emit_signal("slot_change", selected_slot);
 
-func _input(event):
+func _input(_event):
 	# Change selected slot when scrolling or pressing arrow keys
 	if Input.is_action_pressed("hotbar_next"):
 		select_slot(selected_slot + 1);

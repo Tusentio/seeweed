@@ -9,6 +9,7 @@ var empty_slot_desc = "Used to store items."
 
 # Connect signals from inventory and player
 func _ready():
+	#warning-ignore:return_value_discarded
 	player.inventory.connect("inventory_update", self, "_on_inventory_update");
 	player.connect("slot_change", self, "_on_slot_change");
 	

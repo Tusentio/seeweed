@@ -7,6 +7,7 @@ var bound_slot: int = 0;
 func bind(inv: Inventory, slot: int = get_index()):
 	inventory = inv;
 	bound_slot = slot;
+	#warning-ignore:return_value_discarded
 	inventory.connect("inventory_update", self, "_on_inventory_update");
 
 # When any inventory slot gets updated
