@@ -1,0 +1,34 @@
+hbox ::
+{
+	opBox(class = 'tab')(id = 'editor_mode' index = '0' size = '266') ::
+	{
+		hbox ::
+		{
+			option(textSize = '10 10' text = 'Model'	select_value = [['left_edit' 'right_edit' 'top_edit']])( size = '60')(hint = 'Model [F2]')
+			option(textSize = '10 10' text = 'Render'	select_value = [['left_render' 'right_render' 'top_render']])( size = '70')(hint = 'Render [F2]')
+			(class = 'cmd' onClick = 'set pt')
+		}
+	}
+
+	textfield(def = 'tf-name' id = 'name' onEnter = 'name' default = 'project')
+	(corner = '15' radius = '6' flex = '1')
+	(hint = 'Rename Project')
+	
+	hbox( size = '261.33' align = '1' margin = '0 0 3 3') ::
+	{
+		button(id = 'undo' onClick = 'cmd undo' repeated = '1')(text = '^8630' textFont = 'symbol' textSize = '18 18')
+		(corner = '5' flex = '1' next = '1')
+		(hint = 'Undo [CTRL+Z]')
+	
+		button(id = 'redo' onClick = 'cmd redo' repeated = '1')(text = '^8631' textFont = 'symbol' textSize = '18 18')
+		(corner = '10' flex = '1' next = '4')
+		(hint = 'Redo [CTRL+Y] : [CTRL+SHIFT+Z]')
+	
+		button(onClick = 'open'	)(def = 'bn-ic' text = '^47'	)( size = '28' next = '2')(hint = 'Open Project [CTRL+O]')
+		switch(class = 'toggle')(id = 'bn_save' onSelect = 'save' onDeselect = 'save' style = '1')(def = 'bn-ic' text = '^44' textColor-s = '255 100 80')(size = '28' next = '2')(hint = 'Save Project [CTRL+S]')
+		button(onClick = 'saveas')(def = 'bn-ic' text = '^2'	)( size = '28' next = '2')(hint = 'Save Project As [CTRL+SHIFT+S]')
+		button(onClick = 'new'	)(def = 'bn-ic' text = '^45'	)( size = '28' next = '2')(hint = 'New Project [CTRL+P]')
+		button(onClick = 'dup'	)(def = 'bn-ic' text = '^73'	)( size = '28')(hint = 'Duplicate Project [CTRL+SHIFT+P]')
+		button(onClick = 'del'	)(def = 'bn-ic' text = '^46'	)( size = '28')(hint = 'Remove Project to Trash')		
+	}
+}
