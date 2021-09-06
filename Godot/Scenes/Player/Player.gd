@@ -18,13 +18,11 @@ func select_slot(slot):
 	emit_signal("slot_change", selected_slot);
 
 func _input(event):
-	# Change selected slot when scrolling
-	if event is InputEventMouseButton and event.is_pressed():
-		match(event.button_index):
-			BUTTON_WHEEL_UP:
-				select_slot(selected_slot - 1);
-			BUTTON_WHEEL_DOWN:
-				select_slot(selected_slot + 1);
+	# Change selected slot when scrolling or pressing arrow keys
+	if Input.is_action_pressed("hotbar_next"):
+		select_slot(selected_slot + 1);
+	elif Input.is_action_pressed("hotbar_prev"):
+		select_slot(selected_slot - 1);
 
 # Movement code
 func _physics_process(delta):
