@@ -16,7 +16,7 @@
 [node name="Sun" type="DirectionalLight" parent="."]
 transform = Transform( 0.707107, 0.612372, -0.353553, 0, 0.5, 0.866025, 0.707107, -0.612372, 0.353553, 0, 0, 0 )
 light_color = Color( 1, 1, 0.694118, 1 )
-light_energy = 2.0
+light_energy = 2.5
 shadow_enabled = true
 shadow_bias = 0.05
 shadow_contact = 0.1
@@ -32,28 +32,22 @@ directional_shadow_max_distance = 12.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
 [node name="CameraOrigin" type="Spatial" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0.5, 0 )
+transform = Transform( 1, 0, 0, 0, 0.642787, 0.766044, 0, -0.766044, 0.642787, 0, 0.5, 0 )
 
 [node name="Camera" type="Camera" parent="Player/CameraOrigin"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 environment = ExtResource( 7 )
 current = true
-fov = 60.0
+fov = 55.0
 
 [node name="LogPile" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15048, 3.05629, 2.72841 )
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 
-[node name="Grass" parent="." instance=ExtResource( 6 )]
+[node name="Grass1" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.78681, 3.01724, -0.0363617 )
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+
+[node name="Grass2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19734, 3.01724, -0.0363617 )
 
 [node name="BronzeAxe" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113926, 3.89472, -2.84354 )
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true

@@ -17,8 +17,8 @@ __meta__ = {
 
 [node name="SlotGrid" type="GridContainer" parent="."]
 margin_right = 200.0
-custom_constants/vseparation = 5
-custom_constants/hseparation = 5
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
 columns = 5
 script = ExtResource( 4 )
 

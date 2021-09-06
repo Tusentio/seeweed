@@ -5,7 +5,7 @@ signal slot_change;
 
 # Movement vars
 export (int) var gravity: int = 20;
-export (float) var turn_speed: float = 5000.0;
+export (float) var turn_speed: float = 10.0;
 var velocity: Vector3 = Vector3.ZERO;
 var _looking_at: Vector3 = Vector3.ZERO;
 
@@ -18,13 +18,11 @@ func select_slot(slot):
 	emit_signal("slot_change", selected_slot);
 
 func _input(event):
-	# Change selected slot when scrolling
-	if event is InputEventMouseButton and event.is_pressed():
-		match(event.button_index):
-			BUTTON_WHEEL_UP:
-				select_slot(selected_slot - 1);
-			BUTTON_WHEEL_DOWN:
-				select_slot(selected_slot + 1);
+	# Change selected slot when scrolling or pressing arrow keys
+	if Input.is_action_pressed("hotbar_next"):
+		select_slot(selected_slot + 1);
+	elif Input.is_action_pressed("hotbar_prev"):
+		select_slot(selected_slot - 1);
 
 # Movement code
 func _physics_process(delta):
@@ -45,7 +43,7 @@ func _process(delta):
 	if not _looking_at or delta <= 0:
 		return;
 
-	var weight = 1 - pow(1 / turn_speed, delta);
+	var weight = 1 - pow(1 / turn_speed, delta * 10);
 	var look_target = global_transform.origin + _looking_at * Vector3(1, 0, 1);
 	var rotated_transform = global_transform.looking_at(look_target, Vector3.UP);
 	$Body.transform.basis = $Body.transform.basis.slerp(rotated_transform.basis, weight);

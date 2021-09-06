@@ -6,6 +6,7 @@
 [ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=4]
 
 [node name="LogPile" instance=ExtResource( 2 )]
+item_id = 1
 icon = ExtResource( 1 )
 title = "Log Pile"
 description = "A decorative log pile."

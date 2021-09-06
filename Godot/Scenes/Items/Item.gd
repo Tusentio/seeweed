@@ -1,10 +1,12 @@
 extends KinematicBody
 class_name Item
 
+export (int) var item_id: int = -1;
 export (Texture) var icon: Texture;
 export (String) var title: String = "Item title";
 export (String) var description: String = "Item description";
 export (int) var gravity: int = 20;
+export (int) var max_stack_size: int = 999;
 
 onready var mesh = get_node("Origin/Mesh").get_mesh();
 var velocity: Vector3 = Vector3.ZERO;
@@ -28,11 +30,12 @@ func _on_CollectionArea_body_entered(body):
 
 # When collect animations are finished
 func _on_Tween_tween_completed(_object, _key):
+	# Reset position back to center
+	global_transform.origin = Vector3(0,0,0);
+	
 	get_parent().remove_child(self);
 	
 	# Reset animation. Making the item visible again
 	$Animator.seek(0, true);
-	# Reset position back to center
-	global_transform.origin = Vector3(0,0,0);
 	
 	player.inventory.add(self);
