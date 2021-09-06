@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/bone_axe.vox-e6e44b86169c4bfd65f6712fec84bbcf.mesh"
+
+[deps]
+
+source_file="res://Vox/bone_axe.vox"
+dest_files=[ "res://.import/bone_axe.vox-e6e44b86169c4bfd65f6712fec84bbcf.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

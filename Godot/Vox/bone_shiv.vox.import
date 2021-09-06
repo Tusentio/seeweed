@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/bone_shiv.vox-ceea6ead1858647456563d3e44a02cdf.mesh"
+
+[deps]
+
+source_file="res://Vox/bone_shiv.vox"
+dest_files=[ "res://.import/bone_shiv.vox-ceea6ead1858647456563d3e44a02cdf.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

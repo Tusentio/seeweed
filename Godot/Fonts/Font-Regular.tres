@@ -3,4 +3,7 @@
 [ext_resource path="res://Fonts/Jost-Medium.ttf" type="DynamicFontData" id=1]
 
 [resource]
+outline_size = 1
+outline_color = Color( 0.270588, 0.356863, 0.313726, 0.501961 )
+use_filter = true
 font_data = ExtResource( 1 )
