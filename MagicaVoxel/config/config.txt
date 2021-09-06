@@ -4,7 +4,7 @@ workspace :
     dir_model      : [[$/../Godot/Vox]]
     dir_pattern    : [[$/vox]]
     dir_palette    : [[$/palette]]
-    dir_export     : [[$/export]]
+    dir_export     : [[$/../Godot/Scenes/Items]]
     dir_snapshot   : [[$/export]]
     dir_xs_shader  : [[$/shader]]
     dir_ibl        : [[$/ibl]]
@@ -25,8 +25,8 @@ render :
 
 io_iso :
 {
-    size      : '2' // voxel size : [1, 8]
-    height    : '4' // height : size * 2 : [1, 24]
+    size      : '4' // voxel size : [1, 8]
+    height    : '8' // height : size * 2 : [1, 24]
 
     view      : '1' // num of views : [1, 4]
     outline   : '0' // outline and highlight : [0, 1]
