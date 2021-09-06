@@ -25,16 +25,16 @@ render :
 
 io_iso :
 {
-    size      : '4' // voxel size : [1, 8]
-    height    : '8' // height : size * 2 : [1, 24]
+    size      : '8' // voxel size : [1, 8]
+    height    : '16' // height : size * 2 : [1, 24]
 
     view      : '1' // num of views : [1, 4]
-    outline   : '0' // outline and highlight : [0, 1]
+    outline   : '1' // outline and highlight : [0, 1]
 
-    top       : '1.17 1.15 1.25'  // top lighting [0.0 - 1.0]
-    left      : '0.37 0.35 0.55'  // left lighting
-    right     : '0.87 0.85 0.95'  // right lighting
-    bevel     : '0.13 0.13 0.13'  // bevel highlight
+    top       : '1.5 1.5 1.5'  // top lighting [0.0 - 1.0]
+    left      : '0.9 0.9 0.9'  // left lighting
+    right     : '0.6 0.6 0.6'  // right lighting
+    bevel     : '0.2 0.2 0.2'  // bevel highlight
 }
 
 io_2d :
