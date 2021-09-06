@@ -23,13 +23,16 @@ tracks/0/keys = {
 self_modulate = Color( 1, 1, 1, 0.54902 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -984.0
-margin_bottom = -560.0
-rect_min_size = Vector2( 40, 40 )
-rect_pivot_offset = Vector2( 20, 20 )
+margin_right = -974.0
+margin_bottom = -550.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
 texture = ExtResource( 2 )
 expand = true
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 anims/Wobble = SubResource( 1 )
@@ -37,7 +40,7 @@ anims/Wobble = SubResource( 1 )
 [node name="ItemPreview" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 20, 20 )
+rect_pivot_offset = Vector2( 25, 25 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
