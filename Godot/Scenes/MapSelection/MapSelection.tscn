@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/MapSelection/Mesh.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Vox/selection.vox" type="ArrayMesh" id=1]
 [ext_resource path="res://Scenes/MapSelection/MapSelection.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -27,7 +27,7 @@ script = ExtResource( 2 )
 transform = Transform( 1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0.5, 0.5, 0.5 )
 
 [node name="Mesh" type="MeshInstance" parent="Origin"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0 )
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.5, 0 )
 cast_shadow = 0
 mesh = ExtResource( 1 )
 material/0 = null
