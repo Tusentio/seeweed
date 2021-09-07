@@ -1,12 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Vox/grass.vox" type="ArrayMesh" id=1]
-[ext_resource path="res://Scenes/Items/Grass/Grass.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Tiles/Tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=4]
 
 [node name="Grass" instance=ExtResource( 3 )]
-drop = ExtResource( 2 )
+drop = null
 random_rotation_step = 180.0
 
 [node name="Mesh" parent="Origin" index="0"]

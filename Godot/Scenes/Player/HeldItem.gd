@@ -24,7 +24,7 @@ func update_mesh():
 	var new_item = player.inventory.get_item_at(player.selected_slot);
 	
 	if new_item:
-		set_scale(new_item.mesh_fixed_scale());
-		transform.origin.x = new_item.mesh_scale / 2;
+		set_scale(new_item.calc_held_scale());
+		transform.origin.x = new_item.held_size / 2;
 		
 		set_mesh(new_item.mesh);

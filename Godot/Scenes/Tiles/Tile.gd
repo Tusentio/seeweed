@@ -1,7 +1,7 @@
 extends StaticBody
 class_name Tile
 
-export (PackedScene) var drop: PackedScene;
+export (Resource) var drop: Resource;
 export (float) var random_rotation_step: float = 0;
 export (float, 1) var min_random_scale: float = 1;
 
