@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Drop/Drop.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/ItemDrop/ItemDrop.gd" type="Script" id=1]
 [ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=2]
 
 [sub_resource type="SphereShape" id=1]
@@ -9,7 +9,7 @@ radius = 0.75
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.25, 0.25, 0.25 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Collect"
 length = 0.2
 tracks/0/type = "value"
@@ -25,8 +25,7 @@ tracks/0/keys = {
 "values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Float"
+[sub_resource type="Animation" id=4]
 length = 4.0
 loop = true
 step = 0.05
@@ -55,7 +54,7 @@ tracks/1/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[node name="Drop" type="KinematicBody"]
+[node name="ItemDrop" type="KinematicBody"]
 collision_layer = 4
 script = ExtResource( 1 )
 
@@ -73,8 +72,8 @@ shape = SubResource( 2 )
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 autoplay = "Float"
-anims/Collect = SubResource( 4 )
-anims/Float = SubResource( 3 )
+anims/Collect = SubResource( 3 )
+anims/Float = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 

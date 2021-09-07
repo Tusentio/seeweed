@@ -1,8 +1,8 @@
 extends Node
+class_name Inventory
 
 # When items gets added or removed
 signal inventory_update
-class_name Inventory
 
 export (int) var slots: int;
 
