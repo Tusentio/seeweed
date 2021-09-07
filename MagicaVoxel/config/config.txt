@@ -1,26 +1,26 @@
 workspace :
 {
-    // use '$' for current directory, otherwise use actual full path
-    dir_model      : [[$/../Godot/Vox]]
-    dir_pattern    : [[$/vox]]
-    dir_palette    : [[$/palette]]
-    dir_export     : [[$/../Godot/Scenes/Items]]
-    dir_snapshot   : [[$/export]]
-    dir_xs_shader  : [[$/shader]]
-    dir_ibl        : [[$/ibl]]
-    dir_plugin     : [[$/plugin]]
+	// use '$' for current directory, otherwise use actual full path
+	dir_model      : [[$/../Godot/Vox]]
+	dir_pattern    : [[$/vox]]
+	dir_palette    : [[$/palette]]
+	dir_export     : [[$/../Godot/Scenes/Items]]
+	dir_snapshot   : [[$/export]]
+	dir_xs_shader  : [[$/shader]]
+	dir_ibl        : [[$/ibl]]
+	dir_plugin     : [[$/plugin]]
 }
 
 view :
 {
-    ui_scale       : '1.125' // [0.5, 3.0]
-    ambient_color  : '0.19 0.18 0.26' // [0.0 ~ 1.0]
+	ui_scale		: '1.0' // [0.5, 3.0]
+	ambient_color		: '0.19 0.18 0.26' // [0.0 ~ 1.0]
 }
 
 render :
 {
-    dense_buffer   : '256'   // [16, 1024] MB
-    sparse_buffer  : '256'   // [16, 1024] MB
+	dense_buffer		: '256'   // [16, 1024] MB
+	sparse_buffer		: '256'   // [16, 1024] MB
 }
 
 io_iso :
@@ -39,45 +39,48 @@ io_iso :
 
 io_2d :
 {
-    size      : '16' // voxel size : [1, 32]
-    shadow    : '1'  // enable shadow : [0, 1]
-    outline   : '0'  // enable outline : [0, 1]
+	size			: '16' // voxel size : [1, 32]
+	shadow			: '1'  // enable shadow : [0, 1]
+	outline			: '0'  // enable outline : [0, 1]
 }
 
 io_obj :
 {
-    scale   : '0.1'
-    axis    : 'XZ-Y' // axis : { 'XYZ' : Z up; 'XZ-Y' Y up }
-    cw      : '0'  // { 0 : counter clockwise; 1 : clockwise }
-    merge   : '1'  // merge voxel faces with same color
+	scale			: '0.1'
+	axis			: 'XZ-Y'	// axis : { 'XYZ' : Z up; 'XZ-Y' Y up }
+	cw			: '0'		// { 0 : counter clockwise; 1 : clockwise }
+
+	merge			: '1'		// merge voxel faces with same color
 }
 
 io_ply :
 {
-    scale   : '0.1'
-    axis    : 'XYZ'
-    cw      : '0'
+	scale			: '0.1'
+	axis			: 'XYZ'
+	cw			: '0'
 }
 
 io_mc :
 {
-    scale   : '0.1'
-    axis    : 'XYZ'
-    cw      : '0'
+	scale			: '0.1'
+	axis			: 'XYZ'
+	cw			: '0'
 }
 
 io_cube :
 {
-    scale   : '0.1'
-    axis    : 'XYZ'
-    cw      : '0'
-    margin  : '0.1' // 0.0 ~ 1.0
+	scale			: '0.1'
+	axis			: 'XYZ'
+	cw			: '0'
+
+	margin			: '0.1' // 0.0 ~ 1.0
 }
 
 io_point :
 {
-    scale   : '1'
-    axis   : 'XYZ'
-    sample_offset  : '0 0 0' // 0.0 ~ 1.0
+	scale			: '1'
+	axis			: 'XYZ'
+
+	sample_offset		: '0 0 0' // 0.0 ~ 1.0
 }
 

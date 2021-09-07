@@ -1,5 +1,5 @@
 layer(barColor = '55 55 55' barColor-h = '45 45 45' barColor-s = '30 30 30')
-layer-dark(scroll = '-1 1' corner = '15' radius = '3' bgColor = '50 50 50' barColor = '80 80 80' barColor-h = '110 110 110' barColor-s = '130 130 130')
+layer-dark(scroll = '-1 1' corner = '15' radius = '3' bgColor = '45 45 45' barWidth = '6' barColor = '80 80 80' barColor-h = '110 110 110' barColor-s = '130 130 130')
 
 hbox()
 vbox()
@@ -14,101 +14,45 @@ bg3(bgColor = '50 50 50')
 
 outline(bgColor = '100 100 100' corner = '15' radius = '6')
 outline-i(bgColor = '60 60 60' corner = '15' radius = '5' margin = '1 1 1 1')
-bar-v(bgColor = '50 50 50' corner = '15' radius = '2')
+bar-v(bgColor = '50 50 50' corner = '15' radius = '3')
 bar-h(bgColor = '52 52 52' margin = '-3 -3 0 0')
 
 //======================================
 // label
 //======================================
 label(textSize = '8 8' textColor = '255 255 255 160')
-h1(style = '-2')(textFont = 'utf' textOffset = '13.0 0' textSize = '6.5 6.5' textColor = '140 140 140' textColor-s = '170 170 170')(margin = '-9 0 0 0')
-h2(style = '-2')(textFont = 'utf' textOffset = '13.0 0' textSize = '6.5 6.5' textColor = '140 140 140' textColor-s = '170 170 170')
-h3(align='1' textFont = 'utf' textOffset = '4.0 0' textSize = '6.5 6.5' textColor = '120 120 120')
-hint(textFont = 'utf' textSize = '7.5 7.5' textAlign = '2' textColor = '255 255 255 140')
+h1(style = '-2')(textOffset = '13.0 0' textSize = '7 7' textColor = '140 140 140' textColor-s = '170 170 170')(margin = '-9 0 0 0')
+h2(style = '-2')(textOffset = '13.0 0' textSize = '7 7' textColor = '140 140 140' textColor-s = '170 170 170')
+h3(align='1' textOffset = '4.0 0' textSize = '7 7' textColor = '120 120 120')
+hint(textSize = '8 8' textAlign = '2' textColor = '255 255 255 140')
 
 //======================================
 // textfied
 //======================================
-textfield(textFont = 'mono' ascii = '1' align = '2')
-(textSize = '6.5 6.5'  corner = '15' radius = '2')
+textfield(textSize = '6.5 6.5' corner = '15' radius = '2' align = '2' textFont = '1')
 
-tf-name(textFont = 'utf' align = '2' enter = '1' once = '1' quote = '1')
-(textSize = '9 9' textColor = '255 255 255 180' bgColor = '0 0 0 0' border = '3')
-	
-tf-bg(textFont = 'mono' ascii = '1' align = '2' enter = '1' maxLength = '5')
-(textSize = '6 6' textColor = '130 130 130' bgColor = '40 40 40' corner = '15' radius = '3' margin = '0 0 3 3')
+tf-bg(textSize = '6 6' bgColor = '40 40 40' textColor = '130 130 130')
+(enter = '1' maxLength = '5' align = '2' textFont = '1')
+(corner = '15' radius = '3' margin = '0 0 3 3')
 
-tf-n(textFont = 'mono' ascii = '1' align = '1' enter = '1' maxLength = '10')
-(textSize = '6 6' textColor = '130 130 130' bgColor = '40 40 40' border = '5' corner = '15' radius = '3' margin = '0 0 2 2')
+tf-n(textSize = '6 6' bgColor = '40 40 40' textColor = '130 130 130' border = '5' corner = '15' radius = '3')
+(enter = '1' maxLength = '10' align = '1' textFont = '1' margin = '0 0 2 2')
 
-tf-info(textFont = 'utf' align = '1'enter = '1'  once = '1' maxLength = '64' quote = '1')
-(textSize = '7 7' textColor = '130 130 130' bgColor = '40 40 40' border = '4' corner = '15' radius = '3' margin = '0 0 2 2')
+tf-sub(align = '3' textSize = '6 6' textOffset = '0 0' bgColor = '0 0 0 0' textColor = '130 130 130')
+(enter = '1' maxLength = '4' textFont = '1')
 
-tf-sub(textFont = 'mono' ascii = '1' align = '3' enter = '1' maxLength = '4' border = '0')
-(textSize = '6 6' textColor = '130 130 130' bgColor = '0 0 0 0')
+tf-size(once = '1' enter = '1' align = '2' textSize = '8 8' textFont = '1')
 
-tf-size(textFont = 'mono' ascii = '1' align = '2' once = '1' enter = '1')
-(textSize = '8 8' )
+tf-col(bgColor = '0 0 0 0' textsize = '5.5 5.5' align = '2' textFont = '1' maxLength = '4' enter = '1' once = '1')
 
-tf-col(textFont = 'mono' ascii = '1' align = '2' maxLength = '4' enter = '1' once = '1')
-(textsize = '5.5 5.5' bgColor = '0 0 0 0')
-
-tf-note(textFont = 'utf' align = '3' maxLength = '32' enter = '1' once = '1' onEnter = 'set note')
-(textSize = '6 6' textColor = '255 255 255 160' bgColor = '0 0 0 0')
+tf-note(textSize = '6 5.5' maxLength = '32' bgColor = '0 0 0 0' textColor = '255 255 255 160' once = '1' enter = '1' onEnter = 'set note' align = '3' textFont = '1' textCaps = '0')
 
 //======================================
 // option
 //======================================
-option
-(
-	textFont	= 'utf'
-	textSize	= '6.5 6.5'
-	textAlign	= '2'
-
-	// idle
-	textColor	= '255 255 255 120'
-
-	// hover
-	textColor-h	= '255 255 255 200'
-
-	// select
-	textColor-s	= '100 180 255 255'
-)
-
-tab-all
-(
-	text = 'All'	
-	hint = 'Show All Settings'
-	textSize = '8 8'
-
-	// idle
-	textColor	= '255 255 255 120'
-
-	// hover
-	textColor-h	= '255 255 255 200'
-
-	// select
-	textColor-s	= '100 180 255 255' // '140 180 253 255'
-)
-
-tab-panel
-(
-	textFont = 'icon'
-	textSize = '15 15'
-
-	// idle
-	textColor	= '255 255 255 120'
-
-	// hover
-	textColor-h	= '255 255 255 200'
-
-	// select
-	textColor-s	= '100 180 255 255' // '140 180 253 255'
-)
-
 op-mode
 (
-	textFont	= 'icon'	
+	textFont	= '2'	
 	textSize	= '16 16'
 	textAlign	= '2'
 
@@ -127,7 +71,7 @@ op-mode
 
 op-brush
 (
-	textFont	= 'icon'
+	textFont	= '2'
 	textSize	= '18 18'
 	textAlign	= '2'
 
@@ -145,6 +89,63 @@ op-brush
 
 	corner = '15'
 	radius = '1'
+)
+
+op-bw
+(
+	textSize	= '8 8'
+	textAlign	= '2'
+
+	// idle
+	textColor	= '255 255 255 90'
+
+	// hover
+	textColor-h	= '255 255 255 150'
+
+	// select
+	textColor-s	= '255 255 255 220'
+
+	corner = '15'
+	radius = '5'
+)
+
+op-sub
+(
+	textSize	= '8 8'
+	textAlign	= '2'
+
+	// idle
+	textColor	= '255 255 255 90'
+
+	// hover
+	textColor-h	= '255 255 255 150'
+
+	// select
+	textColor-s	= '120 190 160'
+
+	corner = '15'
+	radius = '5'
+)
+
+op-sel
+(
+	textSize = '8 8'
+	textAlign = '2'
+	
+	// idle
+	//bgColor	= '80 80 80'
+	textColor	= '255 255 255 120'//'235 195 60 255'
+
+	// hover
+	//bgColor-h	= '50 50 50'
+	textColor-h	= '255 255 255 200'
+
+	// select
+	bgColor-s	= '50 50 50 0'
+	textColor-s	= '150 190 233 255' // 120 210 160 255'
+
+	corner = '15'
+	radius = '5'
 )
 
 //======================================
@@ -173,7 +174,7 @@ switch
 
 sw-orange
 (
-	textSize	= '6.5 6.5'
+	textSize	= '7 7'
 	textAlign	= '2'
 
 	// idle
@@ -185,7 +186,7 @@ sw-orange
 	textColor-h	= '10 10 10 240'
 
 	// select
-	bgColor-s	= '255 200 95'
+	bgColor-s	= '255 200 95 255'
 	textColor-s	= '10 10 10 240'
 
 	corner = '15'
@@ -211,6 +212,41 @@ sw-bar
 
 	// disable
 	textColor-d	= '255 255 255 70'
+)
+
+sw-bw
+(
+	textSize	= '8 8'
+	textAlign	= '2'
+
+	// idle
+	textColor	= '255 255 255 90'
+
+	// hover
+	textColor-h	= '255 255 255 150'
+
+	// select
+	textColor-s	= '255 255 255 255'
+)
+
+sw-toggle
+(
+	style = '2'
+	
+	textSize	= '8 8'
+	textAlign	= '2'
+
+	// idle
+	bgColor		= '90 90 90'
+	textColor	= '255 255 255 220'
+
+	// hover
+	bgColor-h	= '125 125 125'
+	textColor-h	= '255 255 255 255'
+
+	// select
+	bgColor-s	= '80 80 80'
+	textColor-s	= '255 255 255 255'
 )
 
 sw-col
@@ -258,8 +294,7 @@ sw-view
 sw-title
 (
 	style = '2'
-	textFont = 'utf'
-	textSize = '8 8'
+	textSize = '9 9'
 	radius = '2'
 	corner = '12'
 		
@@ -278,72 +313,33 @@ sw-title
 
 sw-sub
 (
-	style = '1'
-	textSize	= '6.5 6.5'
+	textSize	= '8 8'
 	textAlign	= '2'
 
 	// idle
-	textColor	= '255 255 255 180'
+	textColor	= '255 255 255 90'
 
 	// hover
-	bgColor-h	= '100 100 100'
-	textColor-h	= '255 255 255 210'
+	textColor-h	= '255 255 255 180'
 
 	// select
-	bgColor-s	= '75 75 75'
-	textColor-s = '255 200 95 255'
-
-	// disable
-	textColor-d	= '255 255 255 70'
+	bgColor-s	= '30 30 30'
+	textColor-s	= '235 195 60 255'
 
 	corner = '15'
-	radius = '3'
+	radius = '5'
 
 	delayed = '0'
-)
-
-sw-left
-(
-	style = '2'
-	textFont = 'symbol'
-	textSize = '10 10'
-	text = '^9654'
-
-	// idle
-	textColor = '255 255 255 100'
-
-	// hover
-	textColor-h = '255 255 255 180'
-
-	// select
-	textColor-s = '255 255 255 140'
-)
-
-sw-right
-(
-	style = '2'
-	textFont = 'symbol'
-	textSize = '10 10'
-	text = '^9664'
-
-	// idle
-	textColor = '255 255 255 100'
-
-	// hover
-	textColor-h = '255 255 255 180'
-
-	// select
-	textColor-s = '255 255 255 140'
 )
 
 sw-check
 (
 	style = '1'
-	textFont = 'symbol'
-	text = '^9679'
-	text2 = '^9675'
+	textFont = '0'
+	text = '^11044'
+	text2 = '^11096'
 	
-	textSize	= '8 8'
+	textSize	= '10 10'
 	textAlign	= '2'
 
 	// idle
@@ -353,21 +349,21 @@ sw-check
 	textColor-h	= '200 200 200'
 
 	// select
-	textColor-s	= '120 220 160'
+	textColor-s	= '120 190 160'
 )
 
 sw-cam
 (
 	style = '1'
-	textFont = 'icon'
+	textFont = '2'
 	textSize	= '17 17'
 
 	// idle
-	textColor	= '255 255 255 180'
+	textColor	= '255 255 255 220'
 
 	// hover
 	bgColor-h	= '100 100 100'
-	textColor-h	= '255 255 255 180'
+	textColor-h	= '255 255 255 255'
 
 	// select
 	bgColor-s	= '75 75 75'
@@ -383,7 +379,7 @@ sw-cam
 sw-mir
 (
 	style = '0'
-	textFont = 'std'
+	textFont = '0'
 	textSize	= '7.5 7'
 
 	// idle
@@ -395,9 +391,9 @@ sw-mir
 	textColor-h	= '255 255 255 120'
 
 	// select
-	bgColor-s	= '255 200 95 255'
+	bgColor-s	= '90 90 90'
+	textColor-s = '255 200 95 255'
 
-	textColor-s = '0 0 0 180'
 	// disable
 	textColor-d	= '255 255 255 70'
 
@@ -407,7 +403,7 @@ sw-mir
 bn-mir
 (
 	style = '0'
-	textFont = 'icon'
+	textFont = '2'
 
 	// idle
 	bgColor		= '75 75 75'
@@ -431,7 +427,7 @@ sw-menu
 (
 	style = '0'
 
-	textSize = '6.5 6.5'
+	textSize = '7 7'
 
 	// idle
 	bgColor		= '0 0 0 0'
@@ -449,8 +445,9 @@ sw-menu
 sw-play
 (
 	style = '2' 
-	textFont = 'icon' 
+	textFont = '2' 
 	textSize = '12 12'
+
 	text = '^41'
 	text2 = '^42' 
 
@@ -477,75 +474,30 @@ sw-play
 //======================================
 button
 (
-	textFont	= 'utf'
-	textSize	= '6.5 6.5'
+	textSize	= '7.5 7.5'
 
 	// idle
-	bgColor		= '85 85 85'
-	textColor	= '255 255 255 150'
+	bgColor		= '140 140 140'
+	textColor	= '0 0 0 150'
 
 	// hover
-	bgColor-h	= '110 110 110'
-	textColor-h	= '255 255 255 180'
+	bgColor-h	= '170 170 170'
+	textColor-h	= '0 0 0 150'
 
 	// select
-	bgColor-s	= '75 75 75'
-	textColor-s	= '255 255 255 170'
-
-	bgColor-d	= '75 75 75'
-	textColor-d	= '255 255 255 60'
-
-	radius = '2'
-)
-
-bn-ic // camera, mtl, play
-(
-	delayed = '1'
-	textFont = 'icon'
-	textSize = '17 17'
-
-	// idle
-	textColor	= '255 255 255 180'
-
-	// hover
-	bgColor-h	= '100 100 100'
-	textColor-h	= '255 255 255 180'
-
-	// select
-	bgColor-s	= '75 75 75'
-	textColor-s	= '255 255 255 180'
+	bgColor-s	= '120 120 120'
+	textColor-s	= '0 0 0 150'
 
 	// disable
-	textColor-d	= '255 255 255 70'
+	bgColor-d	= '130 130 130'
+	textColor-d	= '0 0 0 80'
 
-	corner = '15'
 	radius = '2'
-)
-
-bn-bar // tools
-(
-	textFont = 'symbol'
-	textSize	= '17 17'
-
-	// idle
-	textColor	= '255 255 255 180'
-
-	// hover
-	bgColor-h	= '100 100 100'
-	textColor-h	= '255 255 255 180'
-
-	// select
-	bgColor-s	= '75 75 75'
-	textColor-s	= '255 255 255 180'
-
-	// disable
-	textColor-d	= '255 255 255 70'
 )
 
 bn-menu
 (
-	textFont = 'utf'
-	textSize	= '6.5 6.5'
+	textSize	= '7.5 7.5'
 
 	// idle
 	bgColor		= '30 30 30'
@@ -568,7 +520,6 @@ bn-menu
 
 bn-task
 (
-	textFont = 'utf'
 	textSize = '9 9'
 
 	// idle
@@ -588,16 +539,125 @@ bn-task
 	textColor-d	= '255 255 255 80'
 )
 
+bn-grey
+(
+	textSize	= '7.5 7.5'
+
+	// idle
+	bgColor		= '85 85 85'
+	textColor	= '255 255 255 150'
+
+	// hover
+	bgColor-h	= '110 110 110'
+	textColor-h	= '255 255 255 175'
+
+	// select
+	bgColor-s	= '77 77 77'
+	textColor-s	= '255 255 255 170'
+)
+
+bn-ic // camera, mtl, play
+(
+	delayed = '1'
+	textFont = '2'
+	textSize = '17 17'
+
+	// idle
+	textColor	= '255 255 255 220'
+
+	// hover
+	bgColor-h	= '100 100 100'
+	textColor-h	= '255 255 255 255'
+
+	// select
+	bgColor-s	= '75 75 75'
+	textColor-s	= '255 255 255 255'
+
+	// disable
+	textColor-d	= '255 255 255 70'
+
+	corner = '15'
+	radius = '3'
+)
+
+bn-ic-t
+(
+	delayed = '1'
+	textFont = '2'
+	textSize = '17 17'
+
+	// idle
+	textColor	= '255 255 255 150'
+
+	// hover
+	bgColor-h	= '90 90 90'
+	textColor-h	= '255 255 255 150'
+
+	// select
+	bgColor-s	= '75 75 75'
+	textColor-s	= '255 255 255 150'
+
+	// disable
+	textColor-d	= '255 255 255 70'
+
+	corner = '15'
+	radius = '2'
+)
+
+bn-bar // tools
+(
+	textSize	= '17 17'
+
+	// idle
+	textColor	= '255 255 255 220'
+
+	// hover
+	bgColor-h	= '100 100 100'
+	textColor-h	= '255 255 255 255'
+
+	// select
+	bgColor-s	= '75 75 75'
+	textColor-s	= '255 255 255 255'
+
+	// disable
+	textColor-d	= '255 255 255 70'
+)
+
+bn-undo
+(
+	textSize = '21 22'
+	textAlign	= '2'
+
+	// idle
+	bgColor		= '85 85 85'
+	textColor	= '255 255 255 220'
+
+	// hover
+	bgColor-h	= '120 120 120'
+	textColor-h	= '255 255 255 255'
+
+	// select
+	bgColor-s	= '75 75 75'
+	textColor-s	= '255 255 255 255'
+
+	// disable
+	bgColor-d	= '80 80 80'
+	textColor-d	= '255 255 255 40'
+
+	corner = '15'
+	radius = '2'
+	margin = '0 0 1 1' 
+)
+
 //======================================
 // layer
 //======================================
 lay-vis
 (
 	style = '1'
-	textFont = 'symbol'
 	textSize	= '11 11'
 	textAlign	= '2'
-	text		= '^9679'
+	text		= '^9899'
 
 	// idle
 	bgColor		= '70 70 70'
@@ -616,10 +676,10 @@ lay-vis
 
 lay-cur
 (
-	textFont = 'utf'
+	textFont = '1'
 	textSize	= '6 6'
 	textAlign	= '1'
-	border	= '3'
+	textBorder	= '3'
 
 	// idle
 	bgColor		= '70 70 70'
@@ -639,7 +699,7 @@ lay-cur
 lay-name
 (
 	bgColor = '50 50 50'
-	textFont = 'utf'
+	textFont = '1'
 	textSize = '6 6'
 	textColor = '255 255 255 190'
 	
@@ -650,15 +710,13 @@ lay-name
 	align = '1'
 	enter = '1'
 	once = '1'
-	quote = '1'
 )
 
 lay-sel
 (
-	textFont = 'symbol'
-	textSize	= '8 8'
+	textSize	= '12 12'
 	textAlign	= '2'
-	text		= '^9664'
+	text		= '^10094'
 
 	// idle
 	bgColor		= '70 70 70'
@@ -668,30 +726,105 @@ lay-sel
 
 	// select
 	bgColor-s	= '90 90 90'
-	textColor-s	= '255 255 255 150'
+	textColor-s	= '255 255 255 250'
 
 	margin = '1 1 1 1'
 )
 
+//======================================
+// tab
+//======================================
+tab-panel-text
+(
+	textSize = '9 9'
+
+	// idle
+	textColor	= '255 255 255 120'
+
+	// hover
+	textColor-h	= '255 255 255 200'
+
+	// select
+	textColor-s	= '150 190 233 255' // '140 180 253 255'
+)
+
+tab-panel
+(
+	textFont = '2'
+	textSize = '15 15'
+
+	// idle
+	textColor	= '255 255 255 120'
+
+	// hover
+	textColor-h	= '255 255 255 200'
+
+	// select
+	textColor-s	= '150 190 233 255' // '140 180 253 255'
+)
+
+//======================================
+// slider
+//======================================
 slider
 (
 	snap = '1' // FIXME
 	
 	bdColor		= '52 52 52'
 	bgColor		= '20 20 20'
-	color		= '200 200 200'
+	color		= '100 160 230'
 	range		= '0 100'
 	margin		= '4.7 0 1 1'
-	barWidth	= '0.5'
-	radius		= '0.25'
+	barWidth	= '1.5'
+	radius		= '0.5'
+	border		= '0'
+)
+			  
+sl-cam			  
+(				  
+	snap = '1'
+	
+	bdColor		= '52 52 52'
+	bgColor		= '20 20 20'
+	color		= '232 122 144' // '180 100 204'
+	range		= '0 100'
+	margin		= '4.7 0 1 1'
+	barWidth	= '1.5'
+	radius		= '0.5'
 	border		= '0'
 )
 
-slider-col()
+sl-mtl			  
+(				  
+	snap = '1'
+	
+	bdColor		= '52 52 52'
+	bgColor		= '20 20 20'
+	color		= '130 198 107'
+	range		= '0 100'
+	margin		= '4.7 0 1 1'
+	barWidth	= '1.5'
+	radius		= '0.5'
+	border		= '0'
+)
+
+sl
+(				  
+	snap = '1'
+	
+	bdColor		= '52 52 52'
+	bgColor		= '20 20 20'
+	color		= '220 220 220'
+	range		= '0 100'
+	margin		= '4.7 0 1 1'
+	barWidth	= '1.5'
+	radius		= '0.5'
+	border		= '0'
+)
 
 fileList
 (
-	textSize = '7 7'
+	textSize = '8 8'
 	
 	bgColor		= '40 40 40 0'
 	bgColor-s	= '90 90 90' //'130 155 132'//'181 124 179'
