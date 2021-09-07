@@ -134,6 +134,9 @@ func move(from: int, to: int, count: int = 1) -> int:
 	return count;
 
 func swap(first: int, second: int):
+	if first == second:
+		return;
+	
 	var temp_count = _counts[first];
 	_counts[first] = _counts[second];
 	_counts[second] = temp_count;
@@ -143,6 +146,6 @@ func swap(first: int, second: int):
 	_store[second] = temp_item;
 	
 	var delta = get_count_at(first) - get_count_at(second);
-	if delta != 0:
+	if delta != 0 or get_item_at(first) != get_item_at(second):
 		emit_signal("inventory_update", first, delta);
 		emit_signal("inventory_update", second, -delta);
