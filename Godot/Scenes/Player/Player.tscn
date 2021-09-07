@@ -1,12 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scenes/Player/Meshes/Head.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://Materials/PaletteMaterial/PaletteMaterial.tres" type="Material" id=2]
+[ext_resource path="res://Vox/tomas_head.vox" type="ArrayMesh" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Player/Meshes/LeftArm.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://Scenes/Player/Meshes/RightArm.obj" type="ArrayMesh" id=5]
-[ext_resource path="res://Scenes/Player/Meshes/LeftLeg.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://Scenes/Player/Meshes/RightLeg.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://Vox/tomas_arm.vox" type="ArrayMesh" id=4]
+[ext_resource path="res://Vox/tomas_leg.vox" type="ArrayMesh" id=5]
 [ext_resource path="res://Scenes/Player/HeldItem.gd" type="Script" id=8]
 [ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=9]
 
@@ -181,17 +178,19 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/Head"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.3, 0 )
+transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, -0.0203973, 0 )
+material_override = ExtResource( 9 )
 mesh = ExtResource( 1 )
-material/0 = ExtResource( 2 )
+material/0 = null
 
 [node name="RightArm" type="Spatial" parent="Body/Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.2, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/Head/RightArm"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.3, -0.5, 0 )
-mesh = ExtResource( 5 )
-material/0 = ExtResource( 2 )
+transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0.1, -0.2, 0 )
+material_override = ExtResource( 9 )
+mesh = ExtResource( 4 )
+material/0 = null
 
 [node name="ItemPivot" type="Spatial" parent="Body/Head/RightArm"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.1, -0.2, -0.1 )
@@ -205,28 +204,31 @@ script = ExtResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/Head/LeftArm"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3, -0.5, 0 )
+transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.1, -0.2, 0 )
+material_override = ExtResource( 9 )
 mesh = ExtResource( 4 )
-material/0 = ExtResource( 2 )
+material/0 = null
 
 [node name="RightLeg" type="Spatial" parent="Body"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.3, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/RightLeg"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.2, -0.3, 0 )
-mesh = ExtResource( 7 )
-material/0 = ExtResource( 2 )
+transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, -0.3, 0 )
+material_override = ExtResource( 9 )
+mesh = ExtResource( 5 )
+material/0 = null
 
 [node name="LeftLeg" type="Spatial" parent="Body"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.3, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/LeftLeg"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2, -0.3, 0 )
-mesh = ExtResource( 6 )
-material/0 = ExtResource( 2 )
+transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, -0.3, 0 )
+material_override = ExtResource( 9 )
+mesh = ExtResource( 5 )
+material/0 = null
 
 [node name="Collider" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 1 )
 
 [node name="Animator" type="AnimationPlayer" parent="."]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/tomas_arm.vox-befbab4d92d919f9dd27c8c2ab645b92.mesh"
+
+[deps]
+
+source_file="res://Vox/tomas_arm.vox"
+dest_files=[ "res://.import/tomas_arm.vox-befbab4d92d919f9dd27c8c2ab645b92.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2
