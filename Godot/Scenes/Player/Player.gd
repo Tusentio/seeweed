@@ -18,11 +18,17 @@ func select_slot(slot):
 	emit_signal("slot_change", selected_slot);
 
 func _input(_event):
+	var prev_slot = selected_slot;
+	
 	# Change selected slot when scrolling or pressing arrow keys
 	if Input.is_action_pressed("hotbar_next"):
 		select_slot(selected_slot + 1);
 	elif Input.is_action_pressed("hotbar_prev"):
 		select_slot(selected_slot - 1);
+	
+	if Input.is_action_pressed("hotbar_swap"):
+		if selected_slot != prev_slot:
+			inventory.swap(prev_slot, selected_slot);
 
 # Movement code
 func _physics_process(delta):

@@ -19,7 +19,7 @@ func _on_inventory_update(slot, _delta):
 		
 		# Set count label text and visibility
 		var count = inventory.get_count_at(bound_slot);
-		$StackCount.visible = count != 1;
+		$StackCount.visible = (count > 1);
 		$StackCount.text = String(count);
 		
 		wobble();

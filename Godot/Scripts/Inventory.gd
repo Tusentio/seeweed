@@ -132,3 +132,17 @@ func move(from: int, to: int, count: int = 1) -> int:
 	
 	add_at(to, item, remove_at(from, count));
 	return count;
+
+func swap(first: int, second: int):
+	var temp_count = _counts[first];
+	_counts[first] = _counts[second];
+	_counts[second] = temp_count;
+	
+	var temp_item = _store[first];
+	_store[first] = _store[second];
+	_store[second] = temp_item;
+	
+	var delta = get_count_at(first) - get_count_at(second);
+	if delta != 0:
+		emit_signal("inventory_update", first, delta);
+		emit_signal("inventory_update", second, -delta);
