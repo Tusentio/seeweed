@@ -1,0 +1,50 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/BronzeAxe/Icon.png" type="Texture" id=1]
+[ext_resource path="res://Vox/bronze_axe.vox" type="ArrayMesh" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+class_name Item
+
+export (int) var item_id: int;
+
+export (String) var title: String;
+export (String) var description: String;
+export (Mesh) var mesh: Mesh;
+export (Texture) var icon: Texture;
+
+export (int) var max_stack_size: int = 999;
+export (float) var drop_size: float = 0.4;
+export (float) var held_size: float = 0.3;
+export (float) var weight: float = 1.0;
+
+export (Array) var managers: Array = [];
+
+func calc_max_mesh_dimension() -> float:
+	# Get new item's mesh bounding box size
+	var bb: Vector3 = mesh.get_aabb().size;
+	# New scale from largest value in bb vector
+	return max(bb.x, max(bb.y, bb.z));
+
+func calc_drop_scale() -> Vector3:
+	var ns = drop_size / calc_max_mesh_dimension();
+	return Vector3(ns, ns, ns);
+
+func calc_held_scale() -> Vector3:
+	var ns = held_size / calc_max_mesh_dimension();
+	return Vector3(ns, ns, ns);
+"
+
+[resource]
+script = SubResource( 1 )
+item_id = 2
+title = "Bronze Axe"
+description = "A weak axe used to destroy objects."
+mesh = ExtResource( 2 )
+icon = ExtResource( 1 )
+max_stack_size = 1
+drop_size = 0.4
+held_size = 0.3
+weight = 1.0
+managers = [  ]

@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Item",
 "language": "GDScript",
-"path": "res://Scenes/Items/Item.gd"
+"path": "res://Items/Item.gd"
 }, {
 "base": "KinematicBody",
 "class": "Player",

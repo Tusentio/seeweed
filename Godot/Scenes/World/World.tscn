@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/HUD/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Drop/Drop.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Items/Grass/Grass.tres" type="Resource" id=6]
+[ext_resource path="res://Items/Grass/Grass.tres" type="Resource" id=6]
 [ext_resource path="res://postprocessing.tres" type="Environment" id=7]
 
 [node name="World" type="Spatial"]

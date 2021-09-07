@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Icon.png-e69cc9ab948c00493e94bfa71587e152.stex"
+path="res://.import/Icon.png-df4efa5c22c42670c0e6b8698945de4d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Items/BronzeAxe/Icon.png"
-dest_files=[ "res://.import/Icon.png-e69cc9ab948c00493e94bfa71587e152.stex" ]
+source_file="res://Items/LogPile/Icon.png"
+dest_files=[ "res://.import/Icon.png-df4efa5c22c42670c0e6b8698945de4d.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

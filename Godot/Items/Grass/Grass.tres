@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Items/Item.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Items/Grass/Icon.png" type="Texture" id=2]
+[ext_resource path="res://Items/Item.gd" type="Script" id=1]
+[ext_resource path="res://Items/Grass/Icon.png" type="Texture" id=2]
 [ext_resource path="res://Vox/grass.vox" type="ArrayMesh" id=3]
 
 [resource]
