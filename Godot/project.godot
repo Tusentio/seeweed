@@ -30,11 +30,6 @@ _global_script_classes=[ {
 "path": "res://Items/Item.gd"
 }, {
 "base": "KinematicBody",
-"class": "ItemDrop",
-"language": "GDScript",
-"path": "res://Scenes/ItemDrop/ItemDrop.gd"
-}, {
-"base": "KinematicBody",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Scenes/Player/Player.gd"
@@ -79,7 +74,6 @@ _global_script_class_icons={
 "ImageReader": "res://addons/voxel-core/assets/logos/MagicaVoxel.png",
 "Inventory": "",
 "Item": "",
-"ItemDrop": "",
 "Player": "",
 "Reader": "",
 "Tile": "",

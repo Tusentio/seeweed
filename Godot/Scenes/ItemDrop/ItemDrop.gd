@@ -1,5 +1,4 @@
 extends KinematicBody
-class_name ItemDrop
 
 export (Resource) var item;
 
@@ -7,9 +6,6 @@ var velocity: Vector3 = Vector3.ZERO;
 var player: Player;
 
 const GRAVITY: float = 20.0;
-
-func _init(item: Item = self.item):
-	self.item = item;
 
 func _ready():
 	$Body/Mesh.set_mesh(item.mesh);
