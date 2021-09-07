@@ -3,6 +3,7 @@ extends KinematicBody
 export (Resource) var item;
 
 var velocity: Vector3 = Vector3.ZERO;
+var friction = 0.85;
 var player: Player;
 
 const GRAVITY: float = 20.0;
@@ -11,13 +12,20 @@ func _ready():
 	$Body/Mesh.set_mesh(item.mesh);
 	$Body/Mesh.set_scale(item.calc_drop_scale());
 
+func init(item: Item, position: Vector3, velocity: Vector3 = Vector3.ZERO):
+	self.item = item;
+	self.velocity = velocity;
+	global_transform.origin = position;
+	return self;
+
 func _process(delta):
+	velocity *= pow(1 / friction, delta);
 	velocity.y -= GRAVITY * item.weight * delta;
 	velocity = move_and_slide(velocity, Vector3.UP);
 
 # When player enters collection area
 func _on_CollectionArea_body_entered(body):
-	if body is Player:
+	if body is Player and can_be_collected():
 		player = body;
 		
 		# Play animations
@@ -31,3 +39,6 @@ func _on_CollectionArea_body_entered(body):
 func _on_Tween_tween_completed(_object, _key):
 	player.inventory.add(item);
 	queue_free();
+
+func can_be_collected() -> bool:
+	return $CollectCooldown.is_stopped();
