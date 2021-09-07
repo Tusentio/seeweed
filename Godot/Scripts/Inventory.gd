@@ -119,7 +119,13 @@ func get_count_of(item: Item) -> int:
 	return count;
 
 func find_slot_of(item: Item, from: int = 0):
-	return _store.find(item, from);
+	for i in range(from, _store.size()):
+		if get_item_at(i) == item:
+			return i;
+		elif get_item_at(i) and item:
+			if get_item_at(i).item_id == item.item_id:
+				return i;
+	return -1;
 
 func move(from: int, to: int, count: int = 1) -> int:
 	var item: Item = get_item_at(from);
