@@ -4,11 +4,11 @@ export (Resource) var item;
 export (int) var size: int = 1;
 
 var velocity: Vector3 = Vector3.ZERO;
-var friction = 0.85;
+var friction: float = 4.0;
 var player: Player;
 var _sync_index: int = rand_range(0x0, 0xffffffff);
 
-const GRAVITY: float = 20.0;
+const GRAVITY: float = 30.0;
 
 func _ready():
 	$Body/Mesh.set_mesh(item.mesh);
@@ -21,7 +21,7 @@ func init(item: Item, position: Vector3, velocity: Vector3 = Vector3.ZERO):
 	return self;
 
 func _process(delta):
-	velocity *= pow(1 / friction, delta);
+	velocity *= pow(2, -friction * delta);
 	velocity.y -= GRAVITY * item.weight * delta;
 	velocity = move_and_slide(velocity, Vector3.UP);
 
