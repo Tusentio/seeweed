@@ -1,6 +1,7 @@
 extends KinematicBody
 
 export (Resource) var item;
+export (int) var size: int = 1;
 
 var velocity: Vector3 = Vector3.ZERO;
 var friction = 0.85;
@@ -37,7 +38,7 @@ func _on_CollectionArea_body_entered(body):
 
 # When collect animations are finished
 func _on_Tween_tween_completed(_object, _key):
-	player.inventory.add(item);
+	player.inventory.add(item, size);
 	queue_free();
 
 func can_be_collected() -> bool:
