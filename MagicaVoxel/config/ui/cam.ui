@@ -8,8 +8,8 @@ hbox(id = 'v_cam' hidden = '1' margin = '0 0 3 3') ::
 		{
 			label(def = 'h1' text = 'Camera' align = '1' flex = '1')
 
-			button(def = 'bn-grey' onClick = 'cam save' text = '^9660' textSize = '10 10' textFont = '0')(corner = '5' radius = '3' size = '22' next = '1' margin = '0 0 5 5')(hint = 'Save Camera [7]')
-			button(def = 'bn-grey' onClick = 'cam load' text = '^9650' textSize = '10 10' textFont = '0')(corner = '10' radius = '3' size = '22' margin = '0 0 5 5')(hint = 'Load Camera [8]')
+			button(onClick = 'cam save' text = '^9660' textSize = '9 9' textFont = 'symbol')(corner = '5' radius = '3' size = '22' next = '1' margin = '0 0 5 5')(hint = 'Save Camera [7]')
+			button(onClick = 'cam load' text = '^9650' textSize = '9 9' textFont = 'symbol')(corner = '10' radius = '3' size = '22' margin = '0 0 5 5')(hint = 'Load Camera [8]')
 		}
 
 		opBox(id = 'cam_slot' onClick = 'cam slot' value = '0' flex = '1' prev = '3' next = '3')(hint = 'Camera Slot') :: 
@@ -20,26 +20,26 @@ hbox(id = 'v_cam' hidden = '1' margin = '0 0 3 3') ::
 				{
 					hbox(flex = '1') ::
 					{
-						option(def = 'op-sel' id = '0' text = '0' flex = '1')
-						option(def = 'op-sel' id = '1' text = '1' flex = '1')
-						option(def = 'op-sel' id = '2' text = '2' flex = '1')
-						option(def = 'op-sel' id = '3' text = '3' flex = '1')
-						option(def = 'op-sel' id = '4' text = '4' flex = '1')
+						option(id = '0' text = '0' flex = '1')
+						option(id = '1' text = '1' flex = '1')
+						option(id = '2' text = '2' flex = '1')
+						option(id = '3' text = '3' flex = '1')
+						option(id = '4' text = '4' flex = '1')
 					}
 					hbox(flex = '1') ::
 					{
-						option(def = 'op-sel' id = '5' text = '5' flex = '1')
-						option(def = 'op-sel' id = '6' text = '6' flex = '1')
-						option(def = 'op-sel' id = '7' text = '7' flex = '1')
-						option(def = 'op-sel' id = '8' text = '8' flex = '1')
-						option(def = 'op-sel' id = '9' text = '9' flex = '1')
+						option(id = '5' text = '5' flex = '1')
+						option(id = '6' text = '6' flex = '1')
+						option(id = '7' text = '7' flex = '1')
+						option(id = '8' text = '8' flex = '1')
+						option(id = '9' text = '9' flex = '1')
 					}
 				}
 			}								
 		}
 	}
-
-	vbox(size = '90')(hint = 'Camera Focus/Position' prev = '12') ::
+	
+	vbox(size = '90')(hint = 'Camera Center' prev = '12') ::
 	{
 		hbox(size = '27') ::
 		{
@@ -83,25 +83,47 @@ hbox(id = 'v_cam' hidden = '1' margin = '0 0 3 3') ::
 		}
 	}
 
-	vbox(size = '100')(hint = 'Camera Orientation' next = '8' prev = '12') ::
+	vbox(size = '105')(hint = 'Camera Orientation' prev = '12') ::
 	{
 		hbox(size = '27') ::
 		{
 			label(def = 'h3' text = 'Pitch')(flex = '1')
-			textField(def = 'tf-n' id = 'cam_rx' onEnter = 'cam rx')(corner = '5' size = '50')
+			textField(def = 'tf-n' id = 'cam_rx' onEnter = 'cam rx')(corner = '5' size = '55')
 			resizer(class = 'float' def = 'res-n')(range = '-90 90')(size = '8')
 		}
 		hbox(size = '27') ::
 		{
 			label(def = 'h3' text = 'Yaw')(flex = '1')
-			textField(def = 'tf-n' id = 'cam_ry' onEnter = 'cam ry')(corner = '5' size = '50')
+			textField(def = 'tf-n' id = 'cam_ry' onEnter = 'cam ry')(corner = '5' size = '55')
 			resizer(class = 'float' def = 'res-n')(range = '-180 180' mod = '1')(size = '8')
 		}
 		hbox(size = '27') ::
 		{
 			label(def = 'h3' text = 'Roll')(flex = '1')
-			textField(def = 'tf-n' id = 'cam_rz' onEnter = 'cam rz')(corner = '5' size = '50')
+			textField(def = 'tf-n' id = 'cam_rz' onEnter = 'cam rz')(corner = '5' size = '55')
 			resizer(class = 'float' def = 'res-n')(range = '-180 180' mod = '1')(size = '8')
+		}
+	}
+
+	vbox(size = '110')(next = '8' prev = '12') ::
+	{
+		hbox(size = '27')(hint = 'Camera Field of View') ::
+		{
+			label(def = 'h3' text = 'Fov')(flex = '1')
+			textField(def = 'tf-n' id = 'cam_fov' onEnter = 'cam fov')(corner = '5' size = '55')
+			resizer(class = 'float' def = 'res-n')(range = '30 90' step = '1' space = '3')(size = '8')
+		}
+		hbox(size = '27')(hint = 'Camera Move Speed') ::
+		{
+			label(def = 'h3' text = 'Speed')(flex = '1')
+			textField(def = 'tf-n' id = 'cam_speed' onEnter = 'cam speed')(corner = '5' size = '55')
+			resizer(class = 'float' def = 'res-n')(range = '0.01 100' step = '0.01' space = '3')(size = '8')
+		}
+		hbox(size = '27')(hint = 'Camera Mouse Sensitivity') ::
+		{
+			label(def = 'h3' text = 'Mouse')(flex = '1')
+			textField(def = 'tf-n' id = 'cam_mouse' onEnter = 'cam mouse')(corner = '5' size = '55')
+			resizer(class = 'float' def = 'res-n')(range = '0.1 2.0' step = '0.01' space = '3')(size = '8')
 		}
 	}
 }

@@ -1,4 +1,4 @@
-layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
+﻿layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 {
 	layer(id = 'v_task' modal = '1' hidden = '1') ::
 	{
@@ -27,16 +27,16 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 				{
 					hbox::
 					{
-						option(def = 'tab-panel-text' id = '0' text = 'L'		textSize = '10 10')(flex = '1' )(hint = 'Show Original Image [Left]')
-						option(def = 'tab-panel-text' id = '1' text = 'R'		textSize = '10 10')(flex = '1' )(hint = 'Show Denoised Image [Right]')
-						option(def = 'tab-panel-text' id = '2' text = '^8644'	textSize = '18 18')(flex = '1' )(hint = 'Show Comparison')
+						option(id = '0' text = 'L'		textSize = '10 10')(flex = '1' )(hint = 'Show Original Image [Left]')
+						option(id = '1' text = 'R'		textSize = '10 10')(flex = '1' )(hint = 'Show Denoised Image [Right]')
+						option(id = '2' text = '^8644'	textSize = '18 18' textFont = 'symbol')(flex = '1' )(hint = 'Show Comparison')
 					}
 				}
 				
 				sp(flex = '1')
 
-				button(onClick = 'denoise save'	)(def = 'bn-ic-t' text = '^2' textSize = '16 16')(size = '36' margin = '0 0 3 3')(hint = 'Save Denoised Image')
-				button(onClick = 'denoise close')(def = 'bn-ic-t' text = '^215' textFont = '0' textSize = '26 26' textColor = '255 100 60' textColor-h = '255 100 60' textColor-s = '255 100 60')
+				button(onClick = 'denoise save'	)(def = 'bn-ic' text = '^2' textSize = '16 16')(size = '36' margin = '0 0 3 3')(hint = 'Save Denoised Image')
+				button(onClick = 'denoise close')(def = 'bn-ic' text = '^xd7' textFont = 'symbol' textSize = '24 24' textColor = '255 100 60' textColor-h = '255 100 60' textColor-s = '255 100 60')
 				(size = '36' next = '3' margin = '0 0 3 3')(hint = 'Close')
 			}
 
@@ -53,14 +53,66 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 		
 	layer(fitsize = '0 0' collid = '0') ::
 	{		
-		layer(id = 'menu_pal' temp = '1' hidden = '1' rect = '0 0 75 155' fitsize = '1 1')(corner = '15' radius = '4') ::
+		layer(id = 'menu_outline' temp = '1' hidden = '1' rect = '0 0 130 140' fitsize = '1 1' bgColor = '85 85 85')(corner = '15' radius = '4') ::
+		{
+			vbox(margin = '2 2 2 0') ::
+			{
+				textField(def = 'tf-info' id = 'oname' onEnter = 'ui_set menu_outline hidden 1 | oname' maxLength = '64' enter = '1' once = '1' bgColor = '60 60 60')(size = '28' next = '1' corner = '15' radius = '3' margin = '4 4 2 3')(hint = 'Object Name')
+				
+				hbox(flex = '1') ::
+				{
+					button(delayed = '1' text = 'Close' textAlign = '1' onClick = 'ui_set menu_outline hidden 1 | oexpand -1' )(size = '45')(hint = 'Close Sub Objects')
+					button(delayed = '1' text = ': Close Inactive' textAlign = '1' onClick = 'ui_set menu_outline hidden 1 | oexpand -2' )(flex = '1')(hint = 'Close Inactive Objects')
+				}				
+				sp(def = 'bar-h' size = '1')
+				hbox(flex = '1') ::
+				{
+					button(delayed = '1' text = 'Expand' textAlign = '1' onClick = 'ui_set menu_outline hidden 1 | oexpand 2' )(size = '45')(hint = 'Expand Sub Objects')
+					button(delayed = '1' text = ': Expand All' textAlign = '1' onClick = 'ui_set menu_outline hidden 1 | oexpand 3' )(flex = '1')(hint = 'Expand All Objects')
+				}
+				sp(def = 'bar-h' size = '1')
+				hbox(flex = '1') ::
+				{
+					button(delayed = '1' text = 'Hide' textAlign = '1' onClick = 'ui_set menu_outline hidden 1 | ohide -4' )(size = '45' radius = '2')(hint = 'Hide Sub Objects')
+					button(delayed = '1' text = ': Hide Others' textAlign = '1' onClick = 'ui_set menu_outline hidden 1 | ohide -3' )(flex = '1' radius = '2')(hint = 'Hide Other Objects')
+				}
+				sp(def = 'bar-h' size = '1')
+				hbox(flex = '1') ::
+				{
+					button(delayed = '1' text = 'Show' textAlign = '1' onClick = 'ui_set menu_outline hidden 1 | ohide -2' )(size = '45' corner = '1')(hint = 'Show Sub Objects')
+					button(delayed = '1' text = ': Show All' textAlign = '1' onClick = 'ui_set menu_outline hidden 1 | ohide -1' )(flex = '1' corner = '2')(hint = 'Show All Objects')
+				}
+
+			}
+		}
+
+		layer(id = 'menu_lay' temp = '1' hidden = '1' rect = '0 0 120 84' fitsize = '1 1' bgColor = '85 85 85')(corner = '15' radius = '4') ::
+		{
+			vbox(margin = '2 2 2 0') ::
+			{
+				textField(def = 'tf-info' id = 'lay_name' onEnter = 'ui_set menu_lay hidden 1 | lay_name -1' maxLength = '64' enter = '1' once = '1' bgColor = '60 60 60')(size = '28' next = '1' corner = '15' radius = '3' margin = '4 4 2 3')(hint = 'Layer Name')
+				hbox(flex = '1') ::
+				{
+					button(delayed = '1' text = 'Hide' textAlign = '1' onClick = 'ui_set menu_lay hidden 1 | lay_vis -1 0' )(size = '45')(hint = 'Hide Layer')
+					button(delayed = '1' text = ': Hide Others' textAlign = '1' onClick = 'ui_set menu_lay hidden 1 | lay_vis -1 -1' )(flex = '1' radius = '2')(hint = 'Hide Other Layers')
+				}
+				sp(def = 'bar-h' size = '1')
+				hbox(flex = '1') ::
+				{
+					button(delayed = '1' text = 'Show' textAlign = '1' onClick = 'ui_set menu_lay hidden 1 | lay_vis -1 1' )(size = '45' corner = '1')(hint = 'Show Layer')
+					button(delayed = '1' text = ': Show All' textAlign = '1' onClick = 'ui_set menu_lay hidden 1 | lay_vis -1 -2' )(flex = '1' corner = '2')(hint = 'Show All Layers')
+				}
+			}
+		}
+		
+		layer(id = 'menu_pal' temp = '1' hidden = '1' rect = '0 0 85 155' fitsize = '1 1')(corner = '15' radius = '4') ::
 		{
 			vbox ::
 			{
 				hbox(flex = '1') ::
 				{
-					button(def = 'bn-menu' textFont = '2' text = '^73' textSize = '14 14' onClick = 'ui_set menu_pal hidden 1 | pal_sel copy')(flex = '1' corner = '4' )(hint = 'Copy Color Code')
-					button(def = 'bn-menu' textFont = '2' text = '^35' textSize = '14 14' onClick = 'ui_set menu_pal hidden 1 | pal paste'	)(flex = '1' corner = '8')(hint = 'Paste Color Code')
+					button(def = 'bn-menu' textFont = 'icon' text = '^73' textSize = '14 14' onClick = 'ui_set menu_pal hidden 1 | pal_sel copy')(flex = '1' corner = '4' )(hint = 'Copy Color Code')
+					button(def = 'bn-menu' textFont = 'icon' text = '^35' textSize = '14 14' onClick = 'ui_set menu_pal hidden 1 | pal paste'	)(flex = '1' corner = '8')(hint = 'Paste Color Code')
 				}
 				button(def = 'bn-menu' delayed = '1' text = 'Sort' onClick = 'ui_set menu_pal hidden 1 | pal sort -v-sh' )(flex = '1')(hint = 'Sort Palette')
 				button(def = 'bn-menu' delayed = '1' text = 'Mask' onClick = 'ui_set menu_pal hidden 1 | pal mask')(flex = '1')(hint = 'Mask Unused Voxel Colors')
@@ -68,8 +120,10 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 				button(def = 'bn-menu' delayed = '1' text = 'Inverse' onClick = 'ui_set menu_pal hidden 1 | pal_sel inv')(flex = '1')(hint = 'Inverse Color Selection')
 				hbox(flex = '1') ::
 				{
-					button(class = 'alt-cmd')(def = 'bn-menu' delayed = '1' text = '^86' onClick = 'ui_set menu_pal hidden 1 | pal_sel flag' textSize = '12 13'	textFont = '2')(flex = '1' corner = '1')(hint = 'Flag Selected Voxel Colors : Add [+SHIFT] : Remove [+SHIFT+ALT]')
-					button(class = 'alt-cmd')(def = 'bn-menu' delayed = '1' text = '^12' onClick = 'ui_set menu_pal hidden 1 | sel_col'	textSize = '14 14'	textFont = '2' )(flex = '1' corner = '2')(hint = 'Voxel Selection by Color : Add [+SHIFT] : Remove [+SHIFT+ALT]')
+					button(class = 'alt-cmd')(def = 'bn-menu' delayed = '1' text = '^86' textSize = '12 13'	textFont = 'icon')(flex = '1' corner = '1')(hint = 'Flag Selected Voxel Colors : Add [+SHIFT] : Remove [+SHIFT+ALT]')
+					(onClick = 'ui_set menu_pal hidden 1 | pal_sel flag' onClick1 = 'ui_set menu_pal hidden 1 | pal_sel flag 1' onClick2 = 'ui_set menu_pal hidden 1 | pal_sel flag -1')
+					button(class = 'alt-cmd')(def = 'bn-menu' delayed = '1' text = '^12' textSize = '14 14'	textFont = 'icon' )(flex = '1' corner = '2')(hint = 'Voxel Selection by Color : Add [+SHIFT] : Remove [+SHIFT+ALT]')
+					(onClick = 'ui_set menu_pal hidden 1 | sel_col' onClick1 = 'ui_set menu_pal hidden 1 | sel_col 1' onClick2 = 'ui_set menu_pal hidden 1 | sel_col -1')
 				}
 			}
 		}
@@ -188,9 +242,9 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 					{
 						vbox ::
 						{
-							switch(def = 'sw-menu' text = '^9776' textSize = '9 9' onClick = [[ui_view 'm_sli' 'm_val']])(size = '20')(hint = 'Show Values')
+							switch(def = 'sw-menu' text = '^x2261' textFont = 'symbol' textSize = '12 18' onClick = [[ui_view 'm_sli' 'm_val']])(size = '20')(hint = 'Show Values')
 							sp(flex = '1')
-							switch(def = 'sw-menu' text = '^11044' onClick = [[ui_view 'm_hdq' 'm_hsv']])(size = '20')(hint = 'Show SV Block')
+							switch(def = 'sw-menu' text = '^x25cf' textFont = 'symbol' onClick = [[ui_view 'm_hdq' 'm_hsv']])(size = '20')(hint = 'Show SV Block')
 						}
 					}
 				}
@@ -233,7 +287,7 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 				{
 					vbox(size = '18') ::
 					{
-						switch(class = 'view')(def = 'sw-title' text = '^9654' textSize = '11 11' view = [['v1' 'v1_s']])(size = '25' next = '5')
+						switch(class = 'view')(def = 'sw-left' view = [['v1' 'v1_s']])(size = '25' next = '5')
 					}
 				}
 
@@ -241,13 +295,13 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 				{
 					hbox(id = 'left_edit') ::
 					{
-						layer(id = 'v2' resize = '2' fitSize ='1 0')(max = '250' size = '119.33' flex = '-1') ::
+						layer(id = 'v2' resize = '2' fitSize ='1 0')(max = '250' size = '116.33' flex = '-1') ::
 						{
 							vbox ::
 							{
 								hbox(next = '5')::
 								{
-									sp(def = 'bar-v' size = '6')
+									sp(def = 'bar-v' size = '4')
 									vbox(flex = '1') ::
 									{
 										switch(class = 'view')(def = 'sw-title' text = 'Brush' view = [['v2' 'v2_s']])(size = '25' next = '5')										
@@ -255,18 +309,18 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 										{
 											hbox(def = 'outline-i') ::
 											{
-												option(def = 'tab-panel-text' text = 'All'	id = [['menu_brush' 'menu_brush_opt']])(flex = '1')(hint = 'Show All Options')
-												option(def = 'tab-panel' text = '^68' textSize = '14 14' id = [['menu_brush']])(flex = '1')(hint = 'Show Brushes')
-												option(def = 'tab-panel' text = '^60'		id = [['menu_brush_opt']])(flex = '1')(hint = 'Show Display Settings')
+												option(def = 'tab-all'	select_value = [['menu_brush' 'menu_brush_opt']])(flex = '1')
+												option(def = 'tab-panel' text = '^68' select_value = [['menu_brush']])(flex = '1')(hint = 'Show Brushes')
+												option(def = 'tab-panel' text = '^60' select_value = [['menu_brush_opt']])(flex = '1')(hint = 'Show Display Settings')
 											}					
 										}
 										opBox(class = 'tab')(id = 'left_otab' def = 'outline' index = '1')(size = '27' margin = '9 9 0 0' next = '3') ::
 										{
 											hbox(def = 'outline-i') ::
 											{
-												option(def = 'tab-panel-text' text = 'All'	id = [['menu_layer' 'menu_brush_opt']])(flex = '1')(hint = 'Show All Options')
-												option(def = 'tab-panel' text = '^68'		id = [['menu_layer']])(flex = '1')(hint = 'Show Layers')
-												option(def = 'tab-panel' text = '^60'		id = [['menu_brush_opt']])(flex = '1')(hint = 'Show Display Settings')
+												option(def = 'tab-all'	select_value = [['menu_layer' 'menu_brush_opt']])(flex = '1')
+												option(def = 'tab-panel' text = '^68'		select_value = [['menu_layer']])(flex = '1')(hint = 'Show Layers')
+												option(def = 'tab-panel' text = '^60'		select_value = [['menu_brush_opt']])(flex = '1')(hint = 'Show Display Settings')
 											}					
 										}
 									}
@@ -290,26 +344,22 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 
 								hbox(size = '32' prev = '5')::
 								{
-									sp(def = 'bar-v' size = '6')
-									vbox(def = 'bg3' corner = '12' radius = '5' margin = '9 9 0 3')(flex = '1') ::
+									sp(def = 'bar-v' size = '4')
+									vbox(margin = '9 9 4 4')(flex = '1') ::
 									{
-										hbox(size = '24') ::
+										hbox(size = '26') ::
 										{
-											switch(def = 'sw-bw' id = 'rm_bo'	onClick = 'set rm_show bo'		text = 'BO'  )(flex = '1')(hint = 'Display Background Objects [CTRL+B]')
-											switch(def = 'sw-bw' id = 'rm_edge'	onClick = 'set rm_show edge'	text = 'Edge')(flex = '1')(hint = 'Display Edges [CTRL+E]')
+											switch(def = 'sw-cam' id = 'rm_edge'	onClick = 'set rm_show edge'	 text = '^x74' textSize = '15 15')(flex = '1')(hint = 'Display Edges [CTRL+E]')
+											switch(def = 'sw-cam' id = 'rm_frame'	onClick = 'set rm_show frame' 	 text = '^x75' textSize = '15 15')(flex = '1')(hint = 'Display Frame [CTRL+F]')
+											switch(def = 'sw-cam' id = 'rm_grid'	onClick = 'set rm_show grid'	 text = '^x73' textSize = '15 15')(flex = '1' hint = 'Display Grids [CTRL+G]')
+										}
+										hbox(size = '26') ::
+										{
+											switch(def = 'sw-cam' id = 'rm_bo'		onClick = 'set rm_show bo'		text = '^x77'  )(flex = '1')(hint = 'Display Background Objects [CTRL+B]')
+											switch(def = 'sw-cam' id = 'rm_wire'	onClick = 'set rm_show wire'	text = '^x58'  )(flex = '1')(hint = 'Display Wireframes [CTRL+M]')
+											switch(def = 'sw-cam' id = 'rm_sw'		onClick = 'set rm_show sw'		text = '^x59'  )(flex = '1' hint = 'Display Shadow [CTRL+W]')
 										}
 
-										hbox(size = '24') ::
-										{
-											switch(def = 'sw-bw' id = 'rm_wire'	onClick = 'set rm_show wire'		text = 'WR'  )(flex = '1' corner = '4' radius = '2')(hint = 'Display Wireframes [CTRL+M]')
-											switch(def = 'sw-bw' id = 'rm_grid'	onClick = 'set rm_show grid'	text = 'Grid')(flex = '1' hint = 'Display Grids [CTRL+G]')
-										}
-
-										hbox(size = '24') ::
-										{
-											switch(def = 'sw-bw' id = 'rm_sw'	onClick = 'set rm_show sw'		text = 'SW'  )(flex = '1' hint = 'Display Shadow [CTRL+W]')
-											switch(def = 'sw-bw' id = 'rm_frame'onClick = 'set rm_show frame' selected = '0' text = 'Frame')(flex = '1')(hint = 'Frame : Display Frame [CTRL+F]')
-										}
 									}
 								}
 							}
@@ -317,10 +367,10 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 
 						hbox(id = 'v2_s' hidden = '1') ::
 						{
-							sp(def = 'bg3' size = '6' corner = '15' radius = '3')
+							sp(def = 'bg3' size = '4' corner = '15' radius = '3')
 							vbox(size = '18') ::
 							{
-								switch(class = 'view')(def = 'sw-title' text = '^9654' textSize = '12 12' view = [['v2' 'v2_s']])(size = '25' next = '5')
+								switch(class = 'view')(def = 'sw-left' view = [['v2' 'v2_s']])(size = '25' next = '5')
 							}
 						}
 					}
@@ -328,13 +378,13 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 
 				hbox(id = 'left_render' hidden = '1') ::
 				{
-					layer(id = 'v4' resize = '2' fitSize ='0 0')(max = '250' size = '119.33' flex = '-1') ::
+					layer(id = 'v4' resize = '2' fitSize ='0 0')(max = '250' size = '116.33' flex = '-1') ::
 					{
 						vbox ::
 						{
 							hbox(next = '5')::
 							{
-								sp(def = 'bar-v' size = '6')
+								sp(def = 'bar-v' size = '4')
 								
 								vbox(flex = '1') ::
 								{
@@ -343,16 +393,16 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 									{
 										hbox(def = 'outline-i') ::
 										{
-											option(class = 'cmd')(def = 'tab-panel-text' text = 'All' id = [['menu_light' 'menu_sample' 'menu_display' 'rl_sep0' 'rl_sep1']] onSelect = 'ui_set r_title1 text Light')(flex = '1')(hint = 'Show All Settings')
-											option(class = 'cmd')(def = 'tab-panel' id = [['menu_light']]		text = '^62' onSelect = 'ui_set r_title1 text Light'  )(flex = '1')(hint = 'Show Lighting Settings')
-											option(class = 'cmd')(def = 'tab-panel' id = [['menu_sample']]		text = '^59' onSelect = 'ui_set r_title1 text Sample' )(flex = '1')(hint = 'Show Sampling Settings')
-											option(class = 'cmd')(def = 'tab-panel' id = [['menu_display']]		text = '^60' onSelect = 'ui_set r_title1 text Display')(flex = '1')(hint = 'Show Display Settings')
+											option(class = 'cmd')(def = 'tab-all'   select_value = [['menu_light' 'menu_sample' 'menu_display' 'rl_sep0' 'rl_sep1']] onSelect = 'ui_set r_title1 text *Light')(flex = '1')
+											option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_light']]		text = '^62' onSelect = 'ui_set r_title1 text *Light'  )(flex = '1')(hint = 'Show Lighting Settings')
+											option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_sample']]		text = '^59' onSelect = 'ui_set r_title1 text *Sample' )(flex = '1')(hint = 'Show Sampling Settings')
+											option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_display']]		text = '^60' onSelect = 'ui_set r_title1 text *Display')(flex = '1')(hint = 'Show Display Settings')
 										}					
 									}
 								}
 							}
 								
-							layer(scroll = '0 -1' fitSize ='1 0')(corner = '12' radius = '2' flex = '1' margin = '0 0 0 -3') ::
+							layer(scroll = '0 -1' fitSize ='1 0')(corner = '12' radius = '2' flex = '1') ::
 							{
 								vbox ::
 								{
@@ -364,19 +414,15 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 
 							hbox(prev = '5')::
 							{
-								sp(def = 'bar-v' size = '6')
-								vbox(def = 'bg3' corner = '12' radius = '5' margin = '9 9 0 3')(flex = '1') ::
+								sp(def = 'bar-v' size = '4')
+								vbox(margin = '9 9 4 4')(flex = '1') ::
 								{
-									hbox(size = '24') ::
+									hbox(size = '26') ::
 									{
-										switch(def = 'sw-bw' id = 'pt_bg_c'	onClick = 'set pt_show bg_c'	selected = '1' text = 'BG' )(flex = '1')(hint = 'Display Background Color [CTRL+B]')
-										switch(def = 'sw-bw' id = 'pt_edge' onClick = 'set pt_show edge'	selected = '0' text = 'Edge')(flex = '1')(hint = 'Display Edges [CTRL+E]')
-									}
-
-									hbox(size = '24') ::
-									{
-										switch(def = 'sw-bw' id = 'pt_gd'	onClick = 'set pt_show gd'		selected = '1' text = 'GD'  )(flex = '1')(hint = 'Display Ground [CTRL+U]')				
-										switch(def = 'sw-bw' id = 'pt_grid'	onClick = 'set pt_show grid'	selected = '0' text = 'Grid')(flex = '1')(hint = 'Display Grids [CTRL+G]')
+										switch(def = 'sw-cam' id = 'pt_bg_c'	onClick = 'set pt_show bg_c'	selected = '1' text = '^x55' textSize = '15 15')(flex = '1')(hint = 'Display Background Color [CTRL+B]')
+										switch(def = 'sw-cam' id = 'pt_edge' onClick = 'set pt_show edge'	selected = '0' text = '^x74' textSize = '15 15')(flex = '1')(hint = 'Display Edges [CTRL+E]')
+										switch(def = 'sw-cam' id = 'pt_grid'	onClick = 'set pt_show grid'	selected = '0' text = '^x73' textSize = '15 15')(flex = '1')(hint = 'Display Grids [CTRL+G]')
+										switch(def = 'sw-cam' id = 'pt_gd'	onClick = 'set pt_show gd'		selected = '1' text = '^x52' textSize = '15 15')(flex = '1')(hint = 'Display Ground [CTRL+U]')				
 									}
 								}
 							}
@@ -385,10 +431,10 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 
 					hbox(id = 'v4_s' hidden = '1') ::
 					{
-						sp(def = 'bg3' size = '6' corner = '15' radius = '3')
+						sp(def = 'bg3' size = '4' corner = '15' radius = '3')
 						vbox(size = '18') ::
 						{
-							switch(class = 'view')(def = 'sw-title' text = '^9654' textSize = '12 12' view = [['v4' 'v4_s']])(size = '25' next = '5')
+							switch(class = 'view')(def = 'sw-left' view = [['v4' 'v4_s']])(size = '25' next = '5')
 						}
 					}
 				}
@@ -425,12 +471,12 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 						{
 							vbox(size = '18') ::
 							{
-								switch(class = 'view')(def = 'sw-title' text = '^9664' textSize = '12 12' view = [['v5' 'v5_s']])(size = '25')
+								switch(class = 'view')(def = 'sw-right' view = [['v5' 'v5_s']])(size = '25')
 							}
-							sp(def = 'bg3' size = '6' corner = '15' radius = '3')
+							sp(def = 'bg3' size = '4' corner = '15' radius = '3')
 						}
 					
-						layer(id = 'v5' resize = '1' fitSize ='1 0')(max = '250' size = '119.33' flex = '-1') ::
+						layer(id = 'v5' resize = '1' fitSize ='1 0')(max = '250' size = '116.33' flex = '-1') ::
 						{
 							vbox ::
 							{
@@ -443,9 +489,9 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 										{
 											hbox(def = 'outline-i') ::
 											{
-												option(def = 'tab-panel-text' text = 'All' id = [['medit_basic' 'medit_tran' 'medit_mod' 'medit_sep0' 'medit_sep1']])(flex = '1')(hint = 'Show All Options')
-												option(def = 'tab-panel' text = '^64'		id = [['medit_tran']])(flex = '1')(hint = 'Show Transform Options')
-												option(def = 'tab-panel' text = '^3'			id = [['medit_mod']])(flex = '1')(hint = 'Show Modification Options')
+												option(def = 'tab-all'					select_value = [['medit_basic' 'medit_tran' 'medit_mod' 'medit_sep0' 'medit_sep1']])(flex = '1')
+												option(def = 'tab-panel' text = '^64'	select_value = [['medit_tran']])(flex = '1')(hint = 'Show Transform Options')
+												option(def = 'tab-panel' text = '^3'	select_value = [['medit_mod']])(flex = '1')(hint = 'Show Modification Options')
 											}					
 										}
 
@@ -453,13 +499,13 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 										{
 											hbox(def = 'outline-i') ::
 											{
-												option(def = 'tab-panel-text' text = 'All' id = [['oedit_basic' 'oedit_tran' 'oedit_obj' 'oedit_sep0' 'oedit_sep1']])(flex = '1')(hint = 'Show All Options')
-												option(def = 'tab-panel' text = '^64' id = [['oedit_tran']])(flex = '1')(hint = 'Show Transform Options')
+												option(def = 'tab-all'					select_value = [['oedit_basic' 'oedit_tran' 'oedit_obj' 'oedit_sep0' 'oedit_sep1']])(flex = '1')
+												option(def = 'tab-panel' text = '^64'	select_value = [['oedit_tran']])(flex = '1')(hint = 'Show Transform Options')
 											}					
 										}
 									}
 								
-									sp(def = 'bar-v' size = '6')
+									sp(def = 'bar-v' size = '4')
 								}
 								
 								layer(scroll = '0 1'  fitSize ='1 0')(corner = '12' radius = '2' flex = '1') ::
@@ -484,12 +530,12 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 					{
 						vbox(size = '18') ::
 						{
-							switch(class = 'view')(def = 'sw-title' text = '^9664' textSize = '12 12' view = [['v7' 'v7_s']])(size = '25')
+							switch(class = 'view')(def = 'sw-right' view = [['v7' 'v7_s']])(size = '25')
 						}
-						sp(def = 'bg3' size = '6' corner = '15' radius = '3')
+						sp(def = 'bg3' size = '4' corner = '15' radius = '3')
 					}
 						
-					layer(id = 'v7' resize = '1' fitSize ='1 0')(max = '250' size = '119.33' flex = '-1') ::
+					layer(id = 'v7' resize = '1' fitSize ='1 0')(max = '250' size = '116.33' flex = '-1') ::
 					{
 						vbox::
 						{
@@ -502,18 +548,18 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 									{
 										hbox(def = 'outline-i') ::
 										{
-											option(class = 'cmd')(def = 'tab-panel-text' text = 'All' id = [['menu_mtl' 'menu_cam' 'menu_image' 'rr_sep0' 'rr_sep1']] onSelect = 'ui_set r_title2 text Matter')(flex = '1')(hint = 'Show All Settings')
-											option(class = 'cmd')(def = 'tab-panel' id = [['menu_mtl']]		text = '^13' onSelect = 'ui_set r_title2 text Matter'	)(flex = '1')(hint = 'Show Material Settings')
-											option(class = 'cmd')(def = 'tab-panel' id = [['menu_cam']]		text = '^9'	onSelect = 'ui_set r_title2 text Camera'		)(flex = '1')(hint = 'Show Camera Settings')
-											option(class = 'cmd')(def = 'tab-panel' id = [['menu_image']]	text = '^65'	onSelect = 'ui_set r_title2 text Image'		)(flex = '1')(hint = 'Show Image Settings')
+											option(class = 'cmd')(def = 'tab-all'	select_value = [['menu_mtl' 'menu_cam' 'menu_image' 'rr_sep0' 'rr_sep1']] onSelect = 'ui_set r_title2 text *Matter')(flex = '1')
+											option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_mtl']]	text = '^13' onSelect = 'ui_set r_title2 text *Matter'	)(flex = '1')(hint = 'Show Material Settings')
+											option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_cam']]	text = '^9'	onSelect = 'ui_set r_title2 text *Camera'		)(flex = '1')(hint = 'Show Camera Settings')
+											option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_image']]	text = '^65'	onSelect = 'ui_set r_title2 text *Image'		)(flex = '1')(hint = 'Show Image Settings')
 										}					
 									}
 								}
 
-								sp(def = 'bar-v' size = '6')
+								sp(def = 'bar-v' size = '4')
 							}
 
-							layer(scroll = '0 1' fitSize ='1 0')(corner = '12' radius = '2' flex = '1' margin = '0 0 0 -3') ::
+							layer(scroll = '0 1' fitSize ='1 0')(corner = '12' radius = '2' flex = '1') ::
 							{
 								vbox ::
 								{
@@ -530,7 +576,7 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 				{
 					vbox(size = '18') ::
 					{
-						switch(class = 'view')(def = 'sw-title' text = '^9664' textSize = '12 12' view = [['v8' 'v8_s']])(size = '25')
+						switch(class = 'view')(def = 'sw-right' view = [['v8' 'v8_s']])(size = '25')
 					}
 				}
 				
@@ -546,11 +592,11 @@ layer(id = 'l_root' minSize = '100 100' fitSize = '1 1' def = 'bg0') ::
 							{
 								hbox(def = 'outline-i') ::
 								{
-									option(class = 'cmd')(def = 'tab-panel' id = [['menu_model']] text = '^6' onSelect = 'ui_set r_title3 text Project')(flex = '1')(hint = 'Show Project List')
-									option(class = 'cmd')(def = 'tab-panel' id = [['menu_patt']] text = '^16' textSize = '14 14' onSelect = 'ui_set r_title3 text Pattern')(flex = '1')(hint = 'Show Pattern List')
-									option(class = 'cmd')(def = 'tab-panel' id = [['menu_shader']] text = '^50' textSize = '16 16' onSelect = 'ui_set r_title3 text Shader')(flex = '1')(hint = 'Show Shader List')
-									option(class = 'cmd')(def = 'tab-panel' id = [['menu_graph']] text = '^104' textSize = '13 13' onSelect = 'ui_set r_title3 text Outline')(flex = '1')(hint = 'Show Scene Outline')
-									option(class = 'cmd')(def = 'tab-panel' id = [['menu_io']] text = '^27' textSize = '15 15' onSelect = 'ui_set r_title3 text IO')(flex = '1')(hint = 'Show IO Setting')
+									option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_model']] text = '^6' onSelect = 'ui_set r_title3 text *Project')(flex = '1')(hint = 'Show Project List')
+									option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_patt']] text = '^16' textSize = '14 14' onSelect = 'ui_set r_title3 text *Pattern')(flex = '1')(hint = 'Show Pattern List')
+									option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_shader']] text = '^50' textSize = '16 16' onSelect = 'ui_set r_title3 text *Shader')(flex = '1')(hint = 'Show Shader List')
+									option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_graph']] text = '^104' textSize = '13 13' onSelect = 'ui_set r_title3 text *Outline')(flex = '1')(hint = 'Show Scene Outline')
+									option(class = 'cmd')(def = 'tab-panel' select_value = [['menu_io']] text = '^27' textSize = '15 15' onSelect = 'ui_set r_title3 text *File')(flex = '1')(hint = 'Show IO Setting')
 								}					
 							}
 						}
