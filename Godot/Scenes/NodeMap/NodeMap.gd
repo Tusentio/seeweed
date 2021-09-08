@@ -34,7 +34,7 @@ func node_at(pos: Vector3) -> Node:
 
 # Add node to NodeMap
 func add(node: Node, pos: Vector3) -> void:
-	grid[pos.x][pos.y][pos.z] = node;
+	grid[int(pos.x)][int(pos.y)][int(pos.z)] = node;
 	add_child(node);
 	
 	# Set position
