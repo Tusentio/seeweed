@@ -21,6 +21,8 @@ func select_slot(slot):
 	emit_signal("slot_change", selected_slot);
 
 func _input(_event):
+	var prev_slot = selected_slot;
+	
 	# Drop item
 	if Input.is_action_just_pressed("drop_held_item"):
 		var item_to_drop = inventory.get_item_at(selected_slot);
@@ -38,7 +40,6 @@ func _input(_event):
 		select_slot(selected_slot - 1);
 	
 	# Hotbar item quick swap
-	var prev_slot = selected_slot;
 	if Input.is_action_pressed("hotbar_swap"):
 		if selected_slot != prev_slot:
 			inventory.swap(prev_slot, selected_slot);
