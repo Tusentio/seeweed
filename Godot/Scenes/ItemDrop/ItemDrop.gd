@@ -6,6 +6,7 @@ export (int) var size: int = 1;
 var velocity: Vector3 = Vector3.ZERO;
 var friction = 0.85;
 var player: Player;
+var _sync_index: int = rand_range(0x0, 0xffffffff);
 
 const GRAVITY: float = 20.0;
 
@@ -35,6 +36,15 @@ func _on_CollectionArea_body_entered(body):
 			global_transform.origin, player.global_transform.origin, 0.2,
 			Tween.TRANS_LINEAR, Tween.EASE_IN);
 		$Tween.start();
+
+func _on_MergeArea_body_entered(body):
+	if body is get_script():
+		var other_drop = body;
+		var synced = other_drop._sync_index == _sync_index;
+		if not synced and other_drop.item == item:
+			_sync_index = other_drop._sync_index;
+			other_drop.size += size;
+			queue_free();
 
 # When collect animations are finished
 func _on_Tween_tween_completed(_object, _key):
