@@ -13,8 +13,8 @@ A sandbox exploration game made with Godot Engine.
 -   [ ] Destroy and place tiles
 -   [ ] Tree generation
 -   [x] Inventory system
--   [ ] Stackable items
--   [ ] Drops
+-   [x] Stackable items
+-   [x] Drops
 -   [ ] Slot drag and drop
 -   [x] Items
 -   [ ] Tools
