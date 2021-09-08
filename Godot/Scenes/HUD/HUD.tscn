@@ -7,10 +7,12 @@
 [node name="HUD" type="CanvasLayer"]
 
 [node name="Margin" type="Control" parent="."]
-margin_left = 35.0
-margin_top = 35.0
-margin_right = 989.0
-margin_bottom = 565.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
