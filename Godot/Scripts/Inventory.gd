@@ -49,7 +49,7 @@ func add_at(slot: int, item: Item, count: int = 1) -> int:
 	var old_count: int = get_count_at(slot);
 	var free: int = get_free_at(slot, item);
 	
-	_counts[slot] = old_count + count;
+	_counts[slot] = old_count + int(min(count, free));
 	var added_count: int = count + add(item, count - free); # Add remainder (if any)
 	
 	emit_signal("inventory_update", slot, added_count);
