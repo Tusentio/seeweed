@@ -17,7 +17,7 @@ func _ready():
 func init(item: Item, position: Vector3, velocity: Vector3 = Vector3.ZERO):
 	self.item = item;
 	self.velocity = velocity;
-	global_transform.origin = position;
+	transform.origin = position;
 	return self;
 
 func _process(delta):
