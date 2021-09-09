@@ -11,8 +11,8 @@ var _sync_index: int = rand_range(0x0, 0xffffffff);
 const GRAVITY: float = 50.0;
 
 func _ready():
-	$Body/Mesh.set_mesh(item.mesh);
-	$Body/Mesh.set_scale(item.calc_drop_scale());
+	$Content/Body/Mesh.set_mesh(item.mesh);
+	$Content/Body/Mesh.set_scale(item.calc_drop_scale());
 
 func init(item: Item, position: Vector3, velocity: Vector3 = Vector3.ZERO):
 	self.item = item;
@@ -35,7 +35,7 @@ func _on_CollectionArea_body_entered(body):
 		# Play animations
 		$Animator.play("Collect");
 		$Tween.interpolate_property(self, "global_transform:origin",
-			global_transform.origin, player.global_transform.origin, $Collect.stream.get_length(),
+			global_transform.origin, player.global_transform.origin, 0.2,
 			Tween.TRANS_LINEAR, Tween.EASE_IN);
 		$Tween.start();
 
@@ -51,6 +51,10 @@ func _on_MergeArea_body_entered(body):
 # When collect animations are finished
 func _on_Tween_tween_completed(_object, _key):
 	player.inventory.add(item, size);
+	$Content.queue_free();
+
+# Wait for collect sound to end before queue-freeing
+func _on_Collect_finished():
 	queue_free();
 
 func can_be_collected() -> bool:
