@@ -7,6 +7,7 @@ signal slot_change;
 export (float) var gravity := 20.0;
 export (float) var turn_speed := 10.0;
 export (float) var item_throw_speed := 10.0;
+export (bool) var drift_mode := false;
 var velocity: Vector3 = Vector3.ZERO;
 var _looking_at: Vector3 = Vector3.ZERO;
 
@@ -57,7 +58,15 @@ func _physics_process(delta):
 		play_animation("idle");
 	
 	velocity.y -= gravity * delta;
-	velocity = move_and_slide(velocity * Vector3.UP + input_velocity.normalized() * speed, Vector3.UP);
+	
+	if drift_mode:
+		# Drift Mode
+		velocity = move_and_slide(velocity + input_velocity.normalized() *
+				speed * delta, Vector3.UP);
+	else:
+		# Normal
+		velocity = move_and_slide(velocity * Vector3.UP +
+				input_velocity.normalized() * speed, Vector3.UP);
 
 # Smoothly rotate player
 func _process(delta):
