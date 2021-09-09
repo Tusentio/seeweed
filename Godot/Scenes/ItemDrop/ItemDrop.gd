@@ -30,10 +30,12 @@ func _on_CollectionArea_body_entered(body):
 	if body is Player and can_be_collected():
 		player = body;
 		
+		$Collect.play();
+		
 		# Play animations
 		$Animator.play("Collect");
 		$Tween.interpolate_property(self, "global_transform:origin",
-			global_transform.origin, player.global_transform.origin, 0.2,
+			global_transform.origin, player.global_transform.origin, $Collect.stream.get_length(),
 			Tween.TRANS_LINEAR, Tween.EASE_IN);
 		$Tween.start();
 
