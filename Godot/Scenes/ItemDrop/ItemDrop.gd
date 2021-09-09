@@ -8,6 +8,7 @@ var friction: float = 7.0;
 var player: Player;
 var _sync_index: int = rand_range(0x0, 0xffffffff);
 
+const RANDOM_PITCH_FACTOR := 0.9;
 const GRAVITY: float = 50.0;
 
 func _ready():
@@ -30,6 +31,8 @@ func _on_CollectionArea_body_entered(body):
 	if body is Player and can_be_collected():
 		player = body;
 		
+		$Collect.pitch_scale = rand_range(RANDOM_PITCH_FACTOR,
+				1 / RANDOM_PITCH_FACTOR);
 		$Collect.play();
 		
 		# Play animations
