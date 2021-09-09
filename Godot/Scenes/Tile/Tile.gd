@@ -1,21 +1,19 @@
 extends StaticBody
+class_name Tile
 
 export (Resource) var block: Resource;
 
+var metadata: Dictionary = {};
+onready var mesh_instance: MeshInstance = $Mesh;
+
 func _ready():
-	set_block(block);
+	if block:
+		$Mesh.set_mesh(block.mesh);
+		block.on_tile_created(self);
+	else:
+		queue_free();
 
-func init(block: Block):
+func init(block: Resource, metadata: Dictionary = {}):
 	self.block = block;
+	self.metadata = metadata;
 	return self;
-
-func set_block(block: Block):
-	self.block = block;
-	$Origin/Mesh.set_mesh(block.mesh);
-
-	# Randomize rotation
-	var new_rotation = floor(rand_range(0, 360)) * block.random_rotation_step;
-	$Origin.set_rotation_degrees(Vector3(0, new_rotation, 0));
-
-func get_block():
-	return block;

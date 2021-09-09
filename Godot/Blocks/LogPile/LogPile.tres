@@ -1,9 +1,8 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Blocks/Block.gd" type="Script" id=1]
+[ext_resource path="res://Blocks/LogPile/LogPile.gd" type="Script" id=1]
 [ext_resource path="res://Vox/log_pile.vox" type="ArrayMesh" id=2]
 
 [resource]
 script = ExtResource( 1 )
 mesh = ExtResource( 2 )
-random_rotation_step = 1

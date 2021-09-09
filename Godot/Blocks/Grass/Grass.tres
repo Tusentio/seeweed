@@ -1,9 +1,8 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Blocks/Block.gd" type="Script" id=2]
+[ext_resource path="res://Blocks/Grass/Grass.gd" type="Script" id=1]
 [ext_resource path="res://Vox/grass.vox" type="ArrayMesh" id=3]
 
 [resource]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 mesh = ExtResource( 3 )
-random_rotation_step = 180

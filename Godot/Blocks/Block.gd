@@ -2,4 +2,6 @@ extends Resource
 class_name Block
 
 export (Mesh) var mesh: Mesh;
-export (int) var random_rotation_step: int = 0;
+
+func on_tile_created(tile: Tile):
+	pass;
