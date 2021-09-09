@@ -171,6 +171,8 @@ tracks/6/keys = {
 ]]
 collision_layer = 2
 script = ExtResource( 3 )
+max_health = 100
+health = 100
 
 [node name="Body" type="Spatial" parent="."]
 

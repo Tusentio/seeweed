@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/HUD/HealthBar/Background.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/HUD/HealthBar/HP.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/HUD/HealthBar/Progress.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/HUD/HealthBar/HealthBar.gd" type="Script" id=4]
 
 [node name="HealthBar" type="TextureRect"]
 anchor_left = 1.0
@@ -12,6 +13,7 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,7 +47,7 @@ margin_right = 128.0
 margin_bottom = 128.0
 rect_scale = Vector2( 0.16, 0.16 )
 rect_pivot_offset = Vector2( 128, 128 )
-value = 75.0
+value = 100.0
 texture_progress = ExtResource( 3 )
 fill_mode = 5
 __meta__ = {
