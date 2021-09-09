@@ -4,7 +4,7 @@ workspace :
 	dir_model      : [[$/../Godot/Vox]]
 	dir_pattern    : [[$/vox]]
 	dir_palette    : [[$/palette]]
-	dir_export     : [[$/../Godot/Scenes/Items]]
+	dir_export     : [[$/export]]
 	dir_snapshot   : [[$/export]]
 	dir_xs_shader  : [[$/shader]]
 	dir_ibl        : [[$/ibl]]
