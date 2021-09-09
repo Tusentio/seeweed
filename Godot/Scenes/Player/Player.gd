@@ -31,7 +31,8 @@ func _input(_event):
 			# Remove item from inventory and create new ItemDrop instance
 			inventory.remove_at(selected_slot, 1);
 			var new_drop = item_drop.instance();
-			new_drop.init(item_to_drop, global_transform.origin, _looking_at * item_throw_speed);
+			new_drop.init(item_to_drop, global_transform.origin, velocity +
+					_looking_at * item_throw_speed);
 			get_tree().get_root().add_child(new_drop);
 	
 	# Change selected slot when scrolling or pressing arrow keys
