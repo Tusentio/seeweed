@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/grabage_patch1.vox-b073c5f63563e3776eaf753353165e9f.mesh"
+
+[deps]
+
+source_file="res://Vox/grabage_patch1.vox"
+dest_files=[ "res://.import/grabage_patch1.vox-b073c5f63563e3776eaf753353165e9f.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2

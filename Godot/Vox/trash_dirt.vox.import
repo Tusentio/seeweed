@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/trash_dirt.vox-ba3462b17b202e247a348c8bfd82aaa1.mesh"
+
+[deps]
+
+source_file="res://Vox/trash_dirt.vox"
+dest_files=[ "res://.import/trash_dirt.vox-ba3462b17b202e247a348c8bfd82aaa1.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2
