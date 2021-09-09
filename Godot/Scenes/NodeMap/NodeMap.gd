@@ -38,8 +38,7 @@ func add(node: Node, pos: Vector3) -> void:
 	add_child(node);
 	
 	# Set position
-	node.transform.origin = Vector3.ZERO;
-	node.translate(Vector3(pos.x * cell_size, pos.y * cell_size, pos.z * cell_size));
+	node.transform.origin = Vector3(pos.x * cell_size, pos.y * cell_size, pos.z * cell_size);
 
 # Remove node from NodeMap
 func remove(pos: Vector3) -> void:
