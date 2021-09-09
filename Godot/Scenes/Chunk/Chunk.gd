@@ -3,7 +3,7 @@ extends Spatial
 onready var map = $NodeMap;
 
 const grass_block = preload("res://Blocks/Grass/Grass.tres");
-const log_pile_block = preload("res://Blocks/LogPile/LogPile.tres");
+const tree_stump_block = preload("res://Blocks/TreeStump/TreeStump.tres");
 const tile = preload("res://Scenes/Tile/Tile.tscn");
 
 func _ready():
@@ -15,5 +15,5 @@ func _ready():
 		else:
 			for x in map.map_width:
 				for z in map.map_length:
-					if randf() > 0.975:
-						map.add(tile.instance().init(log_pile_block), Vector3(x, y, z));
+					if x % 2 and z % 2 and randf() > 0.9:
+						map.add(tile.instance().init(tree_stump_block), Vector3(x, y, z));

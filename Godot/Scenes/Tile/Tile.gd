@@ -8,7 +8,7 @@ onready var mesh_instance: MeshInstance = $Mesh;
 
 func _ready():
 	if block:
-		$Mesh.set_mesh(block.mesh);
+		mesh_instance.mesh = block.mesh;
 		block.on_tile_created(self);
 	else:
 		queue_free();
