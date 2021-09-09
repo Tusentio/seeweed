@@ -4,11 +4,11 @@ export (Resource) var item;
 export (int) var size: int = 1;
 
 var velocity: Vector3 = Vector3.ZERO;
-var friction: float = 4.0;
+var friction: float = 7.0;
 var player: Player;
 var _sync_index: int = rand_range(0x0, 0xffffffff);
 
-const GRAVITY: float = 30.0;
+const GRAVITY: float = 50.0;
 
 func _ready():
 	$Body/Mesh.set_mesh(item.mesh);

@@ -4,9 +4,9 @@ class_name Player
 signal slot_change;
 
 # Movement vars
-export (int) var gravity: int = 20;
-export (float) var turn_speed: float = 10.0;
-export (float) var item_throw_speed = 5;
+export (float) var gravity := 20.0;
+export (float) var turn_speed := 10.0;
+export (float) var item_throw_speed := 10.0;
 var velocity: Vector3 = Vector3.ZERO;
 var _looking_at: Vector3 = Vector3.ZERO;
 
@@ -46,17 +46,18 @@ func _input(_event):
 
 # Movement code
 func _physics_process(delta):
-	velocity.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
-	velocity.z = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward");
+	var input_velocity := Vector3.ZERO;
+	input_velocity.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
+	input_velocity.z = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward");
 	
-	if velocity.x or velocity.z:
-		_looking_at = velocity.normalized();
+	if input_velocity.x or input_velocity.z:
+		_looking_at = input_velocity.normalized();
 		play_animation("walk");
 	else:
 		play_animation("idle");
 	
 	velocity.y -= gravity * delta;
-	velocity = move_and_slide(velocity.normalized() * speed, Vector3.UP);
+	velocity = move_and_slide(velocity * Vector3.UP + input_velocity.normalized() * speed, Vector3.UP);
 
 # Smoothly rotate player
 func _process(delta):
