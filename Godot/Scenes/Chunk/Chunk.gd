@@ -13,16 +13,16 @@ func init(id: int):
 
 func _ready():
 	var path := "user://" + String(id) + ".tres";
-	var data: ChunkData = ResourceLoader.load(path, "", true);
-	if data:
+	if File.new().file_exists(path):
+		var data: ChunkData = ResourceLoader.load(path, "", true);
 		load_data(data);
 	else:
 		generate();
 		ResourceSaver.save(path, get_data());
 
 func generate():
-	for x in map.map_height:
-		for y in map.map_width:
+	for x in map.map_width:
+		for y in map.map_height:
 			if y == 0:
 				for z in map.map_length:
 					map.add(Tile.create(grass_block), Vector3(x, y, z));
