@@ -20,7 +20,7 @@ A sandbox exploration game made with Godot Engine.
 -   [ ] Tools
 -   [ ] Durability
 -   [x] HUD Hotbar
--   [ ] HUD HP bar
+-   [x] HUD HP bar
 -   [ ] Day / night cycle
 -   [ ] Music (Menu, day, night)
 -   [ ] Save / load
