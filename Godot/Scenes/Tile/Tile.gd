@@ -17,3 +17,6 @@ func init(block: Resource, metadata: Dictionary = {}):
 	self.block = block;
 	self.metadata = metadata;
 	return self;
+
+static func create(block: Resource, metadata: Dictionary = {}):
+	return load("res://Scenes/Tile/Tile.tscn").instance().init(block, metadata);
