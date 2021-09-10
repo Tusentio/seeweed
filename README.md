@@ -6,10 +6,10 @@ A sandbox exploration game made with Godot Engine.
 
 -   [x] Terrain
 -   [x] Player
--   [ ] HP
+-   [x] HP
 -   [ ] Death
 -   [ ] Enemies
--   [ ] Chunk loading
+-   [x] Chunk loading
 -   [ ] Destroy and place tiles
 -   [ ] Tree generation
 -   [x] Inventory system
