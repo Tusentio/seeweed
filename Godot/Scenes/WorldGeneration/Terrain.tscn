@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/NodeMap/NodeMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/WorldGeneration/Terrain.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 8, 128, 8 )
+
+[node name="Terrain" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="NodeMap" parent="." instance=ExtResource( 1 )]
+map_width = 3
+map_length = 3
+cell_size = 16.3
+center_x = true
+center_z = true
+
+[node name="LoadArea" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="LoadArea"]
+shape = SubResource( 1 )
+
+[connection signal="body_exited" from="LoadArea" to="." method="_on_LoadArea_body_exited"]

@@ -35,10 +35,13 @@ func node_at(pos: Vector3) -> Node:
 # Add node to NodeMap
 func add(node: Node, pos: Vector3) -> void:
 	grid[int(pos.x)][int(pos.y)][int(pos.z)] = node;
-	add_child(node);
 	
-	# Set position
-	node.transform.origin = Vector3(pos.x * cell_size, pos.y * cell_size, pos.z * cell_size);
+	if is_instance_valid(node):
+		if not is_a_parent_of(node):
+			add_child(node);
+		
+		# Set position
+		node.transform.origin = Vector3(pos.x * cell_size, pos.y * cell_size, pos.z * cell_size);
 
 # Remove node from NodeMap
 func remove(pos: Vector3) -> void:
@@ -48,8 +51,8 @@ func remove(pos: Vector3) -> void:
 
 # Convert map coordinates to world coordinates
 func map_to_world(pos: Vector3) -> Vector3:
-	return pos * cell_size + transform.origin;
+	return pos * cell_size + global_transform.origin;
 
 # Convert world coordinates to map coordinates
 func world_to_map(pos: Vector3) -> Vector3:
-	return ((pos - transform.origin) / cell_size).floor();
+	return ((pos - global_transform.origin) / cell_size).floor();
