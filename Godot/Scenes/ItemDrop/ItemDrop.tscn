@@ -91,7 +91,7 @@ shape = SubResource( 4 )
 
 [node name="CollectionArea" type="Area" parent="Content"]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 2
 
 [node name="Shape" type="CollisionShape" parent="Content/CollectionArea"]
 shape = SubResource( 4 )

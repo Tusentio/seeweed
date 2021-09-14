@@ -28,7 +28,7 @@ func _process(delta):
 
 # When player enters collection area
 func _on_CollectionArea_body_entered(body):
-	if body is Player and can_be_collected():
+	if can_be_collected():
 		player = body;
 		
 		$Collect.pitch_scale = rand_range(RANDOM_PITCH_FACTOR,
@@ -43,13 +43,13 @@ func _on_CollectionArea_body_entered(body):
 		$Tween.start();
 
 func _on_MergeArea_body_entered(body):
-	if body is get_script():
-		var other_drop = body;
-		var synced = other_drop._sync_index == _sync_index;
-		if not synced and other_drop.item == item:
-			_sync_index = other_drop._sync_index;
-			other_drop.size += size;
-			queue_free();
+	var other_drop = body;
+	var synced = other_drop._sync_index == _sync_index;
+	
+	if not synced and not player and other_drop.item == item:
+		_sync_index = other_drop._sync_index;
+		other_drop.size += size;
+		queue_free();
 
 # When collect animations are finished
 func _on_Tween_tween_completed(_object, _key):

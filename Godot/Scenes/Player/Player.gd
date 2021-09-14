@@ -12,13 +12,13 @@ var velocity: Vector3 = Vector3.ZERO;
 var _looking_at: Vector3 = Vector3.ZERO;
 
 # Inventory vars
-var inventory = preload("res://Scripts/Inventory.gd").new();
+var inventory: Inventory = preload("res://Scripts/Inventory.gd").new();
 var selected_slot: int = 0;
 
 var item_drop = load("res://Scenes/ItemDrop/ItemDrop.tscn");
 
 func select_slot(slot):
-	selected_slot = abs(inventory.slots + slot) % inventory.slots;
+	selected_slot = int(abs(inventory.slots + slot)) % inventory.slots;
 	emit_signal("slot_change", selected_slot);
 
 func _input(_event):
