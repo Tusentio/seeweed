@@ -13,8 +13,6 @@ export (float) var drop_size: float = 0.4;
 export (float) var held_size: float = 0.3;
 export (float) var weight: float = 1.0;
 
-export (Array) var managers: Array = [];
-
 func calc_max_mesh_dimension() -> float:
 	# Get new item's mesh bounding box size
 	var bb: Vector3 = mesh.get_aabb().size;
@@ -28,3 +26,6 @@ func calc_drop_scale() -> Vector3:
 func calc_held_scale() -> Vector3:
 	var ns = held_size / calc_max_mesh_dimension();
 	return Vector3(ns, ns, ns);
+
+func on_item_use(player, pos, slot) -> void:
+	pass;

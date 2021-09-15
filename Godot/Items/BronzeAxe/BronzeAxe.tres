@@ -1,18 +1,19 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://Items/BronzeAxe/Icon.png" type="Texture" id=1]
+[ext_resource path="res://Items/Tool.gd" type="Script" id=1]
 [ext_resource path="res://Vox/bronze_axe.vox" type="ArrayMesh" id=2]
-[ext_resource path="res://Items/Item.gd" type="Script" id=3]
+[ext_resource path="res://Items/BronzeAxe/Icon.png" type="Texture" id=3]
 
 [resource]
-script = ExtResource( 3 )
-item_id = 0
+script = ExtResource( 1 )
+item_id = 2
 title = "Bronze Axe"
-description = "The weakest axx in the game."
+description = "A flimsy axe"
 mesh = ExtResource( 2 )
-icon = ExtResource( 1 )
+icon = ExtResource( 3 )
 max_stack_size = 1
 drop_size = 0.4
 held_size = 0.3
 weight = 1.0
-managers = [  ]
+durability = 10
+cooldown = 1.0

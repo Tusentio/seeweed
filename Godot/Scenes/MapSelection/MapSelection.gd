@@ -18,3 +18,7 @@ func _physics_process(_delta):
 		null, result.collider.global_transform.origin, 1 / speed, 
 		Tween.TRANS_LINEAR, Tween.EASE_IN);
 		$Tween.start();
+
+# Get cursor position
+func pos() -> Vector3:
+	return global_transform.origin;

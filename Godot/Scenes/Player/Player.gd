@@ -17,12 +17,21 @@ var selected_slot: int = 0;
 
 var item_drop = load("res://Scenes/ItemDrop/ItemDrop.tscn");
 
+# Map selection
+onready var map_selection = get_tree().get_nodes_in_group("Cursor")[0];
+
 func select_slot(slot):
 	selected_slot = int(abs(inventory.slots + slot)) % inventory.slots;
 	emit_signal("slot_change", selected_slot);
 
 func _input(_event):
 	var prev_slot = selected_slot;
+	
+	# Use held item
+	if Input.is_action_just_pressed("use_item"):
+		var item_to_use = inventory.get_item_at(selected_slot);
+		if item_to_use:
+			item_to_use.on_item_use(self, map_selection.pos(), selected_slot);
 	
 	# Drop item
 	if Input.is_action_just_pressed("drop_held_item"):
