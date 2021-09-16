@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://Items/Tool.gd" type="Script" id=1]
+[ext_resource path="res://Items/Axe.gd" type="Script" id=1]
 [ext_resource path="res://Vox/bronze_axe.vox" type="ArrayMesh" id=2]
 [ext_resource path="res://Items/BronzeAxe/Icon.png" type="Texture" id=3]
 
@@ -15,5 +15,4 @@ max_stack_size = 1
 drop_size = 0.4
 held_size = 0.3
 weight = 1.0
-durability = 10
 cooldown = 1.0

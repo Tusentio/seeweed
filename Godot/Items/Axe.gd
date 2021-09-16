@@ -1,6 +1,5 @@
 extends Item
 
-export (int) var durability := 10;
 export (float) var cooldown := 1;
 
 var current_cooldown = 1;
