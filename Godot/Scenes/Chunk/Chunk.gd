@@ -39,10 +39,15 @@ func load_data(data: ChunkData):
 	for block in data.blocks:
 		blocks.append(load(block));
 	
-	var i: int = 0;
+	var air_counter := 0;
+	var i := 0;
 	for x in range(0, map.map_width):
 		for y in range(0, map.map_height):
 			for z in range(0, map.map_length):
+				if air_counter > 0:
+					air_counter -= 1;
+					continue;
+				
 				var index = data.tiles[i];
 				if not index:
 					i += 1;
@@ -51,8 +56,13 @@ func load_data(data: ChunkData):
 				var block_index := 0;
 				var metadata_index := 0;
 				if index is Array:
-					block_index = index[0];
-					metadata_index = index[1] + 1;
+					if index[0] == 0:
+						air_counter = index[1];
+						i += 1;
+						continue;
+					else:
+						block_index = index[0];
+						metadata_index = index[1] + 1;
 				else:
 					block_index = index;
 				
@@ -82,6 +92,18 @@ func get_data():
 					else:
 						data.tiles.append(block_index);
 				else:
-					data.tiles.append(0);
+					# Save single "air blocks" as 0 and consecutive
+					# air blocks as [ 0, number_of_air_blocks - 1 ]
+					if data.tiles.size() > 0:
+						var back = data.tiles.back();
+						if back is Array and back[0] == 0:
+							back[1] += 1;
+						elif back == 0:
+							data.tiles.pop_back();
+							data.tiles.append([0, 1]);
+						else:
+							data.tiles.append(0);
+					else:
+						data.tiles.append(0);
 	
 	return data;
