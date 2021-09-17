@@ -22,17 +22,16 @@ func _ready():
 
 func load_chunk(pos: Vector3):
 	var id := vec_to_id(pos)
-	var old_chunk := get_chunk(id)
-	if old_chunk:
-		return
 	
-	if try_reload_cached_chunk(id):
-		return
-	
-	var new_chunk = chunk.instance().init(id)
-	_map[id] = new_chunk
-	add_child(new_chunk)
-	new_chunk.transform.origin = pos.floor() * Chunk.SIDE_LENGTH
+	if has_chunk(id):
+		pass
+	elif try_reload_cached_chunk(id):
+		pass
+	else:
+		var new_chunk = chunk.instance().init(id)
+		_map[id] = new_chunk
+		add_child(new_chunk)
+		new_chunk.transform.origin = pos.floor() * Chunk.SIDE_LENGTH
 
 func queue_unload_chunk(id):
 	var chunk := get_chunk(id)
@@ -42,7 +41,10 @@ func queue_unload_chunk(id):
 		remove_child(chunk)
 
 func get_chunk(id: String) -> Chunk:
-	return _map[id] if _map.has(id) and is_instance_valid(_map[id]) else null
+	return _map[id] if has_chunk(id) else null
+
+func has_chunk(id: String) -> bool:
+	return _map.has(id) and is_instance_valid(_map[id])
 
 func try_reload_cached_chunk(id: String) -> bool:
 	if _cache.has(id) and is_instance_valid(_cache[id]):
