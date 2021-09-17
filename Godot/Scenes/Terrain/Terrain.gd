@@ -99,4 +99,3 @@ func _on_UnloadTimer_timeout():
 		var id = _cache.keys()[0]
 		_cache[id].queue_free()
 		_cache.erase(id)
-		print("free ", id)
