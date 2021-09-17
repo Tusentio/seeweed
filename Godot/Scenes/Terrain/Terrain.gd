@@ -73,7 +73,10 @@ func _on_LoadArea_body_exited(body):
 	var new_position: Vector3 = local_to_chunk(to_local(body.global_transform.origin))
 	$LoadOrigin.transform.origin = chunk_to_local(new_position)
 	
-	var loaded_chunks := {}
+	# Save chunks that are still to be loaded in this dictionary
+	var keep_loaded := {}
+	
+	# Keep chunks around the new player position
 	for x in 1 + view_distance * 2:
 		for y in height:
 			for z in 1 + view_distance * 2:
@@ -88,13 +91,15 @@ func _on_LoadArea_body_exited(body):
 				
 				if chunk:
 					_map.erase(id)
-					loaded_chunks[id] = chunk
+					keep_loaded[id] = chunk
 	
+	# Queue unload remaining chunks
 	for id in _map.keys():
 		queue_unload_chunk(id)
 	
-	for id in loaded_chunks.keys():
-		_map[id] = loaded_chunks[id]
+	# Copy back the kept chunks
+	for id in keep_loaded.keys():
+		_map[id] = keep_loaded[id]
 
 func _on_UnloadTimer_timeout():
 	if _cache.size() > max_cache_size:
