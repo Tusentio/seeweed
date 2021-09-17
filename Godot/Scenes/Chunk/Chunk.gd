@@ -1,18 +1,21 @@
 extends Spatial
+class_name Chunk
 
 onready var map = $NodeMap;
 
 const grass_block = preload("res://Blocks/Grass/Grass.tres");
 const tree_stump_block = preload("res://Blocks/TreeStump/TreeStump.tres");
 
-var id := 0;
+const SIDE_LENGTH := 16
 
-func init(id: int):
+var id : String;
+
+func init(id: String):
 	self.id = id;
 	return self;
 
 func _ready():
-	var path := "user://" + String(id) + ".tres";
+	var path := "user://" + id + ".tres";
 	if File.new().file_exists(path):
 		var data: ChunkData = ResourceLoader.load(path, "", true);
 		load_data(data);
@@ -26,7 +29,7 @@ func generate():
 			if y == 0:
 				for z in map.map_length:
 					map.add(Tile.create(grass_block), Vector3(x, y, z));
-			else:
+			elif y == 1:
 				for z in map.map_length:
 					if x % 2 and z % 2 and randf() > 0.9:
 						map.add(Tile.create(tree_stump_block), Vector3(x, y, z));
