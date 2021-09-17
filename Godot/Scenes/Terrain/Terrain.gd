@@ -4,7 +4,7 @@ onready var chunk := preload("res://Scenes/Chunk/Chunk.tscn")
 
 export (int) var view_distance := 1
 export (int) var height := 1
-export (int) var max_cache_size := 9
+export (int) var max_cache_size := 18
 
 const _map := {}
 const _cache := {}
@@ -96,6 +96,6 @@ func _on_LoadArea_body_exited(body):
 
 func _on_UnloadTimer_timeout():
 	if _cache.size() > max_cache_size:
-		var id = _cache.keys()[0]
-		_cache[id].queue_free()
-		_cache.erase(id)
+		for id in _cache.keys().slice(0, _cache.size() - max_cache_size - 1):
+			_cache[id].queue_free()
+			_cache.erase(id)
