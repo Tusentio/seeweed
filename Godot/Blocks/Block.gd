@@ -5,3 +5,6 @@ export (Mesh) var mesh: Mesh;
 
 func on_tile_created(tile: Tile):
 	pass;
+	
+func on_tile_destroy():
+	pass;

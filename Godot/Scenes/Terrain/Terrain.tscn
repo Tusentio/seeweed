@@ -5,7 +5,9 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 8, 128, 8 )
 
-[node name="Terrain" type="Spatial"]
+[node name="Terrain" type="Spatial" groups=[
+"Terrain",
+]]
 script = ExtResource( 2 )
 
 [node name="LoadOrigin" type="Spatial" parent="."]
