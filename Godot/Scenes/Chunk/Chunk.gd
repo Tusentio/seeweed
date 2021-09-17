@@ -24,12 +24,13 @@ func _ready():
 		ResourceSaver.save(path, get_data());
 
 func generate():
-	for x in map.map_width:
-		for y in map.map_height:
-			if y == 0:
+	for y in map.map_height:
+		if y == 0:
+			for x in map.map_width:
 				for z in map.map_length:
 					map.add(Tile.create(grass_block), Vector3(x, y, z));
-			elif y == 1:
+		elif y == 1:
+			for x in map.map_width:
 				for z in map.map_length:
 					if x % 2 and z % 2 and randf() > 0.9:
 						map.add(Tile.create(tree_stump_block), Vector3(x, y, z));
@@ -41,8 +42,8 @@ func load_data(data: ChunkData):
 	
 	var air_counter := 0;
 	var i := 0;
-	for x in range(0, map.map_width):
-		for y in range(0, map.map_height):
+	for y in range(0, map.map_height):
+		for x in range(0, map.map_width):
 			for z in range(0, map.map_length):
 				if air_counter > 0:
 					air_counter -= 1;

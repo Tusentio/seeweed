@@ -14,12 +14,11 @@ var grid : Array = [];
 
 # Fill grid array
 func _ready() -> void:
-	for x in map_width:
+	for y in map_height:
 		grid.append([]);
-		for y in map_height:
-			grid[x].append([]);
-			for z in map_length:
-				grid[x][y].append(null);
+		for x in map_width:
+			grid[y].append([]);
+			grid[y][x].resize(map_length);
 
 	# Center map
 	translate(-Vector3(
@@ -30,11 +29,12 @@ func _ready() -> void:
 
 # Get node at coordinates
 func node_at(pos: Vector3) -> Node:
-	return grid[pos.x][pos.y][pos.z];
+	return grid[pos.y][pos.x][pos.z];
 
 # Add node to NodeMap
 func add(node: Node, pos: Vector3) -> void:
-	grid[int(pos.x)][int(pos.y)][int(pos.z)] = node;
+	pos = pos.floor();
+	grid[pos.y][pos.x][pos.z] = node;
 	
 	if is_instance_valid(node):
 		if not is_a_parent_of(node):
