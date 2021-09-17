@@ -7,4 +7,4 @@
 script = ExtResource( 2 )
 
 [node name="NodeMap" parent="." instance=ExtResource( 1 )]
-map_height = 2
+map_height = 16
