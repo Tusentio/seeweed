@@ -21,4 +21,4 @@ func _physics_process(_delta):
 
 # Get cursor position
 func pos() -> Vector3:
-	return global_transform.origin;
+	return global_transform.origin.round();
