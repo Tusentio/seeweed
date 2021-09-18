@@ -9,6 +9,7 @@ const PLANE_SIZE := SIDE_LENGTH * SIDE_LENGTH;
 const VOLUME_SIZE := SIDE_LENGTH * SIDE_LENGTH * SIDE_LENGTH;
 
 var id : String;
+var path : String;
 var world_seed : int;
 var tiles := [];
 
@@ -21,14 +22,21 @@ func init(id: String, world_seed: int):
 	return self;
 
 func _ready():
-	var path := "user://" + id + ".res";
+	path = "user://" + id + ".res";
+	$SaveTimer.wait_time += randf();
+	
 	if File.new().file_exists(path):
-		var data: ChunkData = ResourceLoader.load(path, "", true);
-		load_data(data);
+		load_data(ResourceLoader.load(path, "", true));
 	else:
 		generate();
-		ResourceSaver.save(path, get_data(),
-				ResourceSaver.FLAG_COMPRESS);
+		save();
+
+func _on_SaveTimer_timeout():
+	if is_inside_tree():
+		save();
+
+func _exit_tree():
+	save();
 
 func set_tile(index: int, tile: Tile):
 	delete_tile(index);
@@ -127,6 +135,11 @@ func get_data():
 			else:
 				data.tiles.append(0);
 	return data;
+
+func save():
+	ResourceSaver.save(path, get_data(),
+			ResourceSaver.FLAG_COMPRESS);
+	print("Saved [", id, "]")
 
 static func x_of_index(index: int) -> int:
 	return int((index % PLANE_SIZE) / SIDE_LENGTH);
