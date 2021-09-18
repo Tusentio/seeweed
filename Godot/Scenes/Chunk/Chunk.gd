@@ -139,7 +139,6 @@ func get_data():
 func save():
 	ResourceSaver.save(path, get_data(),
 			ResourceSaver.FLAG_COMPRESS);
-	print("Saved [", id, "]")
 
 static func x_of_index(index: int) -> int:
 	return int((index % PLANE_SIZE) / SIDE_LENGTH);
