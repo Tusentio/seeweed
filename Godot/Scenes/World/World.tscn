@@ -66,3 +66,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45485, 3.33594, 2.71492 )
 item = ExtResource( 9 )
 
 [node name="Terrain" parent="." instance=ExtResource( 1 )]
+user_seed = 1

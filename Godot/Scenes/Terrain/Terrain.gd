@@ -5,14 +5,16 @@ onready var chunk := preload("res://Scenes/Chunk/Chunk.tscn")
 export (int) var view_distance := 1
 export (int) var height := 1
 export (int) var max_cache_size := 18
+export (int) var user_seed : int;
 
-const _map := {}
-const _cache := {}
+var world_seed : int;
+
+var _map := {}
+var _cache := {}
 
 func _ready():
-	seed(0)
-	var world_seed := randi()
-	seed(world_seed)
+	randomize();
+	world_seed = randi() if not user_seed else user_seed;
 	print("World Seed: ", world_seed)
 	
 	for x in 1 + view_distance * 2:
@@ -28,7 +30,7 @@ func load_chunk(pos: Vector3):
 	elif try_reload_cached_chunk(id):
 		pass
 	else:
-		var new_chunk = chunk.instance().init(id)
+		var new_chunk = chunk.instance().init(id, world_seed)
 		_map[id] = new_chunk
 		add_child(new_chunk)
 		new_chunk.transform.origin = pos.floor() * Chunk.SIDE_LENGTH
