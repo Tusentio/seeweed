@@ -21,13 +21,14 @@ func init(id: String, world_seed: int):
 	return self;
 
 func _ready():
-	var path := "user://" + id + ".tres";
+	var path := "user://" + id + ".res";
 	if File.new().file_exists(path):
 		var data: ChunkData = ResourceLoader.load(path, "", true);
 		load_data(data);
 	else:
 		generate();
-		ResourceSaver.save(path, get_data());
+		ResourceSaver.save(path, get_data(),
+				ResourceSaver.FLAG_COMPRESS);
 
 func set_tile(index: int, tile: Tile):
 	delete_tile(index);
