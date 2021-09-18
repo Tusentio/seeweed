@@ -32,13 +32,15 @@ func _ready():
 
 func set_tile(index: int, tile: Tile):
 	delete_tile(index);
-	add_child(tile);
-	tile.transform.origin = index_to_vec(index);
-	tiles[index] = tile;
+	if tile and is_instance_valid(tile):
+		add_child(tile);
+		tile.transform.origin = index_to_vec(index);
+		tiles[index] = tile;
 
 func delete_tile(index: int):
 	if not is_air(index):
 		tiles[index].queue_free();
+		tiles[index] = null;
 
 func get_tile(index: int) -> Tile:
 	return tiles[index] if not is_air(index) else null;
