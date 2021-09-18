@@ -22,6 +22,35 @@ func _ready():
 			for z in 1 + view_distance * 2:
 				load_chunk(Vector3(x - view_distance, y, z - view_distance))
 
+func get_tile_at(pos: Vector3) -> Tile:
+	var chunk := get_chunk(vec_to_id(local_to_chunk(pos)))
+	if chunk:
+		var tile_pos := pos - chunk.transform.origin
+		var tile_index := Chunk.vec_to_index(tile_pos)
+		return chunk.get_tile(tile_index)
+	else:
+		return null
+
+func set_tile_at(pos: Vector3, tile: Tile) -> bool:
+	var chunk := get_chunk(vec_to_id(local_to_chunk(pos)))
+	if chunk:
+		var tile_pos := pos - chunk.transform.origin
+		var tile_index := Chunk.vec_to_index(tile_pos)
+		chunk.set_tile(tile_index, tile)
+		return true
+	else:
+		return false
+
+func delete_tile_at(pos: Vector3) -> bool:
+	var chunk := get_chunk(vec_to_id(local_to_chunk(pos)))
+	if chunk:
+		var tile_pos := pos - chunk.transform.origin
+		var tile_index := Chunk.vec_to_index(tile_pos)
+		chunk.delete_tile(tile_index)
+		return true
+	else:
+		return false
+
 func load_chunk(pos: Vector3):
 	var id := vec_to_id(pos)
 	
