@@ -78,14 +78,14 @@ func has_chunk(id: String) -> bool:
 	return _map.has(id) and is_instance_valid(_map[id])
 
 func try_reload_cached_chunk(id: String) -> bool:
-	if _cache.has(id) and is_instance_valid(_cache[id]):
+	if _cache.has(id):
 		var chunk = _cache[id]
 		_cache.erase(id)
-		_map[id] = chunk
-		add_child(chunk)
-		return true
-	else:
-		return false
+		if is_instance_valid(chunk):
+			_map[id] = chunk
+			add_child(chunk)
+			return true
+	return false
 
 static func xyz_to_id(x: int, y: int, z: int) -> String:
 	return String(x) + "_" + String(y) + "_" + String(z)
