@@ -30,7 +30,7 @@ func _input(_event):
 	# Use held item
 	if Input.is_action_just_pressed("use_item"):
 		var item_to_use = inventory.get_item_at(selected_slot);
-		if item_to_use:
+		if item_to_use and map_selection.visible:
 			item_to_use.on_item_use(self, map_selection.pos(), selected_slot);
 	
 	# Drop item
