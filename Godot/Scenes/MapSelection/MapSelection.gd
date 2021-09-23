@@ -31,7 +31,7 @@ func _physics_process(_delta):
 		return;
 	
 	# Move selection box to colliding object using tween
-	if global_transform.origin != result_pos:
+	if global_transform.origin != result_pos or !visible:
 		$Animator.seek(0, true);
 		visible = true;
 		global_transform.origin = result_pos;
