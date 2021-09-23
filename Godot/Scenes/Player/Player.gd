@@ -31,7 +31,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("use_item"):
 		var item_to_use = inventory.get_item_at(selected_slot);
 		if item_to_use and map_selection.visible:
-			$ActionAnimations.reset_and_play("use");
+			$ActionAnimations.reset_and_play("use", true);
 			item_to_use.on_item_use(self, map_selection.pos(), selected_slot);
 	
 	# Drop item
