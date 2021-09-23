@@ -31,6 +31,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("use_item"):
 		var item_to_use = inventory.get_item_at(selected_slot);
 		if item_to_use and map_selection.visible:
+			$ActionAnimations.reset_and_play("use");
 			item_to_use.on_item_use(self, map_selection.pos(), selected_slot);
 	
 	# Drop item
@@ -63,9 +64,9 @@ func _physics_process(delta):
 	
 	if input_velocity.x or input_velocity.z:
 		_looking_at = input_velocity.normalized();
-		play_animation("walk");
+		$WalkAnimations.reset_and_play("walk");
 	else:
-		play_animation("idle");
+		$WalkAnimations.reset_and_play("idle");
 	
 	velocity.y -= gravity * delta;
 	

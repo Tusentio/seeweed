@@ -1,8 +1,10 @@
 extends Spatial
 
 export (float) var speed: float = 25;
-export (float) var max_distance: float = 5;
+export (float) var max_distance: float = 2;
 onready var player: Player = get_tree().get_nodes_in_group("Player")[0];
+
+const origin_offset = Vector3(0.5, 0.5, 0.5);
 
 func _physics_process(_delta):
 	# Creat ray
@@ -24,7 +26,7 @@ func _physics_process(_delta):
 	var result_pos = result.collider.global_transform.origin;
 	
 	# If object and player are too far apart
-	if result_pos.distance_to(player.global_transform.origin) > max_distance:
+	if (result_pos + origin_offset).distance_to(player.global_transform.origin) > max_distance:
 		visible = false;
 		return;
 	
