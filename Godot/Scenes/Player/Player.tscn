@@ -1,283 +1,31 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Vox/tomas_head.vox" type="ArrayMesh" id=1]
-[ext_resource path="res://Scripts/AnimationPlayer.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Character/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://Vox/tomas_arm.vox" type="ArrayMesh" id=4]
 [ext_resource path="res://Vox/tomas_leg.vox" type="ArrayMesh" id=5]
 [ext_resource path="res://Scenes/Player/HeldItem.gd" type="Script" id=8]
-[ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=9]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.35, 0.5, 0.35 )
-
-[sub_resource type="Animation" id=2]
-length = 6.0
-loop = true
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Head:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 2, 2.5, 3, 3.5, 4, 4.5 ),
-"transitions": PoolRealArray( -10, -10, -10, -10, -10, -10 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 10, 30, 0 ), Vector3( 10, 30, 0 ), Vector3( 10, -30, 0 ), Vector3( 10, -30, 0 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Head/LeftArm:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
-"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2, -2 ),
-"update": 0,
-"values": [ Vector3( -0.3, 0.2, 0 ), Vector3( -0.3, 0.225, 0 ), Vector3( -0.3, 0.2, 0 ), Vector3( -0.3, 0.225, 0 ), Vector3( -0.3, 0.2, 0 ), Vector3( -0.3, 0.225, 0 ), Vector3( -0.3, 0.2, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Head/RightArm:translation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
-"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2, -2 ),
-"update": 0,
-"values": [ Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.225, 0 ), Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.225, 0 ), Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.225, 0 ), Vector3( 0.3, 0.2, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Body/Head/RightArm:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
-"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2, -2 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 10 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 10 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 10 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Body/Head/LeftArm:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -10 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, -10 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, -10 ), Vector3( 0, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.4
-loop = true
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Head:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0.3, 0 ), Vector3( 0, 0.25, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0.25, 0 ), Vector3( 0, 0.3, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Head/LeftArm:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( -30, 0, 0 ), Vector3( 30, 0, 0 ), Vector3( 9.53674e-06, 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Head/RightArm:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 30, 0, 0 ), Vector3( -30, 0, 0 ), Vector3( -4.76837e-06, 0, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Body/LeftLeg:translation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( -0.2, 0.3, 0 ), Vector3( -0.2, 0.3, -0.1 ), Vector3( -0.2, 0.3, 0.1 ), Vector3( -0.2, 0.3, -2.98023e-08 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Body/RightLeg:translation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0.2, 0.3, 0 ), Vector3( 0.2, 0.3, 0.1 ), Vector3( 0.2, 0.3, -0.1 ), Vector3( 0.2, 0.3, -1.49012e-08 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Body/LeftLeg:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 25, 0, 0 ), Vector3( -25, 0, 0 ), Vector3( -4.76837e-06, 0, 0 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Body/RightLeg:rotation_degrees")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( -25, 0, 0 ), Vector3( 25, 0, 0 ), Vector3( 0, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "use"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Head/RightArm:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0.3, 0.2, 0 ), Vector3( 0.3, 0.2, -0.1 ), Vector3( 0.3, 0.2, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Head/RightArm:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 45, -45, 0 ), Vector3( 45, 0, 0 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Head/RightArm:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 1, 1, 1 ), Vector3( 1.25, 1.25, 1.25 ), Vector3( 1, 1, 1 ) ]
-}
-
-[node name="Player" type="KinematicBody" groups=[
+[node name="Character" groups=[
 "Player",
-]]
-collision_layer = 2
+] instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-max_health = 100
-health = 100
 
-[node name="Body" type="Spatial" parent="."]
-
-[node name="Head" type="Spatial" parent="Body"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
-
-[node name="Mesh" type="MeshInstance" parent="Body/Head"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, -0.0203973, 0 )
-material_override = ExtResource( 9 )
+[node name="Mesh" parent="Body/Head" index="0"]
 mesh = ExtResource( 1 )
-material/0 = null
 
-[node name="RightArm" type="Spatial" parent="Body/Head"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.2, 0 )
-
-[node name="Mesh" type="MeshInstance" parent="Body/Head/RightArm"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0.1, -0.2, 0 )
-material_override = ExtResource( 9 )
+[node name="Mesh" parent="Body/Head/RightArm" index="0"]
 mesh = ExtResource( 4 )
-material/0 = null
 
-[node name="ItemPivot" type="Spatial" parent="Body/Head/RightArm"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.1, -0.2, -0.1 )
-
-[node name="ItemMesh" type="MeshInstance" parent="Body/Head/RightArm/ItemPivot"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.45058e-09, 0, 0 )
-material_override = ExtResource( 9 )
+[node name="ItemMesh" parent="Body/Head/RightArm/ItemPivot" index="0"]
 script = ExtResource( 8 )
 
-[node name="LeftArm" type="Spatial" parent="Body/Head"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, 0 )
-
-[node name="Mesh" type="MeshInstance" parent="Body/Head/LeftArm"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.1, -0.2, 0 )
-material_override = ExtResource( 9 )
+[node name="Mesh" parent="Body/Head/LeftArm" index="0"]
 mesh = ExtResource( 4 )
-material/0 = null
 
-[node name="RightLeg" type="Spatial" parent="Body"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.3, 0 )
-
-[node name="Mesh" type="MeshInstance" parent="Body/RightLeg"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, -0.3, 0 )
-material_override = ExtResource( 9 )
+[node name="Mesh" parent="Body/RightLeg" index="0"]
 mesh = ExtResource( 5 )
-material/0 = null
 
-[node name="LeftLeg" type="Spatial" parent="Body"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.3, 0 )
-
-[node name="Mesh" type="MeshInstance" parent="Body/LeftLeg"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, -0.3, 0 )
-material_override = ExtResource( 9 )
+[node name="Mesh" parent="Body/LeftLeg" index="0"]
 mesh = ExtResource( 5 )
-material/0 = null
-
-[node name="Collider" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
-shape = SubResource( 1 )
-
-[node name="WalkAnimations" type="AnimationPlayer" parent="."]
-autoplay = "idle"
-anims/idle = SubResource( 2 )
-anims/walk = SubResource( 4 )
-script = ExtResource( 2 )
-
-[node name="ActionAnimations" type="AnimationPlayer" parent="."]
-anims/use = SubResource( 5 )
-script = ExtResource( 2 )

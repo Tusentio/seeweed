@@ -1,4 +1,4 @@
-extends "res://Scripts/Character.gd"
+extends "res://Scenes/Character/Character.gd"
 class_name Player
 
 signal slot_change;

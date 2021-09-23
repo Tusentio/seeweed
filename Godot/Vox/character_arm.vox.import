@@ -1,0 +1,15 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/character_arm.vox-6a96116563d21dc1fc981fb1362b432e.mesh"
+
+[deps]
+
+source_file="res://Vox/character_arm.vox"
+dest_files=[ "res://.import/character_arm.vox-6a96116563d21dc1fc981fb1362b432e.mesh" ]
+
+[params]
+
+mesh_mode=1
+center=2
