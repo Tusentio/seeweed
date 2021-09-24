@@ -12,4 +12,7 @@ dest_files=[ "res://.import/Trädkrona1.vox-11b9c4dc4ed27276e110bc5cb2b2714b.mes
 [params]
 
 mesh_mode=1
-center=2
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1

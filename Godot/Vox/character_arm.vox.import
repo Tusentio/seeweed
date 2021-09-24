@@ -12,4 +12,7 @@ dest_files=[ "res://.import/character_arm.vox-6a96116563d21dc1fc981fb1362b432e.m
 [params]
 
 mesh_mode=1
-center=2
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1

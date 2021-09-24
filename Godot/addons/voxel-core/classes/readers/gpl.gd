@@ -4,7 +4,7 @@ extends Reference
 
 
 
-# Public Methods
+## Public Methods
 # Reads GPL file, and returns voxel palette
 static func read(gpl_file : File) -> Dictionary:
 	var result := {
@@ -40,8 +40,8 @@ static func read(gpl_file : File) -> Dictionary:
 static func read_file(gpl_path : String) -> Dictionary:
 	var result := { "error": OK }
 	var file := File.new()
-	var error = file.open(gpl_path, File.READ)
-	if error == OK:
+	result["error"] = file.open(gpl_path, File.READ)
+	if result["error"] == OK:
 		result = read(file)
 	if file.is_open():
 		file.close()

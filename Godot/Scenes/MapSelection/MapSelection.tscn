@@ -3,11 +3,11 @@
 [ext_resource path="res://Vox/selection.vox" type="ArrayMesh" id=1]
 [ext_resource path="res://Scenes/MapSelection/MapSelection.gd" type="Script" id=2]
 
-[sub_resource type="VisualShaderNodeColorUniform" id=3]
+[sub_resource type="VisualShaderNodeColorUniform" id=1]
 output_port_for_preview = 1
 uniform_name = "Alpha"
 
-[sub_resource type="VisualShader" id=4]
+[sub_resource type="VisualShader" id=2]
 code = "shader_type spatial;
 render_mode specular_schlick_ggx;
 
@@ -36,15 +36,15 @@ void light() {
 }
 "
 nodes/fragment/0/position = Vector2( 720, 40 )
-nodes/fragment/3/node = SubResource( 3 )
+nodes/fragment/3/node = SubResource( 1 )
 nodes/fragment/3/position = Vector2( 520, 60 )
 nodes/fragment/connections = PoolIntArray( 3, 1, 0, 1 )
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 shader_param/Alpha = Color( 1, 1, 1, 0 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -81,13 +81,13 @@ script = ExtResource( 2 )
 transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.5, 0.5, 0.5 )
 
 [node name="Mesh" type="MeshInstance" parent="Origin"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.5, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0 )
 cast_shadow = 0
 mesh = ExtResource( 1 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 3 )
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 autoplay = "Selection"
-anims/Selection = SubResource( 2 )
+anims/Selection = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]

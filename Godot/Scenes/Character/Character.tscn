@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Vox/character_leg.vox" type="ArrayMesh" id=1]
 [ext_resource path="res://Scenes/Character/Character.gd" type="Script" id=2]
 [ext_resource path="res://Vox/character_head.vox" type="ArrayMesh" id=3]
-[ext_resource path="res://Materials/VertexAlbedoMaterial/VertexAlbedoMaterial.tres" type="Material" id=5]
 [ext_resource path="res://Scripts/AnimationPlayer.gd" type="Script" id=6]
 [ext_resource path="res://Vox/character_arm.vox" type="ArrayMesh" id=7]
 
@@ -214,8 +213,7 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/Head"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, -0.0203973, 0 )
-material_override = ExtResource( 5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.0203973, 0 )
 mesh = ExtResource( 3 )
 material/0 = null
 
@@ -223,8 +221,7 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.2, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/Head/RightArm"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0.1, -0.2, 0 )
-material_override = ExtResource( 5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.1, -0.2, 0 )
 mesh = ExtResource( 7 )
 material/0 = null
 
@@ -233,14 +230,12 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.1, -0
 
 [node name="ItemMesh" type="MeshInstance" parent="Body/Head/RightArm/ItemPivot"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.45058e-09, 0, 0 )
-material_override = ExtResource( 5 )
 
 [node name="LeftArm" type="Spatial" parent="Body/Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/Head/LeftArm"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.1, -0.2, 0 )
-material_override = ExtResource( 5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.1, -0.2, 0 )
 mesh = ExtResource( 7 )
 material/0 = null
 
@@ -248,8 +243,7 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.3, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/RightLeg"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, -0.3, 0 )
-material_override = ExtResource( 5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.3, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 
@@ -257,8 +251,7 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.3, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Body/LeftLeg"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, -0.3, 0 )
-material_override = ExtResource( 5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.3, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 

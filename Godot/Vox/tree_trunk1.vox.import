@@ -12,4 +12,7 @@ dest_files=[ "res://.import/tree_trunk1.vox-4d7865e4dde79366502b4f091bfea804.mes
 [params]
 
 mesh_mode=1
-center=2
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1

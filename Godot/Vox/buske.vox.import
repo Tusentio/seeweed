@@ -12,4 +12,7 @@ dest_files=[ "res://.import/buske.vox-ccdcf0b1bc23fee1810c767dfbd5ec7f.mesh" ]
 [params]
 
 mesh_mode=1
-center=2
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1

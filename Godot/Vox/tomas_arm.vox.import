@@ -12,4 +12,7 @@ dest_files=[ "res://.import/tomas_arm.vox-befbab4d92d919f9dd27c8c2ab645b92.mesh"
 [params]
 
 mesh_mode=1
-center=2
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1

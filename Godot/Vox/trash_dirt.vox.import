@@ -12,4 +12,7 @@ dest_files=[ "res://.import/trash_dirt.vox-ba3462b17b202e247a348c8bfd82aaa1.mesh
 [params]
 
 mesh_mode=1
-center=2
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1
