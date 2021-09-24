@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dag85_pissranna.ogg-be3083c87d840bf4675e2c1dbd77fa97.oggstr"
+
+[deps]
+
+source_file="res://Music/dag85_pissranna.ogg"
+dest_files=[ "res://.import/dag85_pissranna.ogg-be3083c87d840bf4675e2c1dbd77fa97.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
