@@ -7,7 +7,7 @@ const TREE_STUMP_BLOCK = preload("res://Blocks/TreeStump/TreeStump.tres");
 const SIDE_LENGTH := 16;
 const PLANE_SIZE := SIDE_LENGTH * SIDE_LENGTH;
 const VOLUME_SIZE := SIDE_LENGTH * SIDE_LENGTH * SIDE_LENGTH;
-const USE_THREADS := false; # NOTE: Unstable!
+const USE_THREADS := true;
 
 var id : String;
 var path : String;
@@ -30,8 +30,6 @@ func init(id: String, world_seed: int):
 	return self;
 
 func _ready():
-	$SaveTimer.wait_time += randf();
-	
 	if USE_THREADS:
 		load_thread.start(self, "_load");
 	else:
@@ -41,11 +39,9 @@ func _load(_userdata = null):
 	save_mutex.lock();
 	if File.new().file_exists(path):
 		load_data(ResourceLoader.load(path, "", true));
-		save_mutex.unlock();
 	else:
 		generate();
-		save_mutex.unlock();
-		save();
+	save_mutex.unlock();
 
 func _on_SaveTimer_timeout():
 	if is_inside_tree():
