@@ -20,8 +20,4 @@ collision_mask = 2
 [node name="CollisionShape" type="CollisionShape" parent="LoadOrigin/LoadArea"]
 shape = SubResource( 1 )
 
-[node name="UnloadTimer" type="Timer" parent="."]
-autostart = true
-
 [connection signal="body_exited" from="LoadOrigin/LoadArea" to="." method="_on_LoadArea_body_exited"]
-[connection signal="timeout" from="UnloadTimer" to="." method="_on_UnloadTimer_timeout"]
