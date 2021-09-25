@@ -54,7 +54,8 @@ func _on_MergeArea_body_entered(body):
 # When collect animations are finished
 func _on_Tween_tween_completed(_object, _key):
 	player.inventory.add(item, size);
-	$Content.queue_free();
+	if is_instance_valid($Content):
+		$Content.queue_free();
 
 # Wait for collect sound to end before queue-freeing
 func _on_Collect_finished():
