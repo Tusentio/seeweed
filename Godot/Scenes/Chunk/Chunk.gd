@@ -11,6 +11,7 @@ const VOLUME_SIZE := SIDE_LENGTH * SIDE_LENGTH * SIDE_LENGTH;
 var id : String;
 var path : String;
 var chunk_seed : int;
+var terrain: Object;
 var random := RandomNumberGenerator.new();
 
 var tiles := [];
@@ -19,10 +20,11 @@ onready var tile_map := $GridMap;
 func _init():
 	tiles.resize(VOLUME_SIZE);
 
-func init(id: String, world_seed: int):
+func init(id: String, terrain: Object):
 	self.id = id;
-	chunk_seed = world_seed ^ id.hash();
+	chunk_seed = terrain.world_seed ^ id.hash();
 	path = "user://" + id + ".res";
+	self.terrain = terrain;
 	return self;
 
 func _ready():
@@ -53,8 +55,8 @@ func set_tile(index: int, tile: Dictionary, sender: Object = null):
 		tiles[index] = [block, metadata];
 	
 	if block:
-		var p = index_to_world(index);
-		block.on_create(p.x, p.y, p.z, sender);
+		var position = index_to_world(index);
+		block.on_create(position, terrain, sender);
 	
 	update_cell(index);
 
@@ -70,8 +72,8 @@ func set_metadata(index: int, metadata: Dictionary, sender: Object = null):
 		tiles[index] = [data, metadata];
 	
 	if block:
-		var pos = index_to_world(index);
-		block.on_metadata_update(pos.x, pos.y, pos.z, sender);
+		var position = index_to_world(index);
+		block.on_metadata_update(position, terrain, sender);
 
 func get_block(index: int) -> Block:
 	var data = tiles[index];
@@ -90,23 +92,24 @@ func get_metadata(index: int) -> Dictionary:
 func update_cell(index: int):
 	var item_name: String;
 	var orientation := 0;
-	var pos := index_to_world(index);
+	var position := index_to_world(index);
 	
 	var block := get_block(index);
 	if block:
 		var seeds := preseed(index, 2);
 		
 		random.seed = seeds.pop_back();
-		item_name = block.get_map_item_name(pos.x, pos.y, pos.z, random);
+		item_name = block.get_map_item_name(position, terrain, random);
 		
 		random.seed = seeds.pop_back();
-		orientation = block.get_orientation(pos.x, pos.y, pos.z, random);
+		orientation = block.get_orientation(position, terrain, random);
 	
 	if item_name:
 		var item = tile_map.mesh_library.find_item_by_name(item_name);
-		tile_map.set_cell_item(pos.x, pos.y, pos.z, item, orientation);
+		tile_map.set_cell_item(position.x, position.y, position.z, item,
+				orientation);
 	else:
-		tile_map.set_cell_item(pos.x, pos.y, pos.z, -1);
+		tile_map.set_cell_item(position.x, position.y, position.z, -1);
 
 func preseed(index: int, count: int) -> Array:
 	random.seed = chunk_seed ^ index;
@@ -118,8 +121,8 @@ func preseed(index: int, count: int) -> Array:
 func delete_tile(index: int, sender: Object = null):
 	var block = get_block(index);
 	if block:
-		var pos := index_to_world(index);
-		block.on_destroy(pos.x, pos.y, pos.z, sender);
+		var position := index_to_world(index);
+		block.on_destroy(position, terrain, sender);
 	tiles[index] = null;
 	update_cell(index);
 

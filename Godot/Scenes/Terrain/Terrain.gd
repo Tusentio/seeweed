@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var chunk := preload("res://Scenes/Chunk/Chunk.tscn")
+const CHUNK := preload("res://Scenes/Chunk/Chunk.tscn")
 
 export (int) var view_distance := 1
 export (int) var height := 1
@@ -54,7 +54,7 @@ func load_chunk(pos: Vector3):
 	if has_chunk(id):
 		pass
 	else:
-		var new_chunk = chunk.instance().init(id, world_seed)
+		var new_chunk = CHUNK.instance().init(id, self)
 		_map[id] = new_chunk
 		add_child(new_chunk)
 		new_chunk.transform.origin = pos.floor() * Chunk.SIDE_LENGTH
