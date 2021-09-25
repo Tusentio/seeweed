@@ -134,6 +134,8 @@ func delete_tile(index: int, sender: Object = null):
 	if block:
 		var pos := index_to_world(index);
 		block.on_destroy(pos.x, pos.y, pos.z, sender);
+	tiles[index] = null;
+	update_cell(index);
 
 func generate():
 	for i in VOLUME_SIZE:
