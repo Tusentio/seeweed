@@ -4,7 +4,6 @@ onready var chunk := preload("res://Scenes/Chunk/Chunk.tscn")
 
 export (int) var view_distance := 1
 export (int) var height := 1
-export (int) var max_cache_size := 18
 export (int) var user_seed : int;
 
 var world_seed : int;
