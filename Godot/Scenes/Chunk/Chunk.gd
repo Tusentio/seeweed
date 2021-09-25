@@ -1,34 +1,50 @@
 extends Spatial
 class_name Chunk
 
-const grass_block = preload("res://Blocks/Grass/Grass.tres");
-const tree_stump_block = preload("res://Blocks/TreeStump/TreeStump.tres");
+const GRASS_BLOCK = preload("res://Blocks/Grass/Grass.tres");
+const TREE_STUMP_BLOCK = preload("res://Blocks/TreeStump/TreeStump.tres");
 
 const SIDE_LENGTH := 16;
 const PLANE_SIZE := SIDE_LENGTH * SIDE_LENGTH;
 const VOLUME_SIZE := SIDE_LENGTH * SIDE_LENGTH * SIDE_LENGTH;
+const USE_THREADS := false; # NOTE: Unstable!
 
 var id : String;
 var path : String;
-var world_seed : int;
+var chunk_seed : int;
+var random := RandomNumberGenerator.new();
+
 var tiles := [];
+onready var tile_map := $GridMap;
+
+var load_thread := Thread.new();
+var save_mutex := Mutex.new();
 
 func _init():
 	tiles.resize(VOLUME_SIZE);
 
 func init(id: String, world_seed: int):
 	self.id = id;
-	self.world_seed = world_seed;
+	chunk_seed = world_seed ^ id.hash();
+	path = "user://" + id + ".res";
 	return self;
 
 func _ready():
-	path = "user://" + id + ".res";
 	$SaveTimer.wait_time += randf();
 	
+	if USE_THREADS:
+		load_thread.start(self, "_load");
+	else:
+		_load();
+
+func _load(_userdata = null):
+	save_mutex.lock();
 	if File.new().file_exists(path):
 		load_data(ResourceLoader.load(path, "", true));
+		save_mutex.unlock();
 	else:
 		generate();
+		save_mutex.unlock();
 		save();
 
 func _on_SaveTimer_timeout():
@@ -36,109 +52,138 @@ func _on_SaveTimer_timeout():
 		save();
 
 func _exit_tree():
+	if load_thread.is_active():
+		load_thread.wait_to_finish();
 	save();
 
-func set_tile(index: int, tile: Tile):
-	delete_tile(index);
-	if tile and is_instance_valid(tile):
-		add_child(tile);
-		tile.transform.origin = index_to_vec(index);
-		tiles[index] = tile;
-
-func delete_tile(index: int):
-	if not is_air(index):
-		tiles[index].queue_free();
-		tiles[index] = null;
-
-func get_tile(index: int) -> Tile:
-	return tiles[index] if not is_air(index) else null;
-
-func is_air(index: int) -> bool:
-	var tile = tiles[index];
-	if not tile:
-		return true;
-	elif not is_instance_valid(tile):
-		remove_child(tile);
-		tiles[index] = null;
-		return true;
+func set_tile(index: int, tile: Dictionary, sender: Object = null):
+	var block: Block = tile.block if tile.has("block") else null;
+	if block and not block is Block:
+		block = null;
+		
+	var metadata = tile.metadata if tile.has("metadata") else null;
+	if not metadata or not metadata is Dictionary or metadata.empty():
+		tiles[index] = block;
 	else:
-		return false;
+		tiles[index] = [block, metadata];
+	
+	if block:
+		var p = index_to_world(index);
+		block.on_create(p.x, p.y, p.z, sender);
+	
+	update_cell(index);
+
+func set_tile_deferred(index: int, tile: Dictionary, sender: Object = null):
+	call_deferred("set_tile", index, tile, sender);
+
+func set_metadata(index: int, metadata: Dictionary, sender: Object = null):
+	var block: Block;
+	
+	var data = tiles[index];
+	if data is Array:
+		block = data[0];
+		data[1] = metadata.duplicate();
+	else:
+		block = data;
+		tiles[index] = [data, metadata];
+	
+	if block:
+		var pos = index_to_world(index);
+		block.on_metadata_update(pos.x, pos.y, pos.z, sender);
+
+func get_block(index: int) -> Block:
+	var data = tiles[index];
+	if data is Array:
+		return data[0];
+	else:
+		return data;
+
+func get_metadata(index: int) -> Dictionary:
+	var data = tiles[index];
+	if data is Array:
+		return data[1].duplicate();
+	else:
+		return {};
+
+func update_cell(index: int):
+	var item_name: String;
+	var orientation := 0;
+	var pos := index_to_world(index);
+	
+	var block := get_block(index);
+	if block:
+		var seeds := preseed(index, 2);
+		
+		random.seed = seeds.pop_back();
+		item_name = block.get_map_item_name(pos.x, pos.y, pos.z, random);
+		
+		random.seed = seeds.pop_back();
+		orientation = block.get_orientation(pos.x, pos.y, pos.z, random);
+	
+	if item_name:
+		var item = tile_map.mesh_library.find_item_by_name(item_name);
+		tile_map.set_cell_item(pos.x, pos.y, pos.z, item, orientation);
+	else:
+		tile_map.set_cell_item(pos.x, pos.y, pos.z, -1);
+
+func preseed(index: int, count: int) -> Array:
+	random.seed = chunk_seed ^ index;
+	var seeds := [];
+	for i in count:
+		seeds.append(random.randi());
+	return seeds;
+
+func delete_tile(index: int, sender: Object = null):
+	var block = get_block(index);
+	if block:
+		var pos := index_to_world(index);
+		block.on_destroy(pos.x, pos.y, pos.z, sender);
 
 func generate():
-	var random_seed = id.hash() ^ world_seed;
 	for i in VOLUME_SIZE:
 		var y := y_of_index(i);
+		
 		if y == 0:
-			seed(random_seed ^ i);
-			set_tile(i, Tile.create(grass_block));
+			set_tile_deferred(i, {
+				block = GRASS_BLOCK,
+			});
 		elif y == 1:
 			var x := x_of_index(i);
 			var z := z_of_index(i);
-			if x % 2 and z % 2 and randf() > 0.9:
-				seed(random_seed ^ i);
-				set_tile(i, Tile.create(tree_stump_block));
+			
+			random.seed = chunk_seed ^ i;
+			if x % 2 and z % 2 and random.randf() > 0.9:
+				set_tile_deferred(i, {
+					block = TREE_STUMP_BLOCK,
+				});
 
 func load_data(data: ChunkData):
-	var random_seed = id.hash() ^ world_seed;
-	var tile_index := -1;
-	for index in data.tiles:
-		tile_index += 1;
-		if not index:
-			continue;
+	for i in VOLUME_SIZE:
+		var tile = data.tiles[i];
 		
-		var block_index := 0;
-		var metadata_index := 0;
-		if index is Array:
-			if index[0] == 0:
-				tile_index += index[1];
-				continue;
+		if tile:
+			var block: Block = null;
+			var metadata := {};
+			
+			if tile is Array:
+				block = tile[0];
+				metadata = tile[1];
 			else:
-				block_index = index[0];
-				metadata_index = index[1] + 1;
-		else:
-			block_index = index;
-		
-		var block = data.blocks[block_index - 1];
-		var metadata = data.metadata[metadata_index - 1] if metadata_index else {};
-		
-		seed(random_seed ^ tile_index);
-		set_tile(tile_index, Tile.create(block, metadata));
+				block = tile;
+			
+			set_tile_deferred(i, {
+				block = block,
+				metadata = metadata,
+			});
 	return self;
 
-func get_data():
-	var data = ChunkData.new();
-	for i in VOLUME_SIZE:
-		var tile := get_tile(i);
-		if tile and tile.block:
-			var block_index = data.blocks.find(tile.block) + 1;
-			if not block_index:
-				data.blocks.append(tile.block);
-				block_index = data.blocks.size();
-			
-			if tile.metadata.size():
-				data.tiles.append([block_index, data.metadata.size()]);
-				data.metadata.append(tile.metadata);
-			else:
-				data.tiles.append(block_index);
-		else:
-			# Save single "air blocks" as 0 and consecutive
-			# air blocks as [ 0, number_of_air_blocks - 1 ]
-			if data.tiles.size() > 0:
-				var back = data.tiles.back();
-				if back is Array and back[0] == 0:
-					back[1] += 1;
-				elif back == 0:
-					data.tiles.pop_back();
-					data.tiles.append([0, 1]);
-				else:
-					data.tiles.append(0);
-			else:
-				data.tiles.append(0);
-	return data;
-
 func save():
-	ResourceSaver.save(path, get_data(),
+	save_mutex.lock();
+	var chunk_data = ChunkData.new();
+	chunk_data.tiles = tiles.duplicate();
+	ResourceSaver.save(path, chunk_data,
 			ResourceSaver.FLAG_COMPRESS);
+	save_mutex.unlock();
 
 static func x_of_index(index: int) -> int:
 	return int((index % PLANE_SIZE) / SIDE_LENGTH);
@@ -159,4 +204,11 @@ static func vec_to_index(v: Vector3) -> int:
 static func index_to_vec(index: int) -> Vector3:
 	return Vector3(x_of_index(index),
 			y_of_index(index),
+			z_of_index(index));
+
+func chunk_to_world(x: int, y: int, z: int) -> Vector3:
+	return tile_map.map_to_world(x, y, z);
+
+func index_to_world(index: int) -> Vector3:
+	return chunk_to_world(x_of_index(index), y_of_index(index),
 			z_of_index(index));

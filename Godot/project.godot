@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Chunk/ChunkData.gd"
 }, {
-"base": "Node",
-"class": "DeferredInstanciator",
-"language": "GDScript",
-"path": "res://Scripts/DeferredInstanciator.gd"
-}, {
 "base": "Reference",
 "class": "GPLReader",
 "language": "GDScript",
@@ -58,11 +53,6 @@ _global_script_classes=[ {
 "class": "Reader",
 "language": "GDScript",
 "path": "res://addons/voxel-core/classes/reader.gd"
-}, {
-"base": "StaticBody",
-"class": "Tile",
-"language": "GDScript",
-"path": "res://Scenes/Tile/Tile.gd"
 }, {
 "base": "Reference",
 "class": "VarReader",
@@ -103,14 +93,12 @@ _global_script_class_icons={
 "Block": "",
 "Chunk": "",
 "ChunkData": "",
-"DeferredInstanciator": "",
 "GPLReader": "",
 "ImageReader": "res://addons/voxel-core/assets/logos/MagicaVoxel.png",
 "Inventory": "",
 "Item": "",
 "Player": "",
 "Reader": "",
-"Tile": "",
 "VarReader": "",
 "VoxReader": "res://addons/voxel-core/assets/logos/MagicaVoxel.png",
 "Voxel": "res://addons/voxel-core/assets/classes/voxel.png",
@@ -142,9 +130,7 @@ enabled=PoolStringArray( "res://addons/voxel-core/plugin.cfg" )
 [importer_defaults]
 
 VoxelCore.MeshOfVoxels={
-"mesh_mode": 1,
 "origin_x": 1,
-"origin_y": 0,
 "origin_z": 1,
 "voxel_size": 0.1
 }

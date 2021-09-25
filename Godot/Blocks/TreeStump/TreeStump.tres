@@ -1,8 +1,7 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://Blocks/TreeStump/TreeStump.gd" type="Script" id=1]
-[ext_resource path="res://Vox/tree_base1.vox" type="ArrayMesh" id=2]
+[ext_resource path="res://Blocks/Block.gd" type="Script" id=1]
 
 [resource]
+resource_name = "TreeStump"
 script = ExtResource( 1 )
-mesh = ExtResource( 2 )

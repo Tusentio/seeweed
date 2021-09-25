@@ -8,9 +8,7 @@ export (int) var max_cache_size := 18
 export (int) var user_seed : int;
 
 var world_seed : int;
-
 var _map := {}
-var _cache := {}
 
 func _ready():
 	randomize();
@@ -22,31 +20,31 @@ func _ready():
 			for z in 1 + view_distance * 2:
 				load_chunk(Vector3(x - view_distance, y, z - view_distance))
 
-func get_tile_at(pos: Vector3) -> Tile:
+func get_block_at(pos: Vector3) -> Block:
 	var chunk := get_chunk(vec_to_id(local_to_chunk(pos)))
 	if chunk:
 		var tile_pos := pos - chunk.transform.origin
 		var tile_index := Chunk.vec_to_index(tile_pos)
-		return chunk.get_tile(tile_index)
+		return chunk.get_block(tile_index)
 	else:
 		return null
 
-func set_tile_at(pos: Vector3, tile: Tile) -> bool:
+func set_tile_at(pos: Vector3, tile: Dictionary, sender: Object = null) -> bool:
 	var chunk := get_chunk(vec_to_id(local_to_chunk(pos)))
 	if chunk:
 		var tile_pos := pos - chunk.transform.origin
 		var tile_index := Chunk.vec_to_index(tile_pos)
-		chunk.set_tile(tile_index, tile)
+		chunk.set_tile(tile_index, tile, sender)
 		return true
 	else:
 		return false
 
-func delete_tile_at(pos: Vector3) -> bool:
+func delete_tile_at(pos: Vector3, sender: Object = null) -> bool:
 	var chunk := get_chunk(vec_to_id(local_to_chunk(pos)))
 	if chunk:
 		var tile_pos := pos - chunk.transform.origin
 		var tile_index := Chunk.vec_to_index(tile_pos)
-		chunk.delete_tile(tile_index)
+		chunk.delete_tile(tile_index, sender)
 		return true
 	else:
 		return false
@@ -56,36 +54,23 @@ func load_chunk(pos: Vector3):
 	
 	if has_chunk(id):
 		pass
-	elif try_reload_cached_chunk(id):
-		pass
 	else:
 		var new_chunk = chunk.instance().init(id, world_seed)
 		_map[id] = new_chunk
 		add_child(new_chunk)
 		new_chunk.transform.origin = pos.floor() * Chunk.SIDE_LENGTH
 
-func queue_unload_chunk(id):
+func unload_chunk(id):
 	var chunk := get_chunk(id)
 	if is_instance_valid(chunk):
 		_map.erase(id)
-		_cache[id] = chunk
-		remove_child(chunk)
+		chunk.queue_free()
 
 func get_chunk(id: String) -> Chunk:
 	return _map[id] if has_chunk(id) else null
 
 func has_chunk(id: String) -> bool:
 	return _map.has(id) and is_instance_valid(_map[id])
-
-func try_reload_cached_chunk(id: String) -> bool:
-	if _cache.has(id):
-		var chunk = _cache[id]
-		_cache.erase(id)
-		if is_instance_valid(chunk):
-			_map[id] = chunk
-			add_child(chunk)
-			return true
-	return false
 
 static func xyz_to_id(x: int, y: int, z: int) -> String:
 	return String(x) + "_" + String(y) + "_" + String(z)
@@ -126,14 +111,8 @@ func _on_LoadArea_body_exited(body):
 	
 	# Queue unload remaining chunks
 	for id in _map.keys():
-		queue_unload_chunk(id)
+		unload_chunk(id)
 	
 	# Copy back the kept chunks
 	for id in keep_loaded.keys():
 		_map[id] = keep_loaded[id]
-
-func _on_UnloadTimer_timeout():
-	if _cache.size() > max_cache_size:
-		for id in _cache.keys().slice(0, _cache.size() - max_cache_size - 1):
-			_cache[id].queue_free()
-			_cache.erase(id)
