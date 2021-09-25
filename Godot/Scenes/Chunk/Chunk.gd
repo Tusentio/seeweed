@@ -7,7 +7,6 @@ const TREE_STUMP_BLOCK = preload("res://Blocks/TreeStump/TreeStump.tres");
 const SIDE_LENGTH := 16;
 const PLANE_SIZE := SIDE_LENGTH * SIDE_LENGTH;
 const VOLUME_SIZE := SIDE_LENGTH * SIDE_LENGTH * SIDE_LENGTH;
-const USE_THREADS := true;
 
 var id : String;
 var path : String;
@@ -16,9 +15,6 @@ var random := RandomNumberGenerator.new();
 
 var tiles := [];
 onready var tile_map := $GridMap;
-
-var load_thread := Thread.new();
-var save_mutex := Mutex.new();
 
 func _init():
 	tiles.resize(VOLUME_SIZE);
@@ -30,26 +26,19 @@ func init(id: String, world_seed: int):
 	return self;
 
 func _ready():
-	if USE_THREADS:
-		load_thread.start(self, "_load");
-	else:
-		_load();
+	_load();
 
 func _load(_userdata = null):
-	save_mutex.lock();
 	if File.new().file_exists(path):
 		load_data(ResourceLoader.load(path, "", true));
 	else:
 		generate();
-	save_mutex.unlock();
 
 func _on_SaveTimer_timeout():
 	if is_inside_tree():
 		save();
 
 func _exit_tree():
-	if load_thread.is_active():
-		load_thread.wait_to_finish();
 	save();
 
 func set_tile(index: int, tile: Dictionary, sender: Object = null):
@@ -68,9 +57,6 @@ func set_tile(index: int, tile: Dictionary, sender: Object = null):
 		block.on_create(p.x, p.y, p.z, sender);
 	
 	update_cell(index);
-
-func set_tile_deferred(index: int, tile: Dictionary, sender: Object = null):
-	call_deferred("set_tile", index, tile, sender);
 
 func set_metadata(index: int, metadata: Dictionary, sender: Object = null):
 	var block: Block;
@@ -142,7 +128,7 @@ func generate():
 		var y := y_of_index(i);
 		
 		if y == 0:
-			set_tile_deferred(i, {
+			set_tile(i, {
 				block = GRASS_BLOCK,
 			});
 		elif y == 1:
@@ -151,7 +137,7 @@ func generate():
 			
 			random.seed = chunk_seed ^ i;
 			if x % 2 and z % 2 and random.randf() > 0.9:
-				set_tile_deferred(i, {
+				set_tile(i, {
 					block = TREE_STUMP_BLOCK,
 				});
 
@@ -169,19 +155,17 @@ func load_data(data: ChunkData):
 			else:
 				block = tile;
 			
-			set_tile_deferred(i, {
+			set_tile(i, {
 				block = block,
 				metadata = metadata,
 			});
 	return self;
 
 func save():
-	save_mutex.lock();
 	var chunk_data = ChunkData.new();
 	chunk_data.tiles = tiles.duplicate();
 	ResourceSaver.save(path, chunk_data,
 			ResourceSaver.FLAG_COMPRESS);
-	save_mutex.unlock();
 
 static func x_of_index(index: int) -> int:
 	return int((index % PLANE_SIZE) / SIDE_LENGTH);
