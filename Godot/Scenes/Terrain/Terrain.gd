@@ -28,12 +28,32 @@ func get_block_at(pos: Vector3) -> Block:
 	else:
 		return null
 
+func get_metadata_at(pos: Vector3) -> Dictionary:
+	var chunk := get_chunk(vec_to_id(local_to_chunk(pos)))
+	if chunk:
+		var tile_pos := pos - chunk.transform.origin
+		var tile_index := Chunk.vec_to_index(tile_pos)
+		return chunk.get_metadata(tile_index)
+	else:
+		return {}
+
 func set_tile_at(pos: Vector3, tile: Dictionary, sender: Object = null) -> bool:
 	var chunk := get_chunk(vec_to_id(local_to_chunk(pos)))
 	if chunk:
 		var tile_pos := pos - chunk.transform.origin
 		var tile_index := Chunk.vec_to_index(tile_pos)
 		chunk.set_tile(tile_index, tile, sender)
+		return true
+	else:
+		return false
+
+func set_metadata_at(pos: Vector3, metadata: Dictionary,
+		sender: Object = null) -> bool:
+	var chunk := get_chunk(vec_to_id(local_to_chunk(pos)))
+	if chunk:
+		var tile_pos := pos - chunk.transform.origin
+		var tile_index := Chunk.vec_to_index(tile_pos)
+		chunk.set_metadata(tile_index, metadata, sender)
 		return true
 	else:
 		return false
