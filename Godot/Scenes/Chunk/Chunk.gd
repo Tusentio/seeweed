@@ -32,16 +32,16 @@ func _ready():
 
 func _load(_userdata = null):
 	if File.new().file_exists(path):
-		load_data(ResourceLoader.load(path, "", true));
+		load_chunk();
 	else:
 		generate();
 
 func _on_SaveTimer_timeout():
 	if is_inside_tree():
-		save();
+		save_chunk();
 
 func _exit_tree():
-	save();
+	save_chunk();
 
 func set_tile(index: int, tile: Dictionary, sender: Object = null):
 	var block: Block = tile.block if tile.has("block") else null;
@@ -144,7 +144,9 @@ func generate():
 					block = TREE_STUMP_BLOCK,
 				});
 
-func load_data(data: ChunkData):
+func load_chunk():
+	var data: ChunkData = ResourceLoader.load(path, "", true);
+	
 	for i in VOLUME_SIZE:
 		var tile = data.tiles[i];
 		
@@ -164,7 +166,7 @@ func load_data(data: ChunkData):
 			});
 	return self;
 
-func save():
+func save_chunk():
 	var chunk_data = ChunkData.new();
 	chunk_data.tiles = tiles.duplicate();
 	ResourceSaver.save(path, chunk_data,
