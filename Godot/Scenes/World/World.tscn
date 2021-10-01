@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Terrain/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/MapSelection/MapSelection.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://postprocessing.tres" type="Environment" id=7]
 [ext_resource path="res://Items/LogPile/LogPile.tres" type="Resource" id=8]
 [ext_resource path="res://Items/BronzeAxe/BronzeAxe.tres" type="Resource" id=9]
+[ext_resource path="res://Music/dag85_pissranna.ogg" type="AudioStream" id=10]
 
 [node name="World" type="Spatial"]
 
@@ -67,3 +68,7 @@ item = ExtResource( 9 )
 
 [node name="Terrain" parent="." instance=ExtResource( 1 )]
 user_seed = 1
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
