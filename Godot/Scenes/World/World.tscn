@@ -29,7 +29,7 @@ directional_shadow_max_distance = 12.0
 [node name="MapSelection" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00456348, 1.99737, -0.00284374 )
 
 [node name="CameraOrigin" type="Spatial" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 0.642787, 0.766044, 0, -0.766044, 0.642787, 0, 0.5, 0 )
