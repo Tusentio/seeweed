@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Vox/robot.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=2]
+
+[node name="Robot" instance=ExtResource( 2 )]
+
+[node name="Mesh" parent="." index="0"]
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="Collider" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699202, 0 )
