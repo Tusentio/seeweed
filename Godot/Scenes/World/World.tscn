@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Terrain/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/MapSelection/MapSelection.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Items/LogPile/LogPile.tres" type="Resource" id=8]
 [ext_resource path="res://Items/BronzeAxe/BronzeAxe.tres" type="Resource" id=9]
 [ext_resource path="res://Music/dag85_pissranna.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Scenes/Enemies/Bot/Bot.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Enemies/Robot/Robot.tscn" type="PackedScene" id=12]
 
 [node name="World" type="Spatial"]
 
@@ -72,3 +74,9 @@ user_seed = 1
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
+
+[node name="Bot" parent="." instance=ExtResource( 11 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.10078, 1, -0.931373 )
+
+[node name="Robot" parent="." instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.97838, 1, -2.44829 )

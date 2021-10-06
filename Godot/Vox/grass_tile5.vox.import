@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/grass_tile5.vox-f2d73563a697a76b33d944f8c5ae7abe.mesh"
+
+[deps]
+
+source_file="res://Vox/grass_tile5.vox"
+dest_files=[ "res://.import/grass_tile5.vox-f2d73563a697a76b33d944f8c5ae7abe.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1

@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/robot.vox-0ba180ceaaa5873fafe2f9a8d987cb0c.mesh"
+
+[deps]
+
+source_file="res://Vox/robot.vox"
+dest_files=[ "res://.import/robot.vox-0ba180ceaaa5873fafe2f9a8d987cb0c.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1
