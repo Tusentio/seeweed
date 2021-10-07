@@ -3,6 +3,7 @@ class_name Chunk
 
 const GRASS_BLOCK = preload("res://Blocks/Grass/Grass.tres");
 const TREE_STUMP_BLOCK = preload("res://Blocks/TreeStump/TreeStump.tres");
+const TREE_BLOCK = preload("res://Blocks/Tree/Tree.tres");
 
 const SIDE_LENGTH := 16;
 const PLANE_SIZE := SIDE_LENGTH * SIDE_LENGTH;
@@ -140,9 +141,15 @@ func generate():
 			
 			random.seed = chunk_seed ^ i;
 			if x % 2 and z % 2 and random.randf() > 0.9:
-				set_tile(i, {
-					block = TREE_STUMP_BLOCK,
-				});
+				match random.randi_range(0, 1):
+					0:
+						set_tile(i, {
+							block = TREE_STUMP_BLOCK,
+						});
+					1:
+						set_tile(i, {
+							block = TREE_BLOCK,
+						});
 
 func load_chunk():
 	var data: ChunkData = ResourceLoader.load(path, "", true);
