@@ -79,4 +79,4 @@ autoplay = true
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.10078, 1, -0.931373 )
 
 [node name="Robot" parent="." instance=ExtResource( 12 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.97838, 1, -2.44829 )
+transform = Transform( -0.969574, 0, -0.2448, 0, 1, 0, 0.2448, 0, -0.969574, -3.01246, 1.94053, -2.40696 )

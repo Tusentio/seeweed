@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Vox/treed2.vox" type="ArrayMesh" id=1]
 [ext_resource path="res://Vox/grass.vox" type="ArrayMesh" id=2]
+[ext_resource path="res://Vox/tree_base1.vox" type="ArrayMesh" id=3]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.4, 0.25, 0.4 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.4, 5, 0.4 )
 
 [node name="Blocks" type="Spatial"]
 
@@ -23,7 +27,7 @@ shape = SubResource( 4 )
 
 [node name="TreeStump" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-mesh = ExtResource( 1 )
+mesh = ExtResource( 3 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="TreeStump"]
@@ -31,3 +35,14 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="TreeStump/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
 shape = SubResource( 2 )
+
+[node name="Tree" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Tree"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Tree/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+shape = SubResource( 5 )
