@@ -4,6 +4,7 @@ class_name Player
 signal slot_change;
 
 # Movement vars
+export (float) var jump := 5;
 export (float) var gravity := 20.0;
 export (float) var turn_speed := 10.0;
 export (float) var item_throw_speed := 10.0;
@@ -68,7 +69,11 @@ func _physics_process(delta):
 	else:
 		$WalkAnimations.reset_and_play("idle");
 	
-	velocity.y -= gravity * delta;
+	if not is_on_floor():
+		velocity.y -= gravity * delta;
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump;
 	
 	if drift_mode:
 		# Drift Mode
