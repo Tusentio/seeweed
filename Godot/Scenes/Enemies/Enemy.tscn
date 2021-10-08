@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.3, 0.5, 0.3 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.4, 0.6, 0.4 )
 
 [node name="Enemy" type="KinematicBody"]
 
@@ -10,3 +13,9 @@ extents = Vector3( 0.3, 0.5, 0.3 )
 [node name="Collider" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.507599, 0 )
 shape = SubResource( 1 )
+
+[node name="Damage" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Damage"]
+shape = SubResource( 2 )
