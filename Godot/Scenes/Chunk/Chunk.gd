@@ -70,11 +70,13 @@ func set_metadata(index: int, metadata: Dictionary, sender: Object = null):
 		data[1] = metadata.duplicate();
 	else:
 		block = data;
-		tiles[index] = [data, metadata];
+		tiles[index] = [data, metadata.duplicate()];
 	
 	if block:
 		var position = index_to_world(index);
 		block.on_metadata_update(position, terrain, sender);
+	
+	update_cell(index);
 
 func get_block(index: int) -> Block:
 	var data = tiles[index];
