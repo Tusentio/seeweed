@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/grabage_tile5.vox-33adbf842924e2dea033aaf7b20e8117.mesh"
+
+[deps]
+
+source_file="res://Vox/grabage_tile5.vox"
+dest_files=[ "res://.import/grabage_tile5.vox-33adbf842924e2dea033aaf7b20e8117.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1
