@@ -136,7 +136,7 @@ func generate():
 		
 		if y == 0:
 			set_tile(i, {
-				block = TRASH_BLOCK,
+				block = GRASS_BLOCK,
 			});
 		elif y == 1:
 			var x := x_of_index(i);
