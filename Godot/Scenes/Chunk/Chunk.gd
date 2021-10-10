@@ -4,6 +4,7 @@ class_name Chunk
 const GRASS_BLOCK = preload("res://Blocks/Grass/Grass.tres");
 const TREE_STUMP_BLOCK = preload("res://Blocks/TreeStump/TreeStump.tres");
 const TREE_BLOCK = preload("res://Blocks/Tree/Tree.tres");
+const TRASH_BLOCK = preload("res://Blocks/Trash/Trash.tres");
 
 const SIDE_LENGTH := 16;
 const PLANE_SIZE := SIDE_LENGTH * SIDE_LENGTH;

@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/skateboard_mesh1.vox-12beb322bd1b61cec2d5e4a16d55bb13.mesh"
+
+[deps]
+
+source_file="res://Vox/skateboard_mesh1.vox"
+dest_files=[ "res://.import/skateboard_mesh1.vox-12beb322bd1b61cec2d5e4a16d55bb13.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1

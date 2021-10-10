@@ -73,7 +73,6 @@ user_seed = 1
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-autoplay = true
 
 [node name="Bot" parent="." instance=ExtResource( 11 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.10078, 1, -0.931373 )
