@@ -10,6 +10,7 @@
 [node name="Character" groups=[
 "Player",
 ] instance=ExtResource( 2 )]
+collision_layer = 3
 script = ExtResource( 3 )
 
 [node name="Mesh" parent="Body/Head" index="0"]

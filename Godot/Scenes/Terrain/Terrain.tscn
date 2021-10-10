@@ -15,7 +15,6 @@ script = ExtResource( 2 )
 [node name="LoadArea" type="Area" parent="LoadOrigin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
 collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="LoadOrigin/LoadArea"]
 shape = SubResource( 1 )
