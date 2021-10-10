@@ -207,6 +207,7 @@ jump={
 3d_physics/layer_3="solids"
 3d_physics/layer_4="selectables"
 3d_physics/layer_5="drops"
+3d_physics/layer_6="opaques"
 
 [physics]
 
