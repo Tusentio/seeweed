@@ -5,3 +5,4 @@
 [resource]
 resource_name = "Trash"
 script = ExtResource( 1 )
+random_orientations = [  ]

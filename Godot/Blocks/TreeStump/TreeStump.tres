@@ -5,3 +5,4 @@
 [resource]
 resource_name = "TreeStump"
 script = ExtResource( 1 )
+random_orientations = [ 0, 10, 16, 22 ]

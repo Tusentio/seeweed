@@ -16,7 +16,7 @@ func _physics_process(_delta):
 	var ray_normal := (to - from).normalized();
 	
 	var space_state := get_world().get_direct_space_state();
-	var result := space_state.intersect_ray(from, to, [], 0b0001);
+	var result := space_state.intersect_ray(from, to, [], 0b1000);
 	
 	# If ray didn't hit anything
 	if not result:

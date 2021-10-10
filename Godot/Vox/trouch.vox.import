@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/trouch.vox-94d940062f25420804f9cc1c215adaa5.mesh"
+
+[deps]
+
+source_file="res://Vox/trouch.vox"
+dest_files=[ "res://.import/trouch.vox-94d940062f25420804f9cc1c215adaa5.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1
