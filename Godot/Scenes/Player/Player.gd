@@ -10,6 +10,8 @@ export (float) var turn_speed := 10.0;
 export (float) var item_throw_speed := 10.0;
 export (bool) var drift_mode := false;
 var velocity: Vector3 = Vector3.ZERO;
+var input_velocity: Vector3 = Vector3.ZERO;
+var jumping := false;
 var _looking_at: Vector3 = Vector3.ZERO;
 
 # Inventory vars
@@ -59,17 +61,7 @@ func _input(_event):
 
 # Movement code
 func _physics_process(delta):
-	var input_velocity := Vector3.ZERO;
-	input_velocity.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
-	input_velocity.z = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward");
-	
-	if input_velocity.x or input_velocity.z:
-		_looking_at = input_velocity.normalized();
-		$WalkAnimations.reset_and_play("walk");
-	else:
-		$WalkAnimations.reset_and_play("idle");
-	
-	if is_on_floor() and Input.is_action_pressed("jump"):
+	if is_on_floor() and jumping:
 		velocity.y = jump;
 	else:
 		velocity.y -= gravity * delta;
@@ -85,9 +77,20 @@ func _physics_process(delta):
 
 # Smoothly rotate player
 func _process(delta):
-	if not _looking_at or delta <= 0:
-		return;
-
+	jumping = Input.is_action_pressed("jump");
+	
+	input_velocity = Vector3.ZERO;
+	input_velocity.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
+	input_velocity.z = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward");
+	
+	if input_velocity.x or input_velocity.z:
+		_looking_at = input_velocity.normalized();
+		$WalkAnimations.reset_and_play("walk");
+	else:
+		$WalkAnimations.reset_and_play("idle");
+	
+	if not _looking_at or delta <= 0: return;
+	
 	var weight = 1 - pow(1 / turn_speed, delta * 10);
 	var look_target = global_transform.origin + _looking_at * Vector3(1, 0, 1);
 	var rotated_transform = global_transform.looking_at(look_target, Vector3.UP);

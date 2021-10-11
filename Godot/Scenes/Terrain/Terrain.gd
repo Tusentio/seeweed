@@ -74,10 +74,11 @@ func load_chunk(pos: Vector3):
 	if has_chunk(id):
 		pass
 	else:
-		var new_chunk = CHUNK.instance().init(id, self)
-		_map[id] = new_chunk
-		add_child(new_chunk)
+		var new_chunk = CHUNK.instance()
 		new_chunk.transform.origin = pos.floor() * Chunk.SIDE_LENGTH
+		_map[id] = new_chunk
+		new_chunk.init(id, self)
+		add_child(new_chunk)
 
 func unload_chunk(id):
 	var chunk := get_chunk(id)
