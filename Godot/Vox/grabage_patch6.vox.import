@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/grabage_patch6.vox-b28d944e99e390e173a489cd4c8b2e6c.mesh"
+
+[deps]
+
+source_file="res://Vox/grabage_patch6.vox"
+dest_files=[ "res://.import/grabage_patch6.vox-b28d944e99e390e173a489cd4c8b2e6c.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=1
+origin_y=0
+origin_z=1
+voxel_size=0.1
