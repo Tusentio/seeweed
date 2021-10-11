@@ -15,6 +15,7 @@ var path : String;
 var chunk_seed : int;
 var terrain: Object;
 var random := RandomNumberGenerator.new();
+var simplex := OpenSimplexNoise.new();
 
 var tiles := [];
 onready var tile_map := $GridMap;
@@ -131,28 +132,33 @@ func delete_tile(index: int, sender: Object = null):
 	update_cell(index);
 
 func generate():
+	simplex.seed = terrain.world_seed;
+	simplex.octaves = 1;
+	simplex.period = 15.0;
+	simplex.persistence = 0.8;
+	
 	for i in VOLUME_SIZE:
-		var y := y_of_index(i);
+		var pos := global_transform.origin + index_to_vec(i);
+		var y := pos.y;
 		
-		if y == 0:
+		var height := 4 * (1 + simplex.get_noise_2d(pos.x, pos.z));
+		if y < height:
 			set_tile(i, {
 				block = GRASS_BLOCK,
 			});
-		elif y == 1:
-			var x := x_of_index(i);
-			var z := z_of_index(i);
-			
-			random.seed = chunk_seed ^ i;
-			if x % 2 and z % 2 and random.randf() > 0.9:
-				match random.randi_range(0, 1):
-					0:
-						set_tile(i, {
-							block = TREE_STUMP_BLOCK,
-						});
-					1:
-						set_tile(i, {
-							block = TREE_BLOCK,
-						});
+	
+	for i in PLANE_SIZE:
+		random.seed = chunk_seed ^ i;
+		if random.randf() > 0.03: continue;
+		
+		for y in SIDE_LENGTH:
+			var index : int = VOLUME_SIZE - PLANE_SIZE - PLANE_SIZE * y - i;
+			var block := get_block(index);
+			if block:
+				set_tile(index + PLANE_SIZE, {
+					block = TREE_BLOCK,
+				});
+				break;
 
 func load_chunk():
 	var data: ChunkData = ResourceLoader.load(path, "", true);
