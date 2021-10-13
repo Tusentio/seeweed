@@ -7,7 +7,7 @@ onready var player: Player = get_tree().get_nodes_in_group("Player")[0];
 const RAY_LENGTH := 1000;
 const EPSILON := 0.01;
 
-func _physics_process(_delta):
+func _process(_delta):
 	# Create ray
 	var mouse_pos := get_viewport().get_mouse_position();
 	var camera := get_viewport().get_camera();
