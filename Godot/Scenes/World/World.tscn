@@ -20,13 +20,13 @@
 [node name="Sun" type="DirectionalLight" parent="."]
 transform = Transform( 0.707107, 0.612372, -0.353554, 0, 0.5, 0.866025, 0.707107, -0.612372, 0.353554, 0, 3.86909, 0 )
 light_color = Color( 1, 1, 0.709804, 1 )
-light_energy = 3.0
+light_energy = 2.5
 shadow_enabled = true
-shadow_bias = 0.05
+shadow_bias = 0.12
 shadow_contact = 0.1
 directional_shadow_mode = 0
 directional_shadow_normal_bias = 0.1
-directional_shadow_max_distance = 20.0
+directional_shadow_max_distance = 25.0
 
 [node name="MapSelection" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.86909, 0 )
